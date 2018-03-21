@@ -7,15 +7,30 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-
-Updating costs to $US (year 2018 values) using the medical cost component of the Consumer Price Index
+Updating costs to US 2018$ values using the medical cost component of the Consumer Price Index
+- unadjusted index Dec 2009 = 379.516
+- unadjusted index Jan 2018 = 513.135
 
 ```{r}
-#unadjusted index Dec 2009 = 379.516
-#unadjusted index Jan 2018 = 513.135
-
-cpi <- (513.135 - 379.516)/379.516
-
+cpi <- ((513.135 - 379.516)/379.516) + 1
 
 ```
+
+
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+
+
+
 

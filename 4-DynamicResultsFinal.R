@@ -8,11 +8,11 @@ compliance <- 0.4
 efficacy <- 0.4
 ####################
 vaccine.cost <- 28.62 
-total.population = c(2652690,5439493,955391)
+total.population = c(2652690, 5439493, 955391)
 
 ###Catastrophic Flu
 
-base.case.catastrophic <- c(1282633.92,1302458.28,142433.4)
+base.case.catastrophic <- c(1282633.92, 1302458.28, 142433.4)
 #######################################################
 vaccine.catastrophic <- c(741981.76,666084.8,70090.08)
 #Day15 vaccine.catastrophic <- c(741981.76,666084.8,70090.08)
@@ -67,6 +67,7 @@ inf.Vaxday.Mod <- c(279,279,35)
 cat.AR <- 0.3014649
 strong.AR <- 0.2196369
 mod.AR <- 0.1172884
+
 ###Catastrophic Flu
 
 Catastrophic.dynamic <-data.frame(rbind(Children.low.risk(cat.AR,compliance,total.population[1]-inf.Vaxday.Cat[1],total.population[1],base.case.catastrophic[1],vaccine.catastrophic[1]),
@@ -127,47 +128,66 @@ names(moderate.total.dynamic) <- c("Totalcost basecase","total cost after tax",
 
 ##Table 2- dynamic model
 
-column.catastrophic.dynamic<- c(catastrophic.total.dynamic[2]/sum(total.population),(catastrophic.total.dynamic[1]-catastrophic.total.dynamic[2])/sum(total.population), 
-                        (catastrophic.total.dynamic[1]-catastrophic.total.dynamic[2])/((sum(total.population)-sum(inf.Vaxday.Cat))*compliance),catastrophic.total.dynamic[8]/sum(total.population),
-                        est.R0.AR(pop.size=sum(total.population), AR=catastrophic.total.dynamic[8]/sum(total.population))[2],
-                        est.R0.AR(pop.size=sum(total.population), AR=catastrophic.total.dynamic[8]/sum(total.population))[4],
-                        (catastrophic.total.dynamic[1]-catastrophic.total.dynamic[2])/((sum(total.population)-sum(inf.Vaxday.Cat))*compliance*vaccine.cost))
+column.catastrophic.dynamic <- c(
+  catastrophic.total.dynamic[2]/sum(total.population),
+  (catastrophic.total.dynamic[1] - catastrophic.total.dynamic[2])/sum(total.population),
+  (catastrophic.total.dynamic[1] - catastrophic.total.dynamic[2])/((sum(total.population) - sum(inf.Vaxday.Cat)) * compliance),
+  catastrophic.total.dynamic[8]/sum(total.population),
+  est.R0.AR(pop.size = sum(total.population), AR = catastrophic.total.dynamic[8]/sum(total.population))[2],
+  est.R0.AR(pop.size = sum(total.population), AR = catastrophic.total.dynamic[8]/sum(total.population))[4],
+  (catastrophic.total.dynamic[1] - catastrophic.total.dynamic[2])/((sum(total.population) - sum(inf.Vaxday.Cat)) * compliance * vaccine.cost))
 
-column.strong.dynamic <- c(strong.total.dynamic[2]/sum(total.population),(strong.total.dynamic[1]-strong.total.dynamic[2])/sum(total.population), 
-                   (strong.total.dynamic[1]-strong.total.dynamic[2])/((sum(total.population)-sum(inf.Vaxday.Str))*compliance),strong.total.dynamic[8]/sum(total.population),
-                   est.R0.AR(pop.size=sum(total.population), AR=strong.total.dynamic[8]/sum(total.population))[2],
-                   est.R0.AR(pop.size=sum(total.population), AR=strong.total.dynamic[8]/sum(total.population))[4],
-                   (strong.total.dynamic[1]-strong.total.dynamic[2])/((sum(total.population)-sum(inf.Vaxday.Str))*compliance*vaccine.cost))
 
-column.moderate.dynamic <- c(moderate.total.dynamic[2]/sum(total.population),(moderate.total.dynamic[1]-moderate.total.dynamic[2])/sum(total.population), 
-                     (moderate.total.dynamic[1]-moderate.total.dynamic[2])/((sum(total.population)-sum(inf.Vaxday.Mod))*compliance),moderate.total.dynamic[8]/sum(total.population),
-                     est.R0.AR(pop.size=sum(total.population), AR=moderate.total.dynamic[8]/sum(total.population))[2],
-                     est.R0.AR(pop.size=sum(total.population), AR=moderate.total.dynamic[8]/sum(total.population))[4],
-                     (moderate.total.dynamic[1]-moderate.total.dynamic[2])/((sum(total.population)-sum(inf.Vaxday.Cat))*compliance*vaccine.cost))
-table2.dynamic <- cbind(column.catastrophic.dynamic,column.strong.dynamic,column.moderate.dynamic)
-rownames(table2.dynamic) <- c("Pandemic cost per capita","Return per capita","return per vaccinate person","Attack rate","Reproductive number","95% confidence interval","Return on investment of vaccine")
-colnames(table2.dynamic)<- c("Catastrophic flu","Strong flu","Moderate flu")
+column.strong.dynamic <- c(
+  strong.total.dynamic[2]/sum(total.population),
+  (strong.total.dynamic[1]-strong.total.dynamic[2])/sum(total.population), 
+  (strong.total.dynamic[1]-strong.total.dynamic[2])/((sum(total.population)-sum(inf.Vaxday.Str))*compliance),
+  strong.total.dynamic[8]/sum(total.population),
+  est.R0.AR(pop.size=sum(total.population), AR=strong.total.dynamic[8]/sum(total.population))[2],
+  est.R0.AR(pop.size=sum(total.population), AR=strong.total.dynamic[8]/sum(total.population))[4],
+  (strong.total.dynamic[1]-strong.total.dynamic[2])/((sum(total.population)-sum(inf.Vaxday.Str))*compliance*vaccine.cost))
+
+
+column.moderate.dynamic <- c(moderate.total.dynamic[2]/sum(total.population),
+                             (moderate.total.dynamic[1]-moderate.total.dynamic[2])/sum(total.population),
+                             (moderate.total.dynamic[1]-moderate.total.dynamic[2])/((sum(total.population) - sum(inf.Vaxday.Mod))*compliance),
+                             moderate.total.dynamic[8]/sum(total.population),
+                             est.R0.AR(pop.size=sum(total.population), AR=moderate.total.dynamic[8]/sum(total.population))[2],
+                             est.R0.AR(pop.size=sum(total.population), AR=moderate.total.dynamic[8]/sum(total.population))[4],
+                             (moderate.total.dynamic[1]-moderate.total.dynamic[2])/((sum(total.population)-sum(inf.Vaxday.Cat))*compliance*vaccine.cost))
+
+
+table2.dynamic <- cbind(column.catastrophic.dynamic, column.strong.dynamic, column.moderate.dynamic)
+rownames(table2.dynamic) <- c("Pandemic cost per capita", "Return per capita", "return per vaccinate person", "Attack rate", "Reproductive number", "95% confidence interval", "Return on investment of vaccine")
+colnames(table2.dynamic)<- c("Catastrophic flu", "Strong flu", "Moderate flu")
 
 
 #Table 5- dynamic model
 
-table5.catastrophic.dynamic <- c(catastrophic.total.dynamic[1]/1e6,(catastrophic.total.dynamic[2]-(sum(total.population)-sum(inf.Vaxday.Cat))*compliance*vaccine.cost)/1e6,
-                         compliance*vaccine.cost*(sum(total.population)-sum(inf.Vaxday.Cat))/1e6,(catastrophic.total.dynamic[1]-catastrophic.total.dynamic[2])/1e6,
+table5.catastrophic.dynamic <- c(catastrophic.total.dynamic[1]/1e6,
+                                 (catastrophic.total.dynamic[2]-(sum(total.population)-sum(inf.Vaxday.Cat))*compliance*vaccine.cost)/1e6,
+                                 compliance*vaccine.cost*(sum(total.population)-sum(inf.Vaxday.Cat))/1e6,
+                                 (catastrophic.total.dynamic[1]-catastrophic.total.dynamic[2])/1e6,
                          (catastrophic.total.dynamic[1]-catastrophic.total.dynamic[2])/sum(total.population),
                          (catastrophic.total.dynamic[1]-catastrophic.total.dynamic[2])/((sum(total.population)-sum(inf.Vaxday.Cat))*compliance),
                          (catastrophic.total.dynamic[1]-catastrophic.total.dynamic[2])/((sum(total.population)-sum(inf.Vaxday.Cat))*compliance*vaccine.cost))
 
-table5.strong.dynamic <- c(strong.total.dynamic[1]/1e6,(strong.total.dynamic[2]-(sum(total.population)-sum(inf.Vaxday.Str))*compliance*vaccine.cost)/1e6,
-                   (compliance*vaccine.cost*(sum(total.population)-sum(inf.Vaxday.Str)))/1e6,(strong.total.dynamic[1]-strong.total.dynamic[2])/1e6,
+
+table5.strong.dynamic <- c(strong.total.dynamic[1]/1e6,
+                           (strong.total.dynamic[2]-(sum(total.population)-sum(inf.Vaxday.Str))*compliance*vaccine.cost)/1e6,
+                   (compliance*vaccine.cost*(sum(total.population)-sum(inf.Vaxday.Str)))/1e6,
+                   (strong.total.dynamic[1]-strong.total.dynamic[2])/1e6,
                    (strong.total.dynamic[1]-strong.total.dynamic[2])/sum(total.population),
                    (strong.total.dynamic[1]-strong.total.dynamic[2])/((sum(total.population)-sum(inf.Vaxday.Str))*compliance),
                    (strong.total.dynamic[1]-strong.total.dynamic[2])/((sum(total.population)-sum(inf.Vaxday.Str))*compliance*vaccine.cost))
+
 
 table5.moderate.dynamic <- c(moderate.total.dynamic[1]/1e6,(moderate.total.dynamic[2]-(sum(total.population)-sum(inf.Vaxday.Mod))*compliance*vaccine.cost)/1e6,
                      (compliance*vaccine.cost*(sum(total.population)-sum(inf.Vaxday.Mod)))/1e6,(moderate.total.dynamic[1]-moderate.total.dynamic[2])/1e6,
                      (moderate.total.dynamic[1]-moderate.total.dynamic[2])/sum(total.population),
                      (moderate.total.dynamic[1]-moderate.total.dynamic[2])/((sum(total.population)-sum(inf.Vaxday.Mod))*compliance),
                      (moderate.total.dynamic[1]-moderate.total.dynamic[2])/((sum(total.population)-sum(inf.Vaxday.Mod))*compliance*vaccine.cost))
+
 
 table5.dynamic <- rbind(table5.catastrophic.dynamic,table5.strong.dynamic,table5.moderate.dynamic)
 colnames(table5.dynamic) <- c("Pandemic cost before vax","Pandemic cost after  vax","vax cost","net return","Return per capita","return per vaccinate person","return per dollar spent")
