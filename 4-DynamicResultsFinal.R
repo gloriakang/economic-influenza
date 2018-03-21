@@ -70,8 +70,8 @@ mod.AR <- 0.1172884
 
 ###Catastrophic Flu
 
-Catastrophic.dynamic <-data.frame(rbind(Children.low.risk(cat.AR,compliance,total.population[1]-inf.Vaxday.Cat[1],total.population[1],base.case.catastrophic[1],vaccine.catastrophic[1]),
-                                Children.high.risk(cat.AR,compliance,total.population[1]-inf.Vaxday.Cat[1],total.population[1],base.case.catastrophic[1],vaccine.catastrophic[1]),
+Catastrophic.dynamic <-data.frame(rbind(Children.low.risk(cat.AR, compliance, total.population[1]-inf.Vaxday.Cat[1], total.population[1], base.case.catastrophic[1], vaccine.catastrophic[1]),
+                                Children.high.risk(cat.AR, compliance, total.population[1]-inf.Vaxday.Cat[1], total.population[1], base.case.catastrophic[1], vaccine.catastrophic[1]),
                                 adult.low.risk(cat.AR,compliance,total.population[2]-inf.Vaxday.Cat[2],total.population[2],base.case.catastrophic[2],vaccine.catastrophic[2]),
                                 adult.high.risk(cat.AR,compliance,total.population[2]-inf.Vaxday.Cat[2],total.population[2],base.case.catastrophic[2],vaccine.catastrophic[2]),
                                 senior.low.risk(cat.AR,compliance,total.population[3]-inf.Vaxday.Cat[3],total.population[3],base.case.catastrophic[3],vaccine.catastrophic[3]),
