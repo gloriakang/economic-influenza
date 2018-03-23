@@ -4,7 +4,6 @@ rm(list = ls(all.names = TRUE))
 library(mc2d)
 
 ########## Define variables ##########
-
 # risk.group
 highrisk0_19 <- 0.064  # meltzer 1999
 highrisk0_4 <- 0.052  # molinari 2007
@@ -13,7 +12,7 @@ highrisk20_64 <- 0.144  # meltzer 1999
 highrisk65 <- 0.512  # molinari 2007
 
 # consumer price adjustment index
-cpi <- ((513.135 - 379.516)/379.516) + 1
+cpi <- 513.135/379.516
 
 # vaccine cost
 vax.cost <- 28.62
@@ -24,15 +23,6 @@ vax.cost <- 28.62
 # 20-64 = 2235049 (0.656)
 # 65+ = 308558 (0.0905)
 
-########## 0-4 years, High risk ##########
-
-########## Cost of each health outcome, 0-4 yrs, high risk
-cost.death.ch =  46017 * cpi
-cost.hospitalization.ch = 20928 * cpi
-cost.outpatient.ch = 603 * cpi
-cost.rest.ch = 4 * cpi
-
-########## 0-4 yrs, high risk
 # AR = attack rate of age group
 # vax.comp = compliance for age group
 # tot.pop = size of age group?
@@ -41,28 +31,23 @@ cost.rest.ch = 4 * cpi
 # case.after.vax = number of cases after vaccination
 
 
-##
-children.high.risk(AR = 0.0818, vax.comp = 0.4, tot.pop = 223608, totalpopulation = 3406876,
-                   num.cases = 18302.76, case.after.vax = 360.2)
-
-
+########## 0-4 years, High risk ##########
 num.cases <- 18302.76
 case.after.vax <- 360.2
+
 num.cases - case.after.vax
 
-## 0-4 years, high risk
-
-children.high.risk <- function(AR, vax.comp, tot.pop, totalpopulation, num.cases, case.after.vax){
-  
-  risk.group = highrisk0_19
+#children.high.risk <- function(AR, vax.comp, tot.pop, totalpopulation, num.cases, case.after.vax){
+  #risk.group = highrisk0_19
+  risk.group = highrisk0_4  ##
   subpop.ar = num.cases * risk.group
   
-  # Health outcome probability, 0-4, high risk
+  ### Health outcome probability, 0-4, high risk ###
   set.seed(1000)
   prob.outpatient = mean(runif(10000, min = 0.8257, max = 0.9595))
   prob.hospitalization = mean(runif(10000, min = 0.006, max = 0.02143))
   prob.death = mean(rtriang(10000, min = 0.00036, mode = 0.001, max = 0.01821))
-  rest = 1-(prob.death + prob.hospitalization + prob.outpatient)  
+  rest = 1-(prob.death + prob.hospitalization + prob.outpatient)
   
   # Number of each health outcome, 0-4 yrs, high risk
   num.outpatient = prob.outpatient * subpop.ar
@@ -70,13 +55,13 @@ children.high.risk <- function(AR, vax.comp, tot.pop, totalpopulation, num.cases
   num.death = prob.death * subpop.ar
   num.rest = rest * subpop.ar
   num.case.ch = num.outpatient + num.hospitalization + num.death + num.rest
-  num.case.ch
+  num.case.ch  # total number of cases = subpop.ar
   
-  ## Cost of each health outcome, 0-4 yrs, high risk
-  # cost.death.ch =  1487872 * cpi 
-  # cost.hospitalization.ch = 31894 * cpi
-  # cost.outpatient.ch = 948 * cpi
-  # cost.rest.ch = 116.5 * cpi
+  ### Cost of each health outcome, 0-4 yrs, high risk ###
+  cost.death.ch =  46017 * cpi
+  cost.hospitalization.ch = 20928 * cpi
+  cost.outpatient.ch = 603 * cpi
+  cost.rest.ch = 4 * cpi
   
   # Total cost, 0-4 yrs, high risk
   tot.cost.death.ch = cost.death.ch * num.death
@@ -84,15 +69,15 @@ children.high.risk <- function(AR, vax.comp, tot.pop, totalpopulation, num.cases
   tot.cost.outpatient.ch = cost.outpatient.ch * num.outpatient
   tot.cost.rest.ch = cost.rest.ch * num.rest
   tot.cost.ch = tot.cost.death.ch + tot.cost.hospitalization.ch + tot.cost.outpatient.ch + tot.cost.rest.ch
-  tot.cost.ch
+  tot.cost.ch  ## total cost in base case
   
   # Vaccination, 0-4 yrs, high risk
   # vax.cost = 28.62
   vax.comp <- 0.4
-  tot.pop <- 223608
+  tot.pop <- 223608  ### pop size of 0-4 ###
   vaccination.cost = vax.cost * (vax.comp) * tot.pop * risk.group
   tot.cost.ch.vax = vaccination.cost
-  tot.cost.ch.vax
+  tot.cost.ch.vax  ## vaccination cost
   
   # Non-vaccinated, 0-4 yrs, high risk
   subpop.ar.nonvax = case.after.vax * risk.group
@@ -101,6 +86,7 @@ children.high.risk <- function(AR, vax.comp, tot.pop, totalpopulation, num.cases
   num.death.nonvax = prob.death * subpop.ar.nonvax
   num.rest.nonvax = rest * subpop.ar.nonvax
   num.case.ch.nonvax = num.outpatient.nonvax + num.hospitalization.nonvax + num.death.nonvax + num.rest.nonvax
+  num.case.ch.nonvax  ## number of cases after vax = subpop.ar.nonvax
   
   # Total cost, 0-4 yrs, high risk, non-vax
   cost.death.ch.nonvax = cost.death.ch * num.death.nonvax
@@ -108,30 +94,22 @@ children.high.risk <- function(AR, vax.comp, tot.pop, totalpopulation, num.cases
   cost.outpatient.ch.nonvax = cost.outpatient.ch * num.outpatient.nonvax
   cost.rest.ch.nonvax = cost.rest.ch * num.rest.nonvax
   tot.cost.ch.nonvax = cost.death.ch.nonvax + cost.hospitalization.ch.nonvax + cost.outpatient.ch.nonvax + cost.rest.ch.nonvax
-  tot.cost.ch.nonvax
+  tot.cost.ch.nonvax  # total cost in vaccination
   
-  
-  res <- c(tot.cost.ch, tot.cost.ch.vax + tot.cost.ch.nonvax, tot.cost.ch - (tot.cost.ch.vax + tot.cost.ch.nonvax),
-           (tot.cost.ch - (tot.cost.ch.vax + tot.cost.ch.nonvax))/(totalpopulation * risk.group),
-           (tot.cost.ch - (tot.cost.ch.vax + tot.cost.ch.nonvax))/(vax.comp * tot.pop * risk.group),
-           (tot.cost.ch - (tot.cost.ch.vax + tot.cost.ch.nonvax))/(vax.comp * tot.pop * risk.group * vax.cost),
-           num.case.ch, num.case.ch.nonvax, num.death, num.death/(totalpopulation * risk.group))
-  return(res)
-}
-
+#  res <- c(tot.cost.ch, tot.cost.ch.vax + tot.cost.ch.nonvax, tot.cost.ch - (tot.cost.ch.vax + tot.cost.ch.nonvax),
+#           (tot.cost.ch - (tot.cost.ch.vax + tot.cost.ch.nonvax))/(totalpopulation * risk.group),
+#           (tot.cost.ch - (tot.cost.ch.vax + tot.cost.ch.nonvax))/(vax.comp * tot.pop * risk.group),
+#           (tot.cost.ch - (tot.cost.ch.vax + tot.cost.ch.nonvax))/(vax.comp * tot.pop * risk.group * vax.cost),
+#           num.case.ch, num.case.ch.nonvax, num.death, num.death/(totalpopulation * risk.group))
+#  return(res)
+#}
 
 
 ########## 0-4 years, Low risk ##########
 
-########## Cost of health outcomes, US 2018$, 0-4 yrs, low risk
-cost.death.ch = 1479040 * cpi
-cost.hospitalization.ch = 15224 * cpi
-cost.outpatient.ch = 458 * cpi
-cost.rest.ch = 116.5 * cpi
-
-# 0-4 years, low risk
-children.low.risk <- function(AR, vax.comp, tot.pop, totalpopulation, num.cases, case.after.vax){
-  risk.group = 1 - highrisk0_19
+#children.low.risk <- function(AR, vax.comp, tot.pop, totalpopulation, num.cases, case.after.vax){
+  #risk.group = 1 - highrisk0_19  
+  risk.group = 1 - highrisk0_4
   subpop.ar = num.cases * risk.group
   
   # Health outcome probability, 0-4, low risk
@@ -148,11 +126,11 @@ children.low.risk <- function(AR, vax.comp, tot.pop, totalpopulation, num.cases,
   num.rest = rest * subpop.ar
   num.case.ch = num.outpatient + num.hospitalization + num.death + num.rest
   
-  ## Cost of health outcomes, US 2018$, 0-4 yrs, low risk
-  # cost.death.ch = 1479040 * cpi
-  # cost.hospitalization.ch = 15224 * cpi
-  # cost.outpatient.ch = 458 * cpi
-  # cost.rest.ch = 116.5 * cpi
+  ### Cost of health outcomes, US 2018$, 0-4 yrs, low risk ###
+  cost.death.ch = 1479040 * cpi
+  cost.hospitalization.ch = 15224 * cpi
+  cost.outpatient.ch = 458 * cpi
+  cost.rest.ch = 116.5 * cpi
   
   # Total cost, 0-4 years, low risk
   tot.cost.death.ch = cost.death.ch * num.death
@@ -200,17 +178,14 @@ children.low.risk <- function(AR, vax.comp, tot.pop, totalpopulation, num.cases,
 ########## 5-19 years, High risk ########## 
 
 ########## Cost of each health outcome, 5-19 yrs, high risk
-cost.death.ch =  1487872 * cpi 
-cost.hospitalization.ch = 31894 * cpi
-cost.outpatient.ch = 948 * cpi
-cost.rest.ch = 116.5 * cpi
+
 
 # 5-19 years, high risk
 children.high.risk <- function(AR, vax.comp, tot.pop, totalpopulation, num.cases, case.after.vax){
   risk.group = highrisk0_19
   subpop.ar = num.cases * risk.group
   
-  # Health outcome probability, 5-19, high risk
+  ### Health outcome probability, 5-19, high risk ###
   set.seed(1000)
   prob.outpatient = mean(runif(10000, min = 0.825, max = 0.958))
   prob.hospitalization = mean(runif(10000, min = 6/1000, max = 21.4/1000))
@@ -224,11 +199,11 @@ children.high.risk <- function(AR, vax.comp, tot.pop, totalpopulation, num.cases
   num.rest = rest * subpop.ar
   num.case.ch = num.outpatient + num.hospitalization + num.death + num.rest
   
-  ## Cost of each health outcome, 5-19 yrs, high risk
-  # cost.death.ch =  1487872 * cpi 
-  # cost.hospitalization.ch = 31894 * cpi
-  # cost.outpatient.ch = 948 * cpi
-  # cost.rest.ch = 116.5 * cpi
+  ### Cost of each health outcome, 5-19 yrs, high risk ###
+  cost.death.ch =  1487872 * cpi 
+  cost.hospitalization.ch = 31894 * cpi
+  cost.outpatient.ch = 948 * cpi
+  cost.rest.ch = 116.5 * cpi
   
   # Total cost, 5-19 yrs, high risk
   tot.cost.death.ch = cost.death.ch * num.death
