@@ -5,166 +5,120 @@ output: html_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
-rm(list = ls(all.names = TRUE))
+```
 
+```{r}
 library(mc2d)
+rm(list = ls(all.names = TRUE))
 ```
 
-Updating costs to US 2018$ values using the medical cost component of the Consumer Price Index:
-- Unadjusted index Jan 2018 = 513.135
-- Unadjusted index Dec 2009 = 379.516
-- CPI adjustment = (new index / old index)
-
-Total Population = 3406876 (proportion)
-- 0-4 years = 223608 (0.0656)
-- 5-19 years = 639661 (0.187)
-- 20-64 years = 2235049 (0.656)
-- 65+ years 308558 (0.0905)
-
 ```{r}
-# pop
-total_pop <- 3406876
-pop_04 <- 223608  #(0.0656)
-pop_519 <- 639661  #(0.187)
-pop_2064 <- 2235049  #(0.656)
-pop_65 <- 308558  #(0.0905)
-
-# risk_group
-high_019 <- 0.064  # meltzer 1999
-high_04 <- 0.052  # molinari 2007
-high_517 <- 0.106  # molinari 2007
-high_2064 <- 0.144  # meltzer 1999
-high_65 <- 0.512  # molinari 2007
-
-cpi <- 513.135/379.516
-vax_cost <- 28.62
-vax_comp <- 0.4
-
-# probabilities
-set.seed(1000)
-p_04_high_death <- mean(rtriang(10000, min = 0.00036, mode = 0.001, max = 0.01821))
-p_04_high_hosp <- mean(runif(10000, min = 0.006, max = 0.02143))
-p_04_high_out <- mean(runif(10000, min = 0.8257, max = 0.9595))
-p_04_high_rest <- 1-(p_04_high_death + p_04_high_hosp + p_04_high_out)
-#p_04_low_death
-#p_04_low_hosp
-#p_04_low_out
-#p_04_low_rest
-
-
+source("functions.R")
+source("variables.R")
 ```
 
-Functions
+
+## 0-4 years
 
 ```{r}
-# total costs each outcome
-calc_total_cost <- function(death, hosp, out, rest){
-  cost_outcome = cost_cpi_outcome(death, hosp, out, rest)
-  total_cost_death <- cost_outcome[1] * num_outcomes[1]
-  total_cost_hosp <- cost_outcome[2] * num_outcomes[2]
-  total_cost_out <- cost_outcome[3] * num_outcomes[3]
-  total_cost_rest <- cost_outcome[4] * num_outcomes[4]
-  return(c(total_cost_death, total_cost_hosp, total_cost_out, total_cost_rest,
-           total_cost_death + total_cost_hosp + total_cost_out + total_cost_rest))
-}
-
-# total costs each outcome (intervention)
-calc_total_cost_vax <- function(death, hosp, out, rest){
-  cost_outcome = cost_cpi_outcome(death, hosp, out, rest)
-  total_cost_death <- cost_outcome[1] * num_outcomes_vax[1]
-  total_cost_hosp <- cost_outcome[2] * num_outcomes_vax[2]
-  total_cost_out <- cost_outcome[3] * num_outcomes_vax[3]
-  total_cost_rest <- cost_outcome[4] * num_outcomes_vax[4]
-  return(c(total_cost_death, total_cost_hosp, total_cost_out, total_cost_rest,
-           total_cost_death + total_cost_hosp + total_cost_out + total_cost_rest))
-}
-
-# adjusted cost per health outcome
-cost_cpi_outcome <- function(death, hosp, out, rest){
-  cost_per_death <- death * cpi
-  cost_per_hosp <-  hosp * cpi
-  cost_per_out <- out * cpi
-  cost_per_rest <- rest * cpi
-  # returns cost per health outcome case
-  return(c(cost_per_death, cost_per_hosp, cost_per_out, cost_per_rest))
-}
-
-# number of cases for each health outcome (base)
-calc_num_outcome <- function(p_death, p_hosp, p_out, p_rest){
-  num_death = p_death * subpop_cases
-  num_hosp = p_hosp * subpop_cases
-  num_out = p_out * subpop_cases
-  num_rest = p_rest * subpop_cases
-  num_outcome_total = num_death + num_hosp + num_out + num_rest
-  num_outcomes = c(num_death, num_hosp, num_out, num_rest)
-  return(num_outcomes)
-}
-
-# number of cases for each health outcome (intervention)
-calc_num_outcome_vax <- function(p_death, p_hosp, p_out, p_rest){
-  num_death = p_death * subpop_cases_vax
-  num_hosp = p_hosp * subpop_cases_vax
-  num_out = p_out * subpop_cases_vax
-  num_rest = p_rest * subpop_cases_vax
-  num_outcome_total = num_death + num_hosp + num_out + num_rest
-  num_outcomes_vax = c(num_death, num_hosp, num_out, num_rest)
-  return(num_outcomes_vax)
-}
-
-# total cost of vaccination program
-calc_vaccination_cost <- function(pop, risk_group, vax_cost, vax_comp){
-  total_cost_vax = vax_cost * vax_comp * pop * risk_group
-  return(total_cost_vax)
-}
-
-```
-
-# Variables
-
-```{r}
-# 0-4 years, HIGH RISK
 pop <- pop_04
-risk_group <- high_04
-
-# simulation output
 num_cases <- 18302.76
 cases_after_vax <- 360.2
-
-
 ```
-# Calculations
 
-Total costs 0-4 yrs, high risk
+## 0-4 years, HIGH RISK
 
 ```{r}
-(subpop_cases <- num_cases * risk_group)
-(subpop_cases_vax <- cases_after_vax * risk_group)
-(total_cases_averted <- num_cases - cases_after_vax)
+risk_group <- high_019
+costs <- c(1487872, 31894, 948, 116.5) # original cost data
+prob <- c(p_04_high_death, p_04_high_hosp, p_04_high_out, p_04_high_rest) # probability
 
-# total vaccination cost
-calc_vaccination_cost(pop, risk_group, vax_cost, vax_comp)
+calc_subpop_cases_base(num_cases, risk_group)
+calc_subpop_cases_intv(cases_after_vax, risk_group)
+calc_vaccination_cost(pop, risk_group, vax_cost, vax_comp) # total vaccination cost
 
-# number of cases per health outcome
-(num_outcomes <- calc_num_outcome(p_04_high_death, p_04_high_hosp, p_04_high_out, p_04_high_rest))
-# total costs per health outcome
-calc_total_cost(1487872, 31894, 948, 116.5) # input original cost data
+# base number of cases per health outcome
+(num_outcomes_base <- calc_num_outcomes_base(prob[1], prob[2], prob[3], prob[4]))
 
-# number of cases per health outcome
-(num_outcomes_vax <- calc_num_outcome_vax(p_04_high_death, p_04_high_hosp, p_04_high_out, p_04_high_rest))
-# total costs per health outcome
-calc_total_cost_vax(1487872, 31894, 948, 116.5) # input original cost data
+# intervention number of cases per health outcome
+(num_outcomes_intv <- calc_num_outcomes_intv(prob[1], prob[2], prob[3], prob[4]))
+
+cost_cpi_outcome(costs[1],costs[2],costs[3],costs[4])  # cost per health outcome
+
+calc_total_cost_base(costs[1],costs[2],costs[3],costs[4])  # total costs per health outcome (base)
+
+calc_total_cost_intv(costs[1],costs[2],costs[3],costs[4]) # total costs per health outcome (intervention)
+
+
+```
+
+## 0-4 years, low risk
+
+```{r}
+risk_group <- 1-high_019
+#costs <- c(1487872, 31894, 948, 116.5) # original cost data
+#prob <- c(p_04_high_death, p_04_high_hosp, p_04_high_out, p_04_high_rest) # probability
+
+calc_subpop_cases_base(num_cases, risk_group)
+calc_subpop_cases_intv(cases_after_vax, risk_group)
+calc_vaccination_cost(pop, risk_group, vax_cost, vax_comp) # total vaccination cost
+
+# base number of cases per health outcome
+(num_outcomes_base <- calc_num_outcomes_base(prob[1], prob[2], prob[3], prob[4]))
+
+# intervention number of cases per health outcome
+(num_outcomes_intv <- calc_num_outcomes_intv(prob[1], prob[2], prob[3], prob[4]))
+
+cost_cpi_outcome(costs[1],costs[2],costs[3],costs[4])  # cost per health outcome
+
+calc_total_cost_base(costs[1],costs[2],costs[3],costs[4])  # total costs per health outcome (base)
+
+calc_total_cost_intv(costs[1],costs[2],costs[3],costs[4]) # total costs per health outcome (intervention)
 ```
 
 
 
-# 0-4 yrs, low risk
-# 5-19 yrs, HIGH risk
-# 5-19 yrs, low risk
+## 5-19 years
 
-# 20-64 yrs, HIGH risk
-# 20-64 yrs, low risk
+```{r}
+pop <- pop_519
+num_cases
+cases_after_vax
+```
 
-# 65+ yrs, HIGH risk
-# 65+ yrs, low risk
+## 5-19 years, HIGH RISK
+
+## 5-19 years, low risk
+
+
+
+
+## 20-64 years
+
+```{r}
+pop <- pop_2064
+num_cases
+cases_after_vax
+```
+
+## 20-64 years, HIGH RISK
+
+## 20-64 years, low risk
+
+
+
+
+## 65+ years
+
+```{r}
+pop <- pop_65
+num_cases
+cases_after_vax
+```
+
+## 65+ years, HIGH RISK
+
+## 65+ years, low risk
+
 
 
