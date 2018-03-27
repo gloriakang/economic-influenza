@@ -53,30 +53,37 @@ calc_num_outcomes_intv <- function(p_death, p_hosp, p_out, p_rest){
 # total costs of each health outcome (base)
 calc_total_cost_base <- function(death, hosp, out, rest){
   cost_outcome = cost_cpi_outcome(death, hosp, out, rest)
-  total_cost_death <- cost_outcome[1] * num_outcomes_base[1]
-  total_cost_hosp <- cost_outcome[2] * num_outcomes_base[2]
-  total_cost_out <- cost_outcome[3] * num_outcomes_base[3]
-  total_cost_rest <- cost_outcome[4] * num_outcomes_base[4]
+  total_cost_death = cost_outcome[1] * num_outcomes_base[1]
+  total_cost_hosp = cost_outcome[2] * num_outcomes_base[2]
+  total_cost_out = cost_outcome[3] * num_outcomes_base[3]
+  total_cost_rest = cost_outcome[4] * num_outcomes_base[4]
   total_costs = total_cost_death + total_cost_hosp + total_cost_out + total_cost_rest
   return(c(total_cost_death, total_cost_hosp, total_cost_out, total_cost_rest,
-           "total costs base", total_costs))
+           total_costs))
 }
 
 # total costs of each health outcome (intervention)
 calc_total_cost_intv <- function(death, hosp, out, rest){
   cost_outcome = cost_cpi_outcome(death, hosp, out, rest)
-  total_cost_death <- cost_outcome[1] * num_outcomes_intv[1]
-  total_cost_hosp <- cost_outcome[2] * num_outcomes_intv[2]
-  total_cost_out <- cost_outcome[3] * num_outcomes_intv[3]
-  total_cost_rest <- cost_outcome[4] * num_outcomes_intv[4]
+  total_cost_death = cost_outcome[1] * num_outcomes_intv[1]
+  total_cost_hosp = cost_outcome[2] * num_outcomes_intv[2]
+  total_cost_out = cost_outcome[3] * num_outcomes_intv[3]
+  total_cost_rest = cost_outcome[4] * num_outcomes_intv[4]
   total_costs = total_cost_death + total_cost_hosp + total_cost_out + total_cost_rest
   return(c(total_cost_death, total_cost_hosp, total_cost_out, total_cost_rest,
-           "total costs intv", total_costs))
+           total_costs))
 }
 
 # ICER
 calc_icer <- function(){
-  total_cost_vax - 
+ avg_icer = ((cc_base[5] + total_cost_vax_b) - (cc_intv[5] + total_cost_vax_i))
+ icer = avg_icer / cases_averted
+ return(icer)
 }
+
+
+
+
+
 
 
