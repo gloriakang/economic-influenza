@@ -22,18 +22,20 @@ vax_cost <- 28.62
 
 
 ## simulation outcomes: num_cases and cases_after_vax
-base_04 <- 18302.76
-intv_04 <- 360.2
+# base = 51% 0-19 yrs, 39% 20+ yrs
+# intv = 60% 0-19 yrs, 60% 20+ yrs
+# all_base_cases <- 403281.04 (11.8% attack rate)
+base_04 <- 22103.4
+intv_04 <- 6067.56
 
-# base_519 <- 
-# intv_519 <- 
+base_519 <- 155475.12
+intv_519 <- 43974.96
 
-# base_2064 <- 
-# intv_2064 <- 
+base_2064 <- 206272.6
+intv_2064 <- 56344.64
 
-# base_65 <- 
-# intv_65 <-
-
+base_65 <- 19429.92
+intv_65 <- 5258.36
 
 # icer_04_high
 # icer_04_low

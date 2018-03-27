@@ -1,0 +1,29 @@
+---
+title: "results"
+author: "Gloria Kang"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+
+```
+
+```{r}
+# icer_04_high
+# icer_04_low
+# icer_519_high
+# icer_519_low
+# icer_2064_high
+# icer_2064_low
+# icer_65_high
+# icer_65_low
+```
+
+```{r}
+
+```
+
