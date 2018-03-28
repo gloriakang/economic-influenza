@@ -1,6 +1,43 @@
 # variables
 library(mc2d)
 
+# simulation outcomes: num_cases and cases_after_vax
+
+## base = 0%
+base_04 <- 0
+base_519 <- 0
+base_2064 <- 0
+base_65 <- 0
+
+## intv = 51%, 51%, 39%, 39%
+# cases = 403281.04 (11.8% attack rate)
+intv_04 <- 22103.4
+intv_519 <- 155475.12
+intv_2064 <- 206272.6
+intv_65 <- 19429.92
+
+## intv = 60%, 60%, 60%, 60%
+intv_04 <- 6067.56
+intv_519 <- 43974.96
+intv_2064 <- 56344.64
+intv_65 <- 5258.36
+
+
+# icer_04_high
+# icer_04_low
+# icer_519_high
+# icer_519_low
+# icer_2064_high
+# icer_2064_low
+# icer_65_high
+# icer_65_low
+
+
+# for costs
+cpi <- 513.135/379.516
+vax_cost <- 28.62
+
+
 # population sizes
 total_pop <- 3406876
 pop_04 <- 223608  #(0.0656)
@@ -14,39 +51,6 @@ high_019 <- 0.064  # meltzer 1999
 #high_517 <- 0.106  # molinari 2007
 high_2064 <- 0.144  # meltzer 1999
 high_65 <- 0.512  # molinari 2007
-
-
-# for costs
-cpi <- 513.135/379.516
-vax_cost <- 28.62
-
-
-## simulation outcomes: num_cases and cases_after_vax
-# base = 51% 0-19 yrs, 39% 20+ yrs
-# intv = 60% 0-19 yrs, 60% 20+ yrs
-# all_base_cases <- 403281.04 (11.8% attack rate)
-base_04 <- 22103.4
-intv_04 <- 6067.56
-
-base_519 <- 155475.12
-intv_519 <- 43974.96
-
-base_2064 <- 206272.6
-intv_2064 <- 56344.64
-
-base_65 <- 19429.92
-intv_65 <- 5258.36
-
-# icer_04_high
-# icer_04_low
-# icer_519_high
-# icer_519_low
-# icer_2064_high
-# icer_2064_low
-# icer_65_high
-# icer_65_low
-
-
 
 
 # health outcome probabilities
@@ -107,4 +111,3 @@ p_65_low_hosp <- mean(runif(10000, min = 0.0125, max = 0.01579))
 p_65_low_out <- mean(runif(10000, min = 0.375, max = 0.38947))
 p_65_low_rest <- 1-(p_65_low_death + p_65_low_hosp + p_65_low_out)
 #(p_65_low_death, p_65_low_hosp, p_65_low_out, p_65_low_rest)
-

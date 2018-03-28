@@ -52,8 +52,6 @@ r_cost <- c(46017, 20928, 603, 4) # raw cost data
 # age/risk group cases
 (b_cases <- calc_subpop_cases_base(num_cases, risk_group))  # base
 (i_cases <- calc_subpop_cases_intv(cases_after_vax, risk_group))  # intv
-
-# cases averted
 (cases_averted <- b_cases - i_cases)
 
 # number of cases per outcome
@@ -64,11 +62,42 @@ r_cost <- c(46017, 20928, 603, 4) # raw cost data
 (cc_base <- calc_total_cost_base(r_cost[1],r_cost[2],r_cost[3],r_cost[4]))  # base
 (cc_intv <- calc_total_cost_intv(r_cost[1],r_cost[2],r_cost[3],r_cost[4]))  # intv
 
-# ICER
-(avg_icer = (cc_base[5]+total_cost_vax_b) - (cc_intv[5]+total_cost_vax_i))
-(cases_averted <- b_cases - i_cases)
-avg_icer/cases_averted
 
+############ summary
+
+b_cases  # total cases (base)
+num_outcomes_base  # num cases: death, hosp, outpatient, rest (base)
+cc_base  # costs: death, hosp, outpatient, rest, TOTAL
+
+i_cases  # all cases in age/risk group (intv)
+num_outcomes_intv  # num cases: death, hosp, outpatient, rest (intv)
+cc_intv  # costs: death, hosp, outpatient, rest, TOTAL
+
+
+### net costs = clinical costs + vax costs
+
+# net_costs_b
+cc_base[5]  # total clinical costs
+total_cost_vax_b  # total vaccination costs
+(net_costs_b <- cc_base[5]+total_cost_vax_b)
+
+# net_costs_i
+cc_intv[5]  # total clinical costs
+total_cost_vax_i  # total vaccination cost
+(net_costs_i <- cc_intv[5]+total_cost_vax_i)
+
+
+### AVG CER = net_costs_B - net_costs_I
+
+# avg_cer = (cc_base[5]+total_cost_vax_b) - (cc_intv[5]+total_cost_vax_i)
+(avg_cer <- net_costs_b - net_costs_i)
+
+
+### ICER = net costs / cases averted
+(cases_averted <- b_cases - i_cases)
+(icer <- avg_cer/cases_averted)
+
+### ICER
 (icer_04_high <- calc_icer())
 ```
 
