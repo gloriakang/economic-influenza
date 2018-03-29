@@ -11,7 +11,7 @@ calc_subpop_cases_intv <- function(cases_after_vax, risk_group){
 
 # total cost of vaccination program
 calc_vaccination_cost <- function(pop, risk_group, vax_cost, vax_comp){
-  total_cost_vax = vax_cost * vax_comp * pop * risk_group
+  total_cost_vax = vax_cost * pop * risk_group * vax_comp
   return(total_cost_vax)
 }
 
@@ -76,8 +76,8 @@ calc_total_cost_intv <- function(death, hosp, out, rest){
 
 # ICER
 calc_icer <- function(){
- avg_icer = ((cc_base[5] + total_cost_vax_b) - (cc_intv[5] + total_cost_vax_i))
- icer = avg_icer / cases_averted
+ cost_diff = ((cc_base[5] + total_cost_vax_b) - (cc_intv[5] + total_cost_vax_i))
+ icer = cost_diff / cases_averted
  return(icer)
 }
 
