@@ -1,0 +1,23 @@
+# inputs = vaccination 70,70,70,80
+
+## base vaccine compliance = 0%
+vax_comp_b <- 0
+
+## total = 696621.04	(20.4% attack rate)
+base_04 <- 38487.4
+base_519 <- 264629
+base_2064 <- 359370.36
+base_65 <- 34134.28
+
+
+## vax_7778 = 70%, 70%, 70%, 80%
+vc_04 <- 0.7
+vc_519 <- 0.7
+vc_2064 <- 0.7
+vc_65 <- 0.8
+
+## total = 20707.36 (0.61% attack rate)
+intv_04 <- 1113.56
+intv_519 <- 8099.84
+intv_2064 <- 10500.76
+intv_65 <- 993.2

@@ -1,74 +1,6 @@
-# variables
+# set-up
+
 library(mc2d)
-
-## base_case = 0%
-vax_comp_b <- 0
-## total = 696621.04	(20.4% attack rate)
-base_04 <- 38487.4
-base_519 <- 264629
-base_2064 <- 359370.36
-base_65 <- 34134.28
-
-
-## vax = 51%, 51%, 39%, 39%
-# vc_04 <- 0.51
-# vc_519 <- 0.51
-# vc_2064 <- 0.39
-# vc_65 <- 0.39
-## total = 403281.04 (11.8% attack rate)
-# intv_04 <- 22103.4
-# intv_519 <- 155475.12
-# intv_2064 <- 206272.6
-# intv_65 <- 19429.92
-
-
-## vax_base = 51%, 51%, 33%, 63%
-vc_04 <- 0.51
-vc_519 <- 0.51
-vc_2064 <- 0.33
-vc_65 <- 0.63
-## total = 355595.84 (10.44%% attack rate)
-intv_04 <- 19390.68
-intv_519 <- 137339.4
-intv_2064 <- 181722.72
-intv_65 <- 17143.04
-
-
-## vax_60 = 60%, 60%, 60%, 70%
-# vc_04 <- 0.6
-# vc_519 <- 0.6
-# vc_2064 <- 0.6
-# vc_65 <- 0.7
-## total = 122811.52 (3.60% attack rate)
-# intv_04 <- 6588.04
-# intv_519 <- 48265.12
-# intv_2064 <- 62112.76
-# intv_65 <- 5845.6
-
-
-## vax_70_all = 70%, 70%, 70%, 70%
-# vc_04 <- 0.7
-# vc_519 <- 0.7
-# vc_2064 <- 0.7
-# vc_65 <- 0.7
-## total = 46863.84 (1.38% attack rate)
-# intv_04 <- 2560.56
-# intv_519 <- 18122.88
-# intv_2064 <- 23924.84
-# intv_65 <- 2255.56
-
-
-## vax_70 = 70%, 70%, 70%, 80%
-# vc_04 <- 0.7
-# vc_519 <- 0.7
-# vc_2064 <- 0.7
-# vc_65 <- 0.8
-## total = 20707.36 (0.61% attack rate)
-# intv_04 <- 1113.56
-# intv_519 <- 8099.84
-# intv_2064 <- 10500.76
-# intv_65 <- 993.2
-
 
 # population sizes
 total_pop <- 3406876
@@ -77,18 +9,19 @@ pop_519 <- 639661  #(0.187)
 pop_2064 <- 2235049  #(0.656)
 pop_65 <- 308558  #(0.0905)
 
-# risk group proportion (high)
+# high risk group proportion
 high_019 <- 0.064  # meltzer 1999
 #high_04 <- 0.052  # molinari 2007
 #high_517 <- 0.106  # molinari 2007
 high_2064 <- 0.144  # meltzer 1999
 high_65 <- 0.512  # molinari 2007
 
+
 # for costs
 cpi <- 513.135/379.516
 vax_cost <- 28.62
 
-# unadjusted health outcome costs (Carias 2015)
+# unadjusted health outcome costs (Carias et al. 2015)
 rc_04_high <- c(46017, 20928, 603, 4)
 rc_04_low <- c(49339, 9390, 339, 4)
 rc_519_high <- c(188071, 40310, 843, 4)

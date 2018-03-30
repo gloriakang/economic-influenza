@@ -1,6 +1,8 @@
 ---
 title: "scratch"
 output: html_document
+editor_options: 
+  chunk_output_type: console
 ---
 
 ```{r setup, include=FALSE}
@@ -8,13 +10,20 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ```{r}
-library(mc2d)
 rm(list = ls(all.names = TRUE))
 ```
 
 ```{r}
 source("functions.R")
-source("variables.R")
+source("var.R")
+```
+
+```{r}
+## select list of parameters
+#source("inputs_base.R")  # base vax 51,51,33,63
+source("inputs_6667.R")  # vax 60,60,60,70
+#source("inputs_7777.R")  # vax 70,70,70,70
+#source("inputs_7778.R")  # vax 70,70,70,80
 ```
 
 ###### 0-4 years ######

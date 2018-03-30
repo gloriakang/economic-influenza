@@ -1,3 +1,4 @@
+# functions
 
 calc_subpop_cases_base <- function(num_cases, risk_group){
   subpop_cases_base <- num_cases * risk_group
@@ -80,9 +81,6 @@ calc_icer <- function(){
  icer = cost_diff / cases_averted
  return(icer)
 }
-
-
-
 
 
 
