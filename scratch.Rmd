@@ -2,7 +2,7 @@
 title: "scratch"
 output: html_document
 editor_options: 
-  chunk_output_type: console
+  chunk_output_type: inline
 ---
 
 ```{r setup, include=FALSE}
@@ -20,8 +20,8 @@ source("var.R")
 
 ```{r}
 ## select list of parameters
-#source("inputs_base.R")  # base vax 51,51,33,63
-source("inputs_6667.R")  # vax 60,60,60,70
+source("inputs_base.R")  # base vax 51,51,33,63
+#source("inputs_6667.R")  # vax 60,60,60,70
 #source("inputs_7777.R")  # vax 70,70,70,70
 #source("inputs_7778.R")  # vax 70,70,70,80
 ```
@@ -77,6 +77,7 @@ cases_averted
 cost_diff/cases_averted
 
 (icer_04_high <- calc_icer())
+
 ```
 
 ## 0-4 years, low risk
@@ -373,7 +374,7 @@ cost_diff/cases_averted
 (icer_65_high <- calc_icer())
 ```
 
-## 65+ years, low risk
+57.6## 65+ years, low risk
 ```{r}
 risk_group <- 1-high_65
 prob <- c(p_65_low_death, p_65_low_hosp, p_65_low_out, p_65_low_rest)

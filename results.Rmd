@@ -8,11 +8,6 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## all
-```{r eval=FALSE, include=FALSE}
-
-```
-
 ```{r}
 icer_04_high
 icer_04_low
