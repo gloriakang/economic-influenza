@@ -11,7 +11,7 @@ calc_subpop_cases_intv <- function(cases_after_vax, risk_group){
 }
 
 # total cost of vaccination program
-calc_vaccination_cost <- function(pop, risk_group, vax_cost, vax_comp){
+calc_vaccination_cost <- function(vax_comp){
   total_cost_vax = vax_cost * pop * risk_group * vax_comp
   return(total_cost_vax)
 }
@@ -38,7 +38,7 @@ calc_num_outcomes_base <- function(p_death, p_hosp, p_out, p_rest){
   num_outcomes_base = c(num_death, num_hosp, num_out, num_rest)
   print(sprintf("base num: deaths = %f, hosps = %f, outps = %f, rest = %f",
                 num_death, num_hosp, num_out, num_rest))
-  print(sprintf("base total outcomes = %f", num_outcome_total))
+  #print(sprintf("base total outcomes = %f", num_outcome_total))
   return(num_outcomes_base)
 }
 
@@ -53,35 +53,9 @@ calc_num_outcomes_intv <- function(p_death, p_hosp, p_out, p_rest){
   num_outcomes_intv = c(num_death, num_hosp, num_out, num_rest)
   print(sprintf("intv num: deaths = %f, hosps = %f, outps = %f, rest = %f",
                 num_death, num_hosp, num_out, num_rest))
-  print(sprintf("intv total outcomes = %f", num_outcome_total))
+  #print(sprintf("intv total outcomes = %f", num_outcome_total))
   return(num_outcomes_intv)
 }
-
-# DEATHS
-calc_deaths_b <- function(){
-  deaths_averted = num_outcomes_base[1]-num_outcomes_intv[1]
-  death_cost_b = cc_base[1]
-  death_cost_i = cc_intv[1]
-  cost_diff_d = death_cost_b - death_cost_i
-  cost_per_death_averted = cost_diff_d/deaths_averted
-  print(sprintf("base death cost = %f", death_cost_b))
-  print(sprintf("intv death cost = %f", death_cost_i))
-  print(sprintf("deaths averted = %f", deaths_averted))
-  print(sprintf("cost per death averted = %f", cost_per_death_averted))
-  return(cost_per_death_averted)
-}
-
-calc_deaths_i <- function(){
-  deaths_averted = num_outcomes_base[1]-num_outcomes_intv[1]
-  death_cost_b = cc_base[1]
-  death_cost_i = cc_intv[1]
-  cost_diff_d = death_cost_b - death_cost_i
-  cost_per_death_averted = cost_diff_d/deaths_averted
-  print(sprintf("deaths averted = %f", deaths_averted))
-  print(sprintf("cost per death averted = %f", cost_per_death_averted))
-  return(cost_per_death_averted)
-}
-
 
 # total costs of each health outcome (base)
 calc_total_cost_base <- function(death, hosp, out, rest){
@@ -111,7 +85,7 @@ calc_total_cost_intv <- function(death, hosp, out, rest){
   return(c(total_cost_death, total_cost_hosp, total_cost_out, total_cost_rest, total_costs))
 }
 
-# ICER
+# ICER CASES
 calc_icer <- function(){
   cases_averted <- b_cases - i_cases
   net_costs_b = cc_base[5]+total_cost_vax_b
@@ -121,14 +95,34 @@ calc_icer <- function(){
   print(sprintf("intv net costs = %f", net_costs_i))
   print(sprintf("cost difference = %f", cost_diff))
   print(sprintf("cases averted = %f", cases_averted))
-  print(sprintf('icer = %s', icer))
-  return(icer)
+  print(sprintf("icer = %s", icer))
+  return(c(cost_diff, cases_averted, icer))
 }
 
+# DEATHS
+calc_deaths_b <- function(){
+  deaths_averted = num_outcomes_base[1]-num_outcomes_intv[1]
+  # death_cost_b = cc_base[1]
+  # death_cost_i = cc_intv[1]
+  # cost_diff_d = death_cost_b - death_cost_i
+  net_costs_b = cc_base[5]+total_cost_vax_b
+  net_costs_i = cc_intv[5]+total_cost_vax_i
+  cost_diff_d = net_costs_b - net_costs_i
+  cost_per_death_averted = cost_diff_d / deaths_averted
+  print(sprintf("deaths averted = %f", deaths_averted))
+  print(sprintf("cost per death averted = %f", cost_per_death_averted))
+  return(c(deaths_averted, cost_per_death_averted))
+}
 
-
-
-
+# DALY
+# calc_daly <- function(){
+#   dalys_averted = 
+#   net_costs_b = cc_base[5]+total_cost_vax_b
+#   net_costs_i = cc_intv[5]+total_cost_vax_i
+#   cost_diff = net_costs_b - net_costs_i
+#   daly = cost_diff / dalys_averted
+#   return(daly)
+# }
 
 
 

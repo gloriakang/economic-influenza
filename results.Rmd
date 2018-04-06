@@ -9,26 +9,68 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ```{r}
+
+```
+
+```{r}
+# cost difference
+icer_04_high[1]
+icer_04_low[1]
+icer_519_high[1]
+icer_519_low[1]
+icer_2064_high[1]
+icer_2064_low[1]
+icer_65_high[1]
+icer_65_low[1]
+```
+
+```{r}
+# cases averted
+icer_04_high[2]
+icer_04_low[2]
+icer_519_high[2]
+icer_519_low[2]
+icer_2064_high[2]
+icer_2064_low[2]
+icer_65_high[2]
+icer_65_low[2]
+```
+
+```{r}
 # $ saved per case averted
-icer_04_high
-icer_04_low
-icer_519_high
-icer_519_low
-icer_2064_high
-icer_2064_low
-icer_65_high
-icer_65_low
+icer_04_high[3]
+icer_04_low[3]
+icer_519_high[3]
+icer_519_low[3]
+icer_2064_high[3]
+icer_2064_low[3]
+icer_65_high[3]
+icer_65_low[3]
+```
+
+
+```{r}
+# deaths averted
+deaths_04_high[1]
+deaths_04_low[1]
+deaths_519_high[1]
+deaths_519_low[1]
+deaths_2064_high[1]
+deaths_2064_low[1]
+deaths_65_high[1]
+deaths_65_low[1]
 ```
 
 ```{r}
 # $ saved per death averted
-deaths_04_high
-deaths_04_low
-deaths_519_high
-deaths_519_low
-deaths_2064_high
-deaths_2064_low
-deaths_65_high
-deaths_65_low
+deaths_04_high[2]
+deaths_04_low[2]
+deaths_519_high[2]
+deaths_519_low[2]
+deaths_2064_high[2]
+deaths_2064_low[2]
+deaths_65_high[2]
+deaths_65_low[2]
+```
 ```
 

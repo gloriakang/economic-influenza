@@ -1,4 +1,4 @@
-# set-up
+# global variables
 
 library(mc2d)
 
