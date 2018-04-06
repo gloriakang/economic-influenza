@@ -9,6 +9,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ```{r}
+# $ saved per case averted
 icer_04_high
 icer_04_low
 icer_519_high
@@ -20,6 +21,14 @@ icer_65_low
 ```
 
 ```{r}
-
+# $ saved per death averted
+deaths_04_high
+deaths_04_low
+deaths_519_high
+deaths_519_low
+deaths_2064_high
+deaths_2064_low
+deaths_65_high
+deaths_65_low
 ```
 

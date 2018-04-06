@@ -36,6 +36,9 @@ calc_num_outcomes_base <- function(p_death, p_hosp, p_out, p_rest){
   num_rest = p_rest * subpop_cases_base
   num_outcome_total = num_death + num_hosp + num_out + num_rest
   num_outcomes_base = c(num_death, num_hosp, num_out, num_rest)
+  print(sprintf("base num: deaths = %f, hosps = %f, outps = %f, rest = %f",
+                num_death, num_hosp, num_out, num_rest))
+  print(sprintf("base total outcomes = %f", num_outcome_total))
   return(num_outcomes_base)
 }
 
@@ -48,8 +51,37 @@ calc_num_outcomes_intv <- function(p_death, p_hosp, p_out, p_rest){
   num_rest = p_rest * subpop_cases_intv
   num_outcome_total = num_death + num_hosp + num_out + num_rest
   num_outcomes_intv = c(num_death, num_hosp, num_out, num_rest)
+  print(sprintf("intv num: deaths = %f, hosps = %f, outps = %f, rest = %f",
+                num_death, num_hosp, num_out, num_rest))
+  print(sprintf("intv total outcomes = %f", num_outcome_total))
   return(num_outcomes_intv)
 }
+
+# DEATHS
+calc_deaths_b <- function(){
+  deaths_averted = num_outcomes_base[1]-num_outcomes_intv[1]
+  death_cost_b = cc_base[1]
+  death_cost_i = cc_intv[1]
+  cost_diff_d = death_cost_b - death_cost_i
+  cost_per_death_averted = cost_diff_d/deaths_averted
+  print(sprintf("base death cost = %f", death_cost_b))
+  print(sprintf("intv death cost = %f", death_cost_i))
+  print(sprintf("deaths averted = %f", deaths_averted))
+  print(sprintf("cost per death averted = %f", cost_per_death_averted))
+  return(cost_per_death_averted)
+}
+
+calc_deaths_i <- function(){
+  deaths_averted = num_outcomes_base[1]-num_outcomes_intv[1]
+  death_cost_b = cc_base[1]
+  death_cost_i = cc_intv[1]
+  cost_diff_d = death_cost_b - death_cost_i
+  cost_per_death_averted = cost_diff_d/deaths_averted
+  print(sprintf("deaths averted = %f", deaths_averted))
+  print(sprintf("cost per death averted = %f", cost_per_death_averted))
+  return(cost_per_death_averted)
+}
+
 
 # total costs of each health outcome (base)
 calc_total_cost_base <- function(death, hosp, out, rest){
@@ -59,8 +91,10 @@ calc_total_cost_base <- function(death, hosp, out, rest){
   total_cost_out = cost_outcome[3] * num_outcomes_base[3]
   total_cost_rest = cost_outcome[4] * num_outcomes_base[4]
   total_costs = total_cost_death + total_cost_hosp + total_cost_out + total_cost_rest
-  return(c(total_cost_death, total_cost_hosp, total_cost_out, total_cost_rest,
-           total_costs))
+  print(sprintf("base cc: deaths = %f, hosps = %f, outps = %f, rest = %f",
+                total_cost_death, total_cost_hosp, total_cost_out, total_cost_rest))
+  print(sprintf("base total clin costs = %f", total_costs))
+  return(c(total_cost_death, total_cost_hosp, total_cost_out, total_cost_rest, total_costs))
 }
 
 # total costs of each health outcome (intervention)
@@ -71,16 +105,35 @@ calc_total_cost_intv <- function(death, hosp, out, rest){
   total_cost_out = cost_outcome[3] * num_outcomes_intv[3]
   total_cost_rest = cost_outcome[4] * num_outcomes_intv[4]
   total_costs = total_cost_death + total_cost_hosp + total_cost_out + total_cost_rest
-  return(c(total_cost_death, total_cost_hosp, total_cost_out, total_cost_rest,
-           total_costs))
+  print(sprintf("intv cc: deaths = %f, hosps = %f, outps = %f, rest = %f",
+                total_cost_death, total_cost_hosp, total_cost_out, total_cost_rest))
+  print(sprintf("intv total clin costs = %f", total_costs))
+  return(c(total_cost_death, total_cost_hosp, total_cost_out, total_cost_rest, total_costs))
 }
 
 # ICER
 calc_icer <- function(){
- cost_diff = ((cc_base[5] + total_cost_vax_b) - (cc_intv[5] + total_cost_vax_i))
- icer = cost_diff / cases_averted
- return(icer)
+  cases_averted <- b_cases - i_cases
+  net_costs_b = cc_base[5]+total_cost_vax_b
+  net_costs_i = cc_intv[5]+total_cost_vax_i
+  cost_diff = net_costs_b - net_costs_i
+  icer = cost_diff / cases_averted
+  print(sprintf("intv net costs = %f", net_costs_i))
+  print(sprintf("cost difference = %f", cost_diff))
+  print(sprintf("cases averted = %f", cases_averted))
+  print(sprintf('icer = %s', icer))
+  return(icer)
 }
+
+
+
+
+
+
+
+
+
+
 
 
 
