@@ -9,10 +9,6 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ```{r}
-
-```
-
-```{r}
 # cost difference
 icer_04_high[1]
 icer_04_low[1]
@@ -48,6 +44,20 @@ icer_65_high[3]
 icer_65_low[3]
 ```
 
+
+
+
+```{r}
+# number of deaths
+deaths_04_high[3]
+deaths_04_low[3]
+deaths_519_high[3]
+deaths_519_low[3]
+deaths_2064_high[3]
+deaths_2064_low[3]
+deaths_65_high[3]
+deaths_65_low[3]
+```
 
 ```{r}
 # deaths averted

@@ -105,13 +105,14 @@ calc_deaths_b <- function(){
   # death_cost_b = cc_base[1]
   # death_cost_i = cc_intv[1]
   # cost_diff_d = death_cost_b - death_cost_i
+  num_deaths_i = num_outcomes_intv[1]
   net_costs_b = cc_base[5]+total_cost_vax_b
   net_costs_i = cc_intv[5]+total_cost_vax_i
   cost_diff_d = net_costs_b - net_costs_i
   cost_per_death_averted = cost_diff_d / deaths_averted
   print(sprintf("deaths averted = %f", deaths_averted))
   print(sprintf("cost per death averted = %f", cost_per_death_averted))
-  return(c(deaths_averted, cost_per_death_averted))
+  return(c(deaths_averted, cost_per_death_averted, num_deaths_i))
 }
 
 # DALY
