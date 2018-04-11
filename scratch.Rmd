@@ -21,13 +21,13 @@ source("inputs_base.R")
 
 ```{r}
 ## select list of parameters
-#source("inputs_vaxbase_40.R")  # base vax 51,51,33,63
+source("inputs_vaxbase_40.R")  # base vax 51,51,33,63
 #source("inputs_6667_40.R")  # vax 60,60,60,70
 #source("inputs_7777_40.R")  # vax 70,70,70,70
 #source("inputs_7778_40.R")  # vax 70,70,70,80
 
 ## sensitivity analysis
-source("inputs_vaxbase_30.R")
+#source("inputs_vaxbase_30.R")
 #source("inputs_6667_30.R")
 #source("inputs_7777_30.R")
 #source("inputs_7778_30.R")
@@ -238,7 +238,7 @@ cases_after_vax <- intv_65
 vax_comp_i <- vc_65
 ```
 
-## 65+ years, HIGH RISK
+## 65+ years, HIGH
 ```{r}
 risk_group <- high_65
 prob <- c(p_65_high_death, p_65_high_hosp, p_65_high_out, p_65_high_rest)
