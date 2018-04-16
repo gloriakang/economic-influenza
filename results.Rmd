@@ -4,6 +4,8 @@ author: "Gloria Kang"
 output: 
   html_document: 
     fig_caption: yes
+    keep_md: yes
+    self_contained: no
 ---
 
 ```{r setup, include=FALSE}

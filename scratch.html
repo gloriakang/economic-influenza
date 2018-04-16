@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title>scratch</title>
+
+<script src="scratch_files/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="scratch_files/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="scratch_files/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="scratch_files/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="scratch_files/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="scratch_files/navigation-1.1/tabsets.js"></script>
+<link href="scratch_files/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="scratch_files/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">scratch</h1>
+
+</div>
+
+
+<pre class="r"><code>rm(list = ls(all.names = TRUE))</code></pre>
+<pre class="r"><code>source(&quot;code/functions.R&quot;)
+source(&quot;input/var.R&quot;)</code></pre>
+<pre><code>## Loading required package: mvtnorm</code></pre>
+<pre><code>## 
+## Attaching package: &#39;mc2d&#39;</code></pre>
+<pre><code>## The following objects are masked from &#39;package:base&#39;:
+## 
+##     pmax, pmin</code></pre>
+<pre class="r"><code>source(&quot;input/input_base.R&quot;)</code></pre>
+<pre class="r"><code>## select list of parameters
+source(&quot;input/input_vaxbase_40.R&quot;)  # base vax 51,51,33,63
+#source(&quot;input/input_6667_40.R&quot;)  # vax 60,60,60,70
+#source(&quot;input/input_7777_40.R&quot;)  # vax 70,70,70,70
+#source(&quot;input/input_7778_40.R&quot;)  # vax 70,70,70,80
+
+## sensitivity analysis
+#source(&quot;input/input_vaxbase_30.R&quot;)
+#source(&quot;input/input_6667_30.R&quot;)
+#source(&quot;input/input_7777_30.R&quot;)
+#source(&quot;input/input_7778_30.R&quot;)</code></pre>
+<div id="years" class="section level6">
+<h6>0-4 years</h6>
+<pre class="r"><code>pop &lt;- pop_04
+num_cases &lt;- base_04
+cases_after_vax &lt;- intv_04
+vax_comp_i &lt;- vc_04</code></pre>
+</div>
+<div id="years-high" class="section level2">
+<h2>0-4 years, HIGH</h2>
+<pre class="r"><code>risk_group &lt;- high_019
+prob &lt;- c(p_04_high_death, p_04_high_hosp, p_04_high_out, p_04_high_rest)
+r_cost &lt;- rc_04_high
+
+# total vaccination cost for age/risk
+total_cost_vax_b &lt;- calc_vaccination_cost(vax_comp_b)  # base
+total_cost_vax_i &lt;- calc_vaccination_cost(vax_comp_i)  # intv
+
+# cost per health outcome
+costs &lt;- cost_cpi_outcome(r_cost[1], r_cost[2], r_cost[3], r_cost[4])
+
+# base summary
+b_cases &lt;- calc_subpop_cases_base(num_cases, risk_group)  # base
+num_outcomes_base &lt;- calc_num_outcomes_base(prob[1], prob[2], prob[3], prob[4])  # base</code></pre>
+<pre><code>## [1] &quot;base num: deaths = 16.026268, hosps = 33.748173, outps = 2198.969617, rest = 214.449542&quot;</code></pre>
+<pre class="r"><code>cc_base &lt;- calc_total_cost_base(r_cost[1],r_cost[2],r_cost[3],r_cost[4])  # base</code></pre>
+<pre><code>## [1] &quot;base cc: deaths = 997131.072105, hosps = 954947.598040, outps = 1792825.781730, rest = 1159.809504&quot;
+## [1] &quot;base total clin costs = 3746064.261380&quot;</code></pre>
+<pre class="r"><code># intv summary
+i_cases &lt;- calc_subpop_cases_intv(cases_after_vax, risk_group)  # intv
+num_outcomes_intv &lt;- calc_num_outcomes_intv(prob[1], prob[2], prob[3], prob[4])  # intv</code></pre>
+<pre><code>## [1] &quot;intv num: deaths = 8.074337, hosps = 17.002968, outps = 1107.882480, rest = 108.043735&quot;</code></pre>
+<pre class="r"><code>cc_intv &lt;- calc_total_cost_intv(r_cost[1],r_cost[2],r_cost[3],r_cost[4])  # intv</code></pre>
+<pre><code>## [1] &quot;intv cc: deaths = 502373.492032, hosps = 481120.660018, outps = 903259.535050, rest = 584.333963&quot;
+## [1] &quot;intv total clin costs = 1887338.021063&quot;</code></pre>
+<pre class="r"><code>print(sprintf(&quot;total vax costs = %f&quot;, total_cost_vax_i))</code></pre>
+<pre><code>## [1] &quot;total vax costs = 208884.933734&quot;</code></pre>
+<pre class="r"><code>print(sprintf(&quot;base cases = %f&quot;, b_cases))</code></pre>
+<pre><code>## [1] &quot;base cases = 2463.193600&quot;</code></pre>
+<pre class="r"><code>print(sprintf(&quot;intv cases = %f&quot;, i_cases))</code></pre>
+<pre><code>## [1] &quot;intv cases = 1241.003520&quot;</code></pre>
+<pre class="r"><code>icer_04_high &lt;- calc_icer()</code></pre>
+<pre><code>## [1] &quot;intv net costs = 2096222.954797&quot;
+## [1] &quot;cost difference = 1649841.306583&quot;
+## [1] &quot;cases averted = 1222.190080&quot;
+## [1] &quot;icer = 1349.90565999576&quot;</code></pre>
+<pre class="r"><code>deaths_04_high &lt;- calc_deaths_b()</code></pre>
+<pre><code>## [1] &quot;deaths averted = 7.951931&quot;
+## [1] &quot;cost per death averted = 207476.812047&quot;</code></pre>
+</div>
+<div id="years-low-risk" class="section level2">
+<h2>0-4 years, low risk</h2>
+<pre class="r"><code>risk_group &lt;- 1-high_019
+prob &lt;- c(p_04_low_death, p_04_low_hosp, p_04_low_out, p_04_low_rest)
+r_cost &lt;- rc_04_low
+
+# total vaccination cost for age/risk
+total_cost_vax_b &lt;- calc_vaccination_cost(vax_comp_b)  # base
+total_cost_vax_i &lt;- calc_vaccination_cost(vax_comp_i)  # intv
+
+# cost per health outcome
+costs &lt;- cost_cpi_outcome(r_cost[1], r_cost[2], r_cost[3], r_cost[4])
+
+# base summary
+b_cases &lt;- calc_subpop_cases_base(num_cases, risk_group)  # base
+num_outcomes_base &lt;- calc_num_outcomes_base(prob[1], prob[2], prob[3], prob[4])  # base</code></pre>
+<pre><code>## [1] &quot;base num: deaths = 4.889847, hosps = 134.861363, outps = 18358.876704, rest = 17525.578485&quot;</code></pre>
+<pre class="r"><code>cc_base &lt;- calc_total_cost_base(r_cost[1],r_cost[2],r_cost[3],r_cost[4])  # base</code></pre>
+<pre><code>## [1] &quot;base cc: deaths = 326202.429510, hosps = 1712200.756789, outps = 8414868.846155, rest = 94783.753160&quot;
+## [1] &quot;base total clin costs = 10548055.785614&quot;</code></pre>
+<pre class="r"><code># intv summary
+i_cases &lt;- calc_subpop_cases_intv(cases_after_vax, risk_group)  # intv
+num_outcomes_intv &lt;- calc_num_outcomes_intv(prob[1], prob[2], prob[3], prob[4])  # intv</code></pre>
+<pre><code>## [1] &quot;intv num: deaths = 2.463598, hosps = 67.945705, outps = 9249.549290, rest = 8829.717888&quot;</code></pre>
+<pre class="r"><code>cc_intv &lt;- calc_total_cost_intv(r_cost[1],r_cost[2],r_cost[3],r_cost[4])  # intv</code></pre>
+<pre><code>## [1] &quot;intv cc: deaths = 164346.953181, hosps = 862639.122691, outps = 4239570.068068, rest = 47753.847408&quot;
+## [1] &quot;intv total clin costs = 5314309.991347&quot;</code></pre>
+<pre class="r"><code>print(sprintf(&quot;total vax costs = %f&quot;, total_cost_vax_i))</code></pre>
+<pre><code>## [1] &quot;total vax costs = 3054942.155866&quot;</code></pre>
+<pre class="r"><code>print(sprintf(&quot;base cases = %f&quot;, b_cases))</code></pre>
+<pre><code>## [1] &quot;base cases = 36024.206400&quot;</code></pre>
+<pre class="r"><code>print(sprintf(&quot;intv cases = %f&quot;, i_cases))</code></pre>
+<pre><code>## [1] &quot;intv cases = 18149.676480&quot;</code></pre>
+<pre class="r"><code>icer_04_low &lt;- calc_icer()</code></pre>
+<pre><code>## [1] &quot;intv net costs = 8369252.147213&quot;
+## [1] &quot;cost difference = 2178803.638401&quot;
+## [1] &quot;cases averted = 17874.529920&quot;
+## [1] &quot;icer = 121.894318236741&quot;</code></pre>
+<pre class="r"><code>deaths_04_low &lt;- calc_deaths_b()</code></pre>
+<pre><code>## [1] &quot;deaths averted = 2.426250&quot;
+## [1] &quot;cost per death averted = 898012.919271&quot;</code></pre>
+<div id="years-1" class="section level6">
+<h6>5-19 years</h6>
+<pre class="r"><code>pop &lt;- pop_519
+num_cases &lt;- base_519
+cases_after_vax &lt;- intv_519
+vax_comp_i &lt;- vc_519</code></pre>
+</div>
+</div>
+<div id="years-high-1" class="section level2">
+<h2>5-19 years, HIGH</h2>
+<pre class="r"><code>risk_group &lt;- high_019
+prob &lt;- c(p_519_high_death, p_519_high_hosp, p_519_high_out, p_519_high_rest)
+r_cost &lt;- rc_519_high
+
+total_cost_vax_i &lt;- calc_vaccination_cost(vax_comp_i)  # intv
+
+costs &lt;- cost_cpi_outcome(r_cost[1], r_cost[2], r_cost[3], r_cost[4])
+
+b_cases &lt;- calc_subpop_cases_base(num_cases, risk_group)  # base
+num_outcomes_base &lt;- calc_num_outcomes_base(prob[1], prob[2], prob[3], prob[4])  # base</code></pre>
+<pre><code>## [1] &quot;base num: deaths = 110.403573, hosps = 232.133991, outps = 8885.630004, rest = 7708.088432&quot;</code></pre>
+<pre class="r"><code>cc_base &lt;- calc_total_cost_base(r_cost[1],r_cost[2],r_cost[3],r_cost[4])  # base</code></pre>
+<pre><code>## [1] &quot;base cc: deaths = 28074143.098881, hosps = 12651822.345067, outps = 10127852.041018, rest = 41687.728131&quot;
+## [1] &quot;base total clin costs = 50895505.213097&quot;</code></pre>
+<pre class="r"><code>i_cases &lt;- calc_subpop_cases_intv(cases_after_vax, risk_group)  # intv
+num_outcomes_intv &lt;- calc_num_outcomes_intv(prob[1], prob[2], prob[3], prob[4])  # intv</code></pre>
+<pre><code>## [1] &quot;intv num: deaths = 57.298181, hosps = 120.474865, outps = 4611.539527, rest = 4000.409027&quot;</code></pre>
+<pre class="r"><code>cc_intv &lt;- calc_total_cost_intv(r_cost[1],r_cost[2],r_cost[3],r_cost[4])  # intv</code></pre>
+<pre><code>## [1] &quot;intv cc: deaths = 14570156.591736, hosps = 6566149.929819, outps = 5256238.441751, rest = 21635.450268&quot;
+## [1] &quot;intv total clin costs = 26414180.413574&quot;</code></pre>
+<pre class="r"><code>print(sprintf(&quot;total vax costs = %f&quot;, total_cost_vax_i))</code></pre>
+<pre><code>## [1] &quot;total vax costs = 597543.672845&quot;</code></pre>
+<pre class="r"><code>print(sprintf(&quot;base cases = %f&quot;, b_cases))</code></pre>
+<pre><code>## [1] &quot;base cases = 16936.256000&quot;</code></pre>
+<pre class="r"><code>print(sprintf(&quot;intv cases = %f&quot;, i_cases))</code></pre>
+<pre><code>## [1] &quot;intv cases = 8789.721600&quot;</code></pre>
+<pre class="r"><code>icer_519_high &lt;- calc_icer()</code></pre>
+<pre><code>## [1] &quot;intv net costs = 27011724.086419&quot;
+## [1] &quot;cost difference = 23883781.126678&quot;
+## [1] &quot;cases averted = 8146.534400&quot;
+## [1] &quot;icer = 2931.77196019431&quot;</code></pre>
+<pre class="r"><code>deaths_519_high &lt;- calc_deaths_b()</code></pre>
+<pre><code>## [1] &quot;deaths averted = 53.105391&quot;
+## [1] &quot;cost per death averted = 449743.058607&quot;</code></pre>
+</div>
+<div id="years-low-risk-1" class="section level2">
+<h2>5-19 years, low risk</h2>
+<pre class="r"><code>risk_group &lt;- 1-high_019
+prob &lt;- c(p_519_low_death, p_519_low_hosp, p_519_low_out, p_519_low_rest)
+r_cost &lt;- rc_519_low
+
+total_cost_vax_i &lt;- calc_vaccination_cost(vax_comp_i)  # intv
+
+costs &lt;- cost_cpi_outcome(r_cost[1], r_cost[2], r_cost[3], r_cost[4])
+
+b_cases &lt;- calc_subpop_cases_base(num_cases, risk_group)  # base
+num_outcomes_base &lt;- calc_num_outcomes_base(prob[1], prob[2], prob[3], prob[4])  # base</code></pre>
+<pre><code>## [1] &quot;base num: deaths = 33.647786, hosps = 924.931066, outps = 126226.782983, rest = 120507.382165&quot;</code></pre>
+<pre class="r"><code>cc_base &lt;- calc_total_cost_base(r_cost[1],r_cost[2],r_cost[3],r_cost[4])  # base</code></pre>
+<pre><code>## [1] &quot;base cc: deaths = 7601479.052977, hosps = 24083638.341882, outps = 47275140.808910, rest = 651741.223529&quot;
+## [1] &quot;base total clin costs = 79611999.427299&quot;</code></pre>
+<pre class="r"><code>i_cases &lt;- calc_subpop_cases_intv(cases_after_vax, risk_group)  # intv
+num_outcomes_intv &lt;- calc_num_outcomes_intv(prob[1], prob[2], prob[3], prob[4])  # intv</code></pre>
+<pre><code>## [1] &quot;intv num: deaths = 17.462813, hosps = 480.028559, outps = 65510.245056, rest = 62541.941972&quot;</code></pre>
+<pre class="r"><code>cc_intv &lt;- calc_total_cost_intv(r_cost[1],r_cost[2],r_cost[3],r_cost[4])  # intv</code></pre>
+<pre><code>## [1] &quot;intv cc: deaths = 3945079.988393, hosps = 12499130.630774, outps = 24535253.028244, rest = 338246.180860&quot;
+## [1] &quot;intv total clin costs = 41317709.828271&quot;</code></pre>
+<pre class="r"><code>print(sprintf(&quot;total vax costs = %f&quot;, total_cost_vax_i))</code></pre>
+<pre><code>## [1] &quot;total vax costs = 8739076.215355&quot;</code></pre>
+<pre class="r"><code>print(sprintf(&quot;base cases = %f&quot;, b_cases))</code></pre>
+<pre><code>## [1] &quot;base cases = 247692.744000&quot;</code></pre>
+<pre class="r"><code>print(sprintf(&quot;intv cases = %f&quot;, i_cases))</code></pre>
+<pre><code>## [1] &quot;intv cases = 128549.678400&quot;</code></pre>
+<pre class="r"><code>icer_519_low &lt;- calc_icer()</code></pre>
+<pre><code>## [1] &quot;intv net costs = 50056786.043626&quot;
+## [1] &quot;cost difference = 29555213.383673&quot;
+## [1] &quot;cases averted = 119143.065600&quot;
+## [1] &quot;icer = 248.064906126375&quot;</code></pre>
+<pre class="r"><code>deaths_519_low &lt;- calc_deaths_b()</code></pre>
+<pre><code>## [1] &quot;deaths averted = 16.184973&quot;
+## [1] &quot;cost per death averted = 1826089.756857&quot;</code></pre>
+<div id="years-2" class="section level6">
+<h6>20-64 years</h6>
+<pre class="r"><code>pop &lt;- pop_2064
+num_cases &lt;- base_2064
+cases_after_vax &lt;- intv_2064
+vax_comp_i &lt;- vc_2064</code></pre>
+</div>
+</div>
+<div id="years-high-2" class="section level2">
+<h2>20-64 years, HIGH</h2>
+<pre class="r"><code>risk_group &lt;- high_2064
+prob &lt;- c(p_2064_high_death, p_2064_high_hosp, p_2064_high_out, p_2064_high_rest)
+r_cost &lt;- rc_2064_high
+
+total_cost_vax_i &lt;- calc_vaccination_cost(vax_comp_i)  # intv
+
+costs &lt;- cost_cpi_outcome(r_cost[1], r_cost[2], r_cost[3], r_cost[4])
+
+b_cases &lt;- calc_subpop_cases_base(num_cases, risk_group)  # base
+num_outcomes_base &lt;- calc_num_outcomes_base(prob[1], prob[2], prob[3], prob[4])  # base</code></pre>
+<pre><code>## [1] &quot;base num: deaths = 668.385850, hosps = 758.230165, outps = 31874.194807, rest = 18448.521018&quot;</code></pre>
+<pre class="r"><code>cc_base &lt;- calc_total_cost_base(r_cost[1],r_cost[2],r_cost[3],r_cost[4])  # base</code></pre>
+<pre><code>## [1] &quot;base cc: deaths = 64909830.684107, hosps = 30271687.985590, outps = 28659091.298496, rest = 99775.312058&quot;
+## [1] &quot;base total clin costs = 123940385.280251&quot;</code></pre>
+<pre class="r"><code>i_cases &lt;- calc_subpop_cases_intv(cases_after_vax, risk_group)  # intv
+num_outcomes_intv &lt;- calc_num_outcomes_intv(prob[1], prob[2], prob[3], prob[4])  # intv</code></pre>
+<pre><code>## [1] &quot;intv num: deaths = 337.982505, hosps = 383.414058, outps = 16117.816111, rest = 9328.859006&quot;</code></pre>
+<pre class="r"><code>cc_intv &lt;- calc_total_cost_intv(r_cost[1],r_cost[2],r_cost[3],r_cost[4])  # intv</code></pre>
+<pre><code>## [1] &quot;intv cc: deaths = 32822937.836764, hosps = 15307476.887445, outps = 14492035.524274, rest = 50453.357077&quot;
+## [1] &quot;intv total clin costs = 62672903.605559&quot;</code></pre>
+<pre class="r"><code>print(sprintf(&quot;total vax costs = %f&quot;, total_cost_vax_i))</code></pre>
+<pre><code>## [1] &quot;total vax costs = 3039716.705098&quot;</code></pre>
+<pre class="r"><code>print(sprintf(&quot;base cases = %f&quot;, b_cases))</code></pre>
+<pre><code>## [1] &quot;base cases = 51749.331840&quot;</code></pre>
+<pre class="r"><code>print(sprintf(&quot;intv cases = %f&quot;, i_cases))</code></pre>
+<pre><code>## [1] &quot;intv cases = 26168.071680&quot;</code></pre>
+<pre class="r"><code>icer_2064_high &lt;- calc_icer()</code></pre>
+<pre><code>## [1] &quot;intv net costs = 65712620.310657&quot;
+## [1] &quot;cost difference = 58227764.969594&quot;
+## [1] &quot;cases averted = 25581.260160&quot;
+## [1] &quot;icer = 2276.18829586205&quot;</code></pre>
+<pre class="r"><code>deaths_2064_high &lt;- calc_deaths_b()</code></pre>
+<pre><code>## [1] &quot;deaths averted = 330.403344&quot;
+## [1] &quot;cost per death averted = 176232.371589&quot;</code></pre>
+</div>
+<div id="years-low-risk-2" class="section level2">
+<h2>20-64 years, low risk</h2>
+<pre class="r"><code>risk_group &lt;- 1-high_2064
+prob &lt;- c(p_2064_low_death, p_2064_low_hosp, p_2064_low_out, p_2064_low_rest)
+r_cost &lt;- rc_2064_low
+
+total_cost_vax_i &lt;- calc_vaccination_cost(vax_comp_i)  # intv
+
+costs &lt;- cost_cpi_outcome(r_cost[1], r_cost[2], r_cost[3], r_cost[4])
+
+b_cases &lt;- calc_subpop_cases_base(num_cases, risk_group)  # base
+num_outcomes_base &lt;- calc_num_outcomes_base(prob[1], prob[2], prob[3], prob[4])  # base</code></pre>
+<pre><code>## [1] &quot;base num: deaths = 93.108929, hosps = 2060.273709, outps = 108114.562482, rest = 197353.083040&quot;</code></pre>
+<pre class="r"><code>cc_base &lt;- calc_total_cost_base(r_cost[1],r_cost[2],r_cost[3],r_cost[4])  # base</code></pre>
+<pre><code>## [1] &quot;base cc: deaths = 8330676.395766, hosps = 62833109.782118, outps = 61687645.474822, rest = 1067346.559996&quot;
+## [1] &quot;base total clin costs = 133918778.212702&quot;</code></pre>
+<pre class="r"><code>i_cases &lt;- calc_subpop_cases_intv(cases_after_vax, risk_group)  # intv
+num_outcomes_intv &lt;- calc_num_outcomes_intv(prob[1], prob[2], prob[3], prob[4])  # intv</code></pre>
+<pre><code>## [1] &quot;intv num: deaths = 47.082369, hosps = 1041.818091, outps = 54670.263752, rest = 99795.484109&quot;</code></pre>
+<pre class="r"><code>cc_intv &lt;- calc_total_cost_intv(r_cost[1],r_cost[2],r_cost[3],r_cost[4])  # intv</code></pre>
+<pre><code>## [1] &quot;intv cc: deaths = 4212571.048092, hosps = 31772802.898005, outps = 31193576.248415, rest = 539724.867864&quot;
+## [1] &quot;intv total clin costs = 67718675.062376&quot;</code></pre>
+<pre class="r"><code>print(sprintf(&quot;total vax costs = %f&quot;, total_cost_vax_i))</code></pre>
+<pre><code>## [1] &quot;total vax costs = 18069427.080302&quot;</code></pre>
+<pre class="r"><code>print(sprintf(&quot;base cases = %f&quot;, b_cases))</code></pre>
+<pre><code>## [1] &quot;base cases = 307621.028160&quot;</code></pre>
+<pre class="r"><code>print(sprintf(&quot;intv cases = %f&quot;, i_cases))</code></pre>
+<pre><code>## [1] &quot;intv cases = 155554.648320&quot;</code></pre>
+<pre class="r"><code>icer_2064_low &lt;- calc_icer()</code></pre>
+<pre><code>## [1] &quot;intv net costs = 85788102.142678&quot;
+## [1] &quot;cost difference = 48130676.070024&quot;
+## [1] &quot;cases averted = 152066.379840&quot;
+## [1] &quot;icer = 316.510961335869&quot;</code></pre>
+<pre class="r"><code>deaths_2064_low &lt;- calc_deaths_b()</code></pre>
+<pre><code>## [1] &quot;deaths averted = 46.026560&quot;
+## [1] &quot;cost per death averted = 1045715.258080&quot;</code></pre>
+<div id="years-3" class="section level6">
+<h6>65+ years</h6>
+<pre class="r"><code>pop &lt;- pop_65
+num_cases &lt;- base_65
+cases_after_vax &lt;- intv_65
+vax_comp_i &lt;- vc_65</code></pre>
+</div>
+</div>
+<div id="years-high-3" class="section level2">
+<h2>65+ years, HIGH</h2>
+<pre class="r"><code>risk_group &lt;- high_65
+prob &lt;- c(p_65_high_death, p_65_high_hosp, p_65_high_out, p_65_high_rest)
+r_cost &lt;- rc_65_high
+
+total_cost_vax_i &lt;- calc_vaccination_cost(vax_comp_i)  # intv
+
+costs &lt;- cost_cpi_outcome(r_cost[1], r_cost[2], r_cost[3], r_cost[4])
+
+b_cases &lt;- calc_subpop_cases_base(num_cases, risk_group)  # base
+num_outcomes_base &lt;- calc_num_outcomes_base(prob[1], prob[2], prob[3], prob[4])  # base</code></pre>
+<pre><code>## [1] &quot;base num: deaths = 460.017590, hosps = 887.942212, outps = 11733.710656, rest = 4395.080902&quot;</code></pre>
+<pre class="r"><code>cc_base &lt;- calc_total_cost_base(r_cost[1],r_cost[2],r_cost[3],r_cost[4])  # base</code></pre>
+<pre><code>## [1] &quot;base cc: deaths = 27868408.066869, hosps = 22929621.149117, outps = 41121781.385163, rest = 23769.957933&quot;
+## [1] &quot;base total clin costs = 91943580.559082&quot;</code></pre>
+<pre class="r"><code>i_cases &lt;- calc_subpop_cases_intv(cases_after_vax, risk_group)  # intv
+num_outcomes_intv &lt;- calc_num_outcomes_intv(prob[1], prob[2], prob[3], prob[4])  # intv</code></pre>
+<pre><code>## [1] &quot;intv num: deaths = 231.031677, hosps = 445.945509, outps = 5892.946068, rest = 2207.313226&quot;</code></pre>
+<pre class="r"><code>cc_intv &lt;- calc_total_cost_intv(r_cost[1],r_cost[2],r_cost[3],r_cost[4])  # intv</code></pre>
+<pre><code>## [1] &quot;intv cc: deaths = 13996171.421417, hosps = 11515796.218469, outps = 20652327.899024, rest = 11937.833159&quot;
+## [1] &quot;intv total clin costs = 46176233.372070&quot;</code></pre>
+<pre class="r"><code>print(sprintf(&quot;total vax costs = %f&quot;, total_cost_vax_i))</code></pre>
+<pre><code>## [1] &quot;total vax costs = 2848504.767898&quot;</code></pre>
+<pre class="r"><code>print(sprintf(&quot;base cases = %f&quot;, b_cases))</code></pre>
+<pre><code>## [1] &quot;base cases = 17476.751360&quot;</code></pre>
+<pre class="r"><code>print(sprintf(&quot;intv cases = %f&quot;, i_cases))</code></pre>
+<pre><code>## [1] &quot;intv cases = 8777.236480&quot;</code></pre>
+<pre class="r"><code>icer_65_high &lt;- calc_icer()</code></pre>
+<pre><code>## [1] &quot;intv net costs = 49024738.139967&quot;
+## [1] &quot;cost difference = 42918842.419115&quot;
+## [1] &quot;cases averted = 8699.514880&quot;
+## [1] &quot;icer = 4933.47537318255&quot;</code></pre>
+<pre class="r"><code>deaths_65_high &lt;- calc_deaths_b()</code></pre>
+<pre><code>## [1] &quot;deaths averted = 228.985913&quot;
+## [1] &quot;cost per death averted = 187430.055487&quot;</code></pre>
+</div>
+<div id="years-low-risk-3" class="section level2">
+<h2>65+ years, low risk</h2>
+<pre class="r"><code>risk_group &lt;- 1-high_65
+prob &lt;- c(p_65_low_death, p_65_low_hosp, p_65_low_out, p_65_low_rest)
+r_cost &lt;- rc_65_low
+
+total_cost_vax_i &lt;- calc_vaccination_cost(vax_comp_i)  # intv
+
+costs &lt;- cost_cpi_outcome(r_cost[1], r_cost[2], r_cost[3], r_cost[4])
+
+b_cases &lt;- calc_subpop_cases_base(num_cases, risk_group)  # base
+num_outcomes_base &lt;- calc_num_outcomes_base(prob[1], prob[2], prob[3], prob[4])  # base</code></pre>
+<pre><code>## [1] &quot;base num: deaths = 57.580693, hosps = 235.875597, outps = 6367.183782, rest = 9996.888568&quot;</code></pre>
+<pre class="r"><code>cc_base &lt;- calc_total_cost_base(r_cost[1],r_cost[2],r_cost[3],r_cost[4])  # base</code></pre>
+<pre><code>## [1] &quot;base cc: deaths = 2570023.633156, hosps = 4046802.023687, outps = 7937429.018781, rest = 54066.267723&quot;
+## [1] &quot;base total clin costs = 14608320.943347&quot;</code></pre>
+<pre class="r"><code>i_cases &lt;- calc_subpop_cases_intv(cases_after_vax, risk_group)  # intv
+num_outcomes_intv &lt;- calc_num_outcomes_intv(prob[1], prob[2], prob[3], prob[4])  # intv</code></pre>
+<pre><code>## [1] &quot;intv num: deaths = 28.918381, hosps = 118.462285, outps = 3197.749777, rest = 5020.673077&quot;</code></pre>
+<pre class="r"><code>cc_intv &lt;- calc_total_cost_intv(r_cost[1],r_cost[2],r_cost[3],r_cost[4])  # intv</code></pre>
+<pre><code>## [1] &quot;intv cc: deaths = 1290726.446966, hosps = 2032399.364045, outps = 3986363.947507, rest = 27153.354054&quot;
+## [1] &quot;intv total clin costs = 7336643.112573&quot;</code></pre>
+<pre class="r"><code>print(sprintf(&quot;total vax costs = %f&quot;, total_cost_vax_i))</code></pre>
+<pre><code>## [1] &quot;total vax costs = 2714981.106902&quot;</code></pre>
+<pre class="r"><code>print(sprintf(&quot;base cases = %f&quot;, b_cases))</code></pre>
+<pre><code>## [1] &quot;base cases = 16657.528640&quot;</code></pre>
+<pre class="r"><code>print(sprintf(&quot;intv cases = %f&quot;, i_cases))</code></pre>
+<pre><code>## [1] &quot;intv cases = 8365.803520&quot;</code></pre>
+<pre class="r"><code>icer_65_low &lt;- calc_icer()</code></pre>
+<pre><code>## [1] &quot;intv net costs = 10051624.219475&quot;
+## [1] &quot;cost difference = 4556696.723872&quot;
+## [1] &quot;cases averted = 8291.725120&quot;
+## [1] &quot;icer = 549.547489566517&quot;</code></pre>
+<pre class="r"><code>deaths_65_low &lt;- calc_deaths_b()</code></pre>
+<pre><code>## [1] &quot;deaths averted = 28.662312&quot;
+## [1] &quot;cost per death averted = 158978.688005&quot;</code></pre>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
