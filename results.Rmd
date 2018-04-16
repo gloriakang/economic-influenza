@@ -1,7 +1,9 @@
 ---
 title: "results"
 author: "Gloria Kang"
-output: html_notebook
+output: 
+  html_document: 
+    fig_caption: yes
 ---
 
 ```{r setup, include=FALSE}

@@ -1,93 +1,48 @@
+---
+title: "draft-figs"
+output: html_notebook
+editor_options: 
+  chunk_output_type: inline
+---
 
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
 
-```r
+```{r}
 rm(list = ls(all.names = TRUE))
 library(ggplot2)
 library(tidyr)
+```
 
+```{r}
 #points <- data.frame(label = c("Low", "Mid", "High"),
 #                     lbound = c( 0, 0.67, 1.64),
 #                     ubound = c(0.674, 1.64, 2.33))
-
 
 df <- read.csv("~/git/economic-influenza/df/icer-vaxbase-40.csv")
 df1 <- df[1:12,]
 
 # bar plot
 ggplot(df1, aes(x = Age, y = icer.case, fill = Risk)) + geom_bar(stat = "identity", position = "dodge")
-```
-
-![plot of chunk unnamed-chunk-1](figure/unnamed-chunk-1-1.png)
-
-```r
 ggplot(df1, aes(x = Age, y = icer.death, fill = Risk)) + geom_bar(stat = "identity", position = "dodge")
-```
-
-![plot of chunk unnamed-chunk-1](figure/unnamed-chunk-1-2.png)
-
-```r
 ggplot(df1, aes(x = Age, y = icer.daly, fill = Risk)) + geom_bar(stat = "identity", position = "dodge")
-```
 
-![plot of chunk unnamed-chunk-1](figure/unnamed-chunk-1-3.png)
-
-```r
 # line plot
 ggplot(df, aes(x = Age, y = icer.case, color = Risk, group = Risk)) + geom_point() + geom_line(linetype = "dotted")
-```
-
-```
-## Warning: Removed 2 rows containing missing values (geom_point).
-```
-
-```
-## Warning: Removed 2 rows containing missing values (geom_path).
-```
-
-![plot of chunk unnamed-chunk-1](figure/unnamed-chunk-1-4.png)
-
-```r
 ggplot(df, aes(x = Age, y = icer.death, color = Risk, group = Risk)) + geom_point() + geom_line(linetype = "dotted")
-```
-
-```
-## Warning: Removed 2 rows containing missing values (geom_point).
-
-## Warning: Removed 2 rows containing missing values (geom_path).
-```
-
-![plot of chunk unnamed-chunk-1](figure/unnamed-chunk-1-5.png)
-
-```r
 ggplot(df, aes(x = Age, y = icer.daly, color = Risk, group = Risk)) + geom_point() + geom_line(linetype = "dotted")
-```
 
-```
-## Warning: Removed 2 rows containing missing values (geom_point).
 
-## Warning: Removed 2 rows containing missing values (geom_path).
-```
-
-![plot of chunk unnamed-chunk-1](figure/unnamed-chunk-1-6.png)
-
-```r
 # violin plot
 
 
 # dalys averted per 100K by age
 ggplot(df1, aes(x = Age, y = dalys.averted.rate, fill = Risk)) + geom_bar(stat = "identity", position = "dodge")
-```
 
-![plot of chunk unnamed-chunk-1](figure/unnamed-chunk-1-7.png)
 
-```r
 # scatter plot: dalys averted per 100K by cost difference
 ggplot(df, aes(x=cost.diff, y=dalys.averted.rate, shape = Risk, color = Age)) + geom_point()
-```
 
 ```
-## Warning: Removed 2 rows containing missing values (geom_point).
-```
-
-![plot of chunk unnamed-chunk-1](figure/unnamed-chunk-1-8.png)
 
