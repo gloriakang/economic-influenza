@@ -21,7 +21,7 @@ source("input/inputs_base.R")
 
 ```{r}
 ## select list of parameters
-source("input/in_vaxbase_40.R")  # base vax 51,51,33,63
+source("input/input_vaxbase_40.R")  # base vax 51,51,33,63
 #source("input/input_6667_40.R")  # vax 60,60,60,70
 #source("input/input_7777_40.R")  # vax 70,70,70,70
 #source("input/input_7778_40.R")  # vax 70,70,70,80

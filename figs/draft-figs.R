@@ -7,7 +7,7 @@ library(tidyr)
 #                     ubound = c(0.674, 1.64, 2.33))
 
 
-df <- read.csv("tables/icer-vaxbase-40.csv")
+df <- read.csv("df/icer-vaxbase-40.csv")
 df1 <- df[1:12,]
 
 # bar plot
