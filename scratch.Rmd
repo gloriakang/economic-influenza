@@ -1,6 +1,6 @@
 ---
 title: "scratch"
-output: html_document
+output: html_notebook
 editor_options: 
   chunk_output_type: inline
 ---
@@ -14,23 +14,23 @@ rm(list = ls(all.names = TRUE))
 ```
 
 ```{r}
-source("functions.R")
-source("var.R")
-source("inputs_base.R")
+source("code/functions.R")
+source("input/var.R")
+source("input/inputs_base.R")
 ```
 
 ```{r}
 ## select list of parameters
-source("inputs_vaxbase_40.R")  # base vax 51,51,33,63
-#source("inputs_6667_40.R")  # vax 60,60,60,70
-#source("inputs_7777_40.R")  # vax 70,70,70,70
-#source("inputs_7778_40.R")  # vax 70,70,70,80
+source("input/in_vaxbase_40.R")  # base vax 51,51,33,63
+#source("input/input_6667_40.R")  # vax 60,60,60,70
+#source("input/input_7777_40.R")  # vax 70,70,70,70
+#source("input/input_7778_40.R")  # vax 70,70,70,80
 
 ## sensitivity analysis
-#source("inputs_vaxbase_30.R")
-#source("inputs_6667_30.R")
-#source("inputs_7777_30.R")
-#source("inputs_7778_30.R")
+#source("input/input_vaxbase_30.R")
+#source("input/input_6667_30.R")
+#source("input/input_7777_30.R")
+#source("input/input_7778_30.R")
 ```
 
 ###### 0-4 years ######
