@@ -125,44 +125,36 @@ $(document).ready(function () {
 <pre class="r"><code>rm(list = ls(all.names = TRUE))
 library(ggplot2)
 library(tidyr)</code></pre>
-<pre class="r"><code>#points &lt;- data.frame(label = c(&quot;Low&quot;, &quot;Mid&quot;, &quot;High&quot;),
-#                     lbound = c( 0, 0.67, 1.64),
-#                     ubound = c(0.674, 1.64, 2.33))
+<pre class="r"><code>df &lt;- read.csv(&quot;~/git/economic-influenza/df/icer-vaxbase-40.csv&quot;)
+df$age &lt;- factor(df$age, levels = c(&quot;0-4&quot;, &quot;5-19&quot;, &quot;20-64&quot;, &quot;65+&quot;, &quot;All&quot;))
+df$risk &lt;- factor(df$risk, levels = c(&quot;High&quot;, &quot;Non-high&quot;, &quot;All&quot;))
 
-df &lt;- read.csv(&quot;~/git/economic-influenza/df/icer-vaxbase-40.csv&quot;)
-df1 &lt;- df[1:12,]
+age_group_df &lt;- df[1:12,]
+
+
 
 # bar plot
-ggplot(df1, aes(x = Age, y = icer.case, fill = Risk)) + geom_bar(stat = &quot;identity&quot;, position = &quot;dodge&quot;)</code></pre>
+ggplot(df, aes(x = age, y = icer.case.averted, fill = risk)) + geom_bar(stat = &quot;identity&quot;, position = &quot;dodge&quot;)</code></pre>
 <p><img src="draft-figs_files/figure-html/unnamed-chunk-2-1.png" /><!-- --></p>
-<pre class="r"><code>ggplot(df1, aes(x = Age, y = icer.death, fill = Risk)) + geom_bar(stat = &quot;identity&quot;, position = &quot;dodge&quot;)</code></pre>
+<pre class="r"><code>ggplot(df, aes(x = age, y = icer.death.averted, fill = risk)) + geom_bar(stat = &quot;identity&quot;, position = &quot;dodge&quot;)</code></pre>
 <p><img src="draft-figs_files/figure-html/unnamed-chunk-2-2.png" /><!-- --></p>
-<pre class="r"><code>ggplot(df1, aes(x = Age, y = icer.daly, fill = Risk)) + geom_bar(stat = &quot;identity&quot;, position = &quot;dodge&quot;)</code></pre>
+<pre class="r"><code>ggplot(df, aes(x = age, y = icer.daly.averted, fill = risk)) + geom_bar(stat = &quot;identity&quot;, position = &quot;dodge&quot;)</code></pre>
 <p><img src="draft-figs_files/figure-html/unnamed-chunk-2-3.png" /><!-- --></p>
 <pre class="r"><code># line plot
-ggplot(df, aes(x = Age, y = icer.case, color = Risk, group = Risk)) + geom_point() + geom_line(linetype = &quot;dotted&quot;)</code></pre>
-<pre><code>## Warning: Removed 2 rows containing missing values (geom_point).</code></pre>
-<pre><code>## Warning: Removed 2 rows containing missing values (geom_path).</code></pre>
+ggplot(df, aes(x = age, y = icer.case.averted, color = risk, group = risk)) + geom_point() + geom_line(linetype = &quot;dotted&quot;)</code></pre>
 <p><img src="draft-figs_files/figure-html/unnamed-chunk-2-4.png" /><!-- --></p>
-<pre class="r"><code>ggplot(df, aes(x = Age, y = icer.death, color = Risk, group = Risk)) + geom_point() + geom_line(linetype = &quot;dotted&quot;)</code></pre>
-<pre><code>## Warning: Removed 2 rows containing missing values (geom_point).
-
-## Warning: Removed 2 rows containing missing values (geom_path).</code></pre>
+<pre class="r"><code>ggplot(df, aes(x = age, y = icer.death.averted, color = risk, group = risk)) + geom_point() + geom_line(linetype = &quot;dotted&quot;)</code></pre>
 <p><img src="draft-figs_files/figure-html/unnamed-chunk-2-5.png" /><!-- --></p>
-<pre class="r"><code>ggplot(df, aes(x = Age, y = icer.daly, color = Risk, group = Risk)) + geom_point() + geom_line(linetype = &quot;dotted&quot;)</code></pre>
-<pre><code>## Warning: Removed 2 rows containing missing values (geom_point).
-
-## Warning: Removed 2 rows containing missing values (geom_path).</code></pre>
+<pre class="r"><code>ggplot(df, aes(x = age, y = icer.daly.averted, color = risk, group = risk)) + geom_point() + geom_line(linetype = &quot;dotted&quot;)</code></pre>
 <p><img src="draft-figs_files/figure-html/unnamed-chunk-2-6.png" /><!-- --></p>
 <pre class="r"><code># violin plot
 
 
 # dalys averted per 100K by age
-ggplot(df1, aes(x = Age, y = dalys.averted.rate, fill = Risk)) + geom_bar(stat = &quot;identity&quot;, position = &quot;dodge&quot;)</code></pre>
+ggplot(df, aes(x = age, y = dalys.averted.rate, fill = risk)) + geom_bar(stat = &quot;identity&quot;, position = &quot;dodge&quot;)</code></pre>
 <p><img src="draft-figs_files/figure-html/unnamed-chunk-2-7.png" /><!-- --></p>
 <pre class="r"><code># scatter plot: dalys averted per 100K by cost difference
-ggplot(df, aes(x=cost.diff, y=dalys.averted.rate, shape = Risk, color = Age)) + geom_point()</code></pre>
-<pre><code>## Warning: Removed 2 rows containing missing values (geom_point).</code></pre>
+ggplot(df, aes(x = cost.diff, y = dalys.averted.rate, shape = risk, color = age)) + geom_point()</code></pre>
 <p><img src="draft-figs_files/figure-html/unnamed-chunk-2-8.png" /><!-- --></p>
 
 
