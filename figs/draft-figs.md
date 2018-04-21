@@ -26,7 +26,6 @@ df$risk <- factor(df$risk, levels = c("High", "Non-high", "All"))
 age_group_df <- df[1:12,]
 
 
-
 # bar plot
 ggplot(df, aes(x = age, y = icer.case.averted, fill = risk)) + geom_bar(stat = "identity", position = "dodge")
 ```

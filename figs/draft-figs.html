@@ -132,7 +132,6 @@ df$risk &lt;- factor(df$risk, levels = c(&quot;High&quot;, &quot;Non-high&quot;,
 age_group_df &lt;- df[1:12,]
 
 
-
 # bar plot
 ggplot(df, aes(x = age, y = icer.case.averted, fill = risk)) + geom_bar(stat = &quot;identity&quot;, position = &quot;dodge&quot;)</code></pre>
 <p><img src="draft-figs_files/figure-html/unnamed-chunk-2-1.png" /><!-- --></p>
