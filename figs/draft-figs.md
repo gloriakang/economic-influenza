@@ -24,59 +24,114 @@ df$age <- factor(df$age, levels = c("0-4", "5-19", "20-64", "65+", "All"))
 df$risk <- factor(df$risk, levels = c("High", "Non-high", "All"))
 
 age_group_df <- df[1:12,]
+```
 
 
-# bar plot
+```r
+# cases, deaths, dalys
+ggplot(df, aes(x = age, y = cases, fill = risk)) + geom_bar(stat = "identity", position = "stack")
+```
+
+![](draft-figs_files/figure-html/unnamed-chunk-3-1.png)<!-- -->
+
+```r
+ggplot(df, aes(x = age, y = deaths, fill = risk)) + geom_bar(stat = "identity", position = "stack")
+```
+
+![](draft-figs_files/figure-html/unnamed-chunk-3-2.png)<!-- -->
+
+```r
+ggplot(df, aes(x = age, y = dalys, fill = risk)) + geom_bar(stat = "identity", position = "stack")
+```
+
+![](draft-figs_files/figure-html/unnamed-chunk-3-3.png)<!-- -->
+
+```r
+# per 100K
+ggplot(df, aes(x = age, y = dalys.rate, fill = risk)) + geom_bar(stat = "identity", position = "stack")
+```
+
+![](draft-figs_files/figure-html/unnamed-chunk-3-4.png)<!-- -->
+
+
+```r
+# averted cases, deaths, dalys
+ggplot(df, aes(x = age, y = cases.averted, fill = risk)) + geom_bar(stat = "identity", position = "stack")
+```
+
+![](draft-figs_files/figure-html/unnamed-chunk-4-1.png)<!-- -->
+
+```r
+ggplot(df, aes(x = age, y = deaths.averted, fill = risk)) + geom_bar(stat = "identity", position = "stack")
+```
+
+![](draft-figs_files/figure-html/unnamed-chunk-4-2.png)<!-- -->
+
+```r
+ggplot(df, aes(x = age, y = dalys.averted, fill = risk)) + geom_bar(stat = "identity", position = "stack")
+```
+
+![](draft-figs_files/figure-html/unnamed-chunk-4-3.png)<!-- -->
+
+```r
+# per 100K
+ggplot(df, aes(x = age, y = dalys.averted.rate, fill = risk)) + geom_bar(stat = "identity", position = "stack")
+```
+
+![](draft-figs_files/figure-html/unnamed-chunk-4-4.png)<!-- -->
+
+
+```r
+# ICERs
 ggplot(df, aes(x = age, y = icer.case.averted, fill = risk)) + geom_bar(stat = "identity", position = "dodge")
 ```
 
-![](draft-figs_files/figure-html/unnamed-chunk-2-1.png)<!-- -->
+![](draft-figs_files/figure-html/unnamed-chunk-5-1.png)<!-- -->
 
 ```r
 ggplot(df, aes(x = age, y = icer.death.averted, fill = risk)) + geom_bar(stat = "identity", position = "dodge")
 ```
 
-![](draft-figs_files/figure-html/unnamed-chunk-2-2.png)<!-- -->
+![](draft-figs_files/figure-html/unnamed-chunk-5-2.png)<!-- -->
 
 ```r
 ggplot(df, aes(x = age, y = icer.daly.averted, fill = risk)) + geom_bar(stat = "identity", position = "dodge")
 ```
 
-![](draft-figs_files/figure-html/unnamed-chunk-2-3.png)<!-- -->
+![](draft-figs_files/figure-html/unnamed-chunk-5-3.png)<!-- -->
 
 ```r
 # line plot
 ggplot(df, aes(x = age, y = icer.case.averted, color = risk, group = risk)) + geom_point() + geom_line(linetype = "dotted")
 ```
 
-![](draft-figs_files/figure-html/unnamed-chunk-2-4.png)<!-- -->
+![](draft-figs_files/figure-html/unnamed-chunk-5-4.png)<!-- -->
 
 ```r
 ggplot(df, aes(x = age, y = icer.death.averted, color = risk, group = risk)) + geom_point() + geom_line(linetype = "dotted")
 ```
 
-![](draft-figs_files/figure-html/unnamed-chunk-2-5.png)<!-- -->
+![](draft-figs_files/figure-html/unnamed-chunk-5-5.png)<!-- -->
 
 ```r
 ggplot(df, aes(x = age, y = icer.daly.averted, color = risk, group = risk)) + geom_point() + geom_line(linetype = "dotted")
 ```
 
-![](draft-figs_files/figure-html/unnamed-chunk-2-6.png)<!-- -->
+![](draft-figs_files/figure-html/unnamed-chunk-5-6.png)<!-- -->
+
 
 ```r
 # violin plot
-
 
 # dalys averted per 100K by age
 ggplot(df, aes(x = age, y = dalys.averted.rate, fill = risk)) + geom_bar(stat = "identity", position = "dodge")
 ```
 
-![](draft-figs_files/figure-html/unnamed-chunk-2-7.png)<!-- -->
+![](draft-figs_files/figure-html/unnamed-chunk-6-1.png)<!-- -->
 
 ```r
 # scatter plot: dalys averted per 100K by cost difference
 ggplot(df, aes(x = cost.diff, y = dalys.averted.rate, shape = risk, color = age)) + geom_point()
 ```
 
-![](draft-figs_files/figure-html/unnamed-chunk-2-8.png)<!-- -->
-
+![](draft-figs_files/figure-html/unnamed-chunk-6-2.png)<!-- -->
