@@ -32,9 +32,9 @@ risk_group_df <- df[(df$risk!="All"),]
 
 ```{r}
 # stacked bar
-ggplot(risk_group_df, aes(x = age, y = cases, fill = risk)) + geom_bar(stat = "identity", position = "stack")
-ggplot(risk_group_df, aes(x = age, y = deaths, fill = risk)) + geom_bar(stat = "identity", position = "stack")
-ggplot(risk_group_df, aes(x = age, y = dalys, fill = risk)) + geom_bar(stat = "identity", position = "stack")
+ggplot(risk_group_df, aes(x = age, y = cases, fill = risk)) + geom_bar(stat = "identity")
+ggplot(risk_group_df, aes(x = age, y = deaths, fill = risk)) + geom_bar(stat = "identity")
+ggplot(risk_group_df, aes(x = age, y = dalys, fill = risk)) + geom_bar(stat = "identity")
 ```
 
 ## Cases, deaths, DALYs per 100K
