@@ -31,8 +31,8 @@ source("input/input_base.R")
 #source("input/input_7778_40.R")  # vax 70,70,70,80
 
 ## sensitivity analysis
-source("input/input_vaxbase_50.R")
-#source("input/input_6667_50.R")
+#source("input/input_vaxbase_50.R")
+source("input/input_6667_50.R")
 #source("input/input_7777_50.R")
 #source("input/input_7778_50.R")
 ```
