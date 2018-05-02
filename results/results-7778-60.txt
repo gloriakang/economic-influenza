@@ -1,0 +1,27 @@
+# clinical costs
+
+
+# number of cases
+
+
+# cost difference
+
+
+# cases averted
+
+
+# ICER per case averted
+
+
+# number of deaths
+
+
+# deaths averted
+
+
+# ICER per death averted
+
+
+# health outcomes
+
+

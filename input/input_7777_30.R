@@ -1,4 +1,4 @@
-# inputs = vaccination 70,70,70,70
+# inputs = vaccination 70,70,70,70 (30% VE)
 
 ## vax_7777 = 70%, 70%, 70%, 70%
 vc_04 <- 0.7
