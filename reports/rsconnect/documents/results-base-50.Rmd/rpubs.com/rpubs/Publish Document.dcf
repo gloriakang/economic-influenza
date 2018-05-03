@@ -1,0 +1,10 @@
+name: Publish Document
+title:
+username:
+account: rpubs
+server: rpubs.com
+hostUrl: rpubs.com
+appId: https://api.rpubs.com/api/v1/document/385834/05e343dbd3fd49129f617a6a7efec060
+bundleId: https://api.rpubs.com/api/v1/document/385834/05e343dbd3fd49129f617a6a7efec060
+url: http://rpubs.com/gkang/385834
+when: 1525324216.04109

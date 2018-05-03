@@ -24,17 +24,17 @@ source("input/input_base.R")
 ```
 
 ```{r}
-## 40% VE (baseline)
-source("input/input_vaxbase_40.R")  # base vax 51,51,33,63
-#source("input/input_6667_40.R")  # vax 60,60,60,70
-#source("input/input_7777_40.R")  # vax 70,70,70,70
-#source("input/input_7778_40.R")  # vax 70,70,70,80
-
 ## 30% VE
 #source("input/input_vaxbase_30.R")
 #source("input/input_6667_30.R")
 #source("input/input_7777_30.R")
 #source("input/input_7778_30.R")
+
+## 40% VE (baseline)
+#source("input/input_vaxbase_40.R")  # base vax 51,51,33,63
+#source("input/input_6667_40.R")  # vax 60,60,60,70
+#source("input/input_7777_40.R")  # vax 70,70,70,70
+#source("input/input_7778_40.R")  # vax 70,70,70,80
 
 ## 50% VE
 #source("input/input_vaxbase_50.R")
@@ -53,15 +53,15 @@ source("input/input_vaxbase_40.R")  # base vax 51,51,33,63
 
 ```{r}
 ##### save RData #####
-#save.image(file = "output/vaxbase-40.RData")
-#save.image(file = "output/6667-40.RData")
-#save.image(file = "output/7777-40.RData")
-#save.image(file = "output/7778-40.RData")
-
 #save.image(file = "output/vaxbase-30.RData")
 #save.image(file = "output/6667-30.RData")
 #save.image(file = "output/7777-30.RData")
 #save.image(file = "output/7778-30.RData")
+
+#save.image(file = "output/vaxbase-40.RData")
+#save.image(file = "output/6667-40.RData")
+#save.image(file = "output/7777-40.RData")
+#save.image(file = "output/7778-40.RData")
 
 #save.image(file = "output/vaxbase-50.RData")
 #save.image(file = "output/6667-50.RData")

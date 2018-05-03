@@ -1,11 +1,10 @@
 ---
-title: "60% VE"
+title: "7778 30% VE"
 author: "Gloria Kang"
 output:
   html_notebook: 
     code_folding: hide
     theme: cosmo
-    toc: yes
   pdf_document: default
   html_document: 
     keep_md: yes
@@ -23,15 +22,14 @@ rm(list = ls(all.names = TRUE))
 
 ```{r}
 # load RData
-load("output/vaxbase-60.RData")
-#load("output/6667-60.RData")
-#load("output/7777-60.RData")
-#load("output/7778-60.RData")
+#load("output/vaxbase-30.RData")
+#load("output/6667-30.RData")
+#load("output/7777-30.RData")
+load("output/7778-30.RData")
 ```
 
-# BASE VAX 60% VE
 
-## total clinical costs
+# total clinical costs
 ```{r}
 costs_04_high
 costs_04_low
@@ -138,6 +136,5 @@ outcomes_2064_low
 outcomes_65_high
 outcomes_65_low
 ```
-
 
 
