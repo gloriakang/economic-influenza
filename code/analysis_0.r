@@ -1,32 +1,12 @@
----
-title: "analysis"
-output: 
-  html_document: 
-    keep_md: yes
-    self_contained: no
-    theme: cosmo
-  pdf_document: default
-  html_notebook: default
----
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
-
-```{r}
 rm(list = ls(all.names = TRUE))
-```
 
-```{r}
 source("code/functions.R")
 source("input/var.R")
 source("input/input_base.R")
-```
 
-```{r}
 ## 40% VE (baseline)
-source("input/input_vaxbase_40.R")  # base vax 51,51,33,63
-#source("input/input_6667_40.R")  # vax 60,60,60,70
+#source("input/input_vaxbase_40.R")  # base vax 51,51,33,63
+source("input/input_6667_40.R")  # vax 60,60,60,70
 #source("input/input_7777_40.R")  # vax 70,70,70,70
 #source("input/input_7778_40.R")  # vax 70,70,70,80
 
@@ -47,44 +27,18 @@ source("input/input_vaxbase_40.R")  # base vax 51,51,33,63
 #source("input/input_6667_60.R")
 #source("input/input_7777_60.R")
 #source("input/input_7778_60.R")
-```
 
-# SAVE RDATA!!!
-
-```{r}
-##### save RData #####
-#save.image(file = "output/vaxbase-40.RData")
-#save.image(file = "output/6667-40.RData")
-#save.image(file = "output/7777-40.RData")
-#save.image(file = "output/7778-40.RData")
-
-#save.image(file = "output/vaxbase-30.RData")
-#save.image(file = "output/6667-30.RData")
-#save.image(file = "output/7777-30.RData")
-#save.image(file = "output/7778-30.RData")
-
-#save.image(file = "output/vaxbase-50.RData")
-#save.image(file = "output/6667-50.RData")
-#save.image(file = "output/7777-50.RData")
-#save.image(file = "output/7778-50.RData")
-
-#save.image(file = "output/vaxbase-60.RData")
-#save.image(file = "output/6667-60.RData")
-#save.image(file = "output/7777-60.RData")
-#save.image(file = "output/7778-60.RData")
-```
 
 ###### 0-4 years ######
 
-```{r}
 pop <- pop_04
 num_cases <- base_04
 cases_after_vax <- intv_04
 vax_comp_i <- vc_04
-```
+
 
 ## 0-4 years, HIGH
-```{r}
+
 risk_group <- high_019
 prob <- c(p_04_high_death, p_04_high_hosp, p_04_high_out, p_04_high_rest)
 r_cost <- rc_04_high
@@ -116,10 +70,10 @@ cases_04_high <- i_cases
 outcomes_04_high <- num_outcomes_intv[2:4]
 icer_04_high <- calc_icer()
 deaths_04_high <- calc_deaths_b()
-```
+
 
 ## 0-4 years, low risk
-```{r}
+
 risk_group <- 1-high_019
 prob <- c(p_04_low_death, p_04_low_hosp, p_04_low_out, p_04_low_rest)
 r_cost <- rc_04_low
@@ -151,20 +105,19 @@ cases_04_low <- i_cases
 outcomes_04_low <- num_outcomes_intv[2:4]
 icer_04_low <- calc_icer()
 deaths_04_low <- calc_deaths_b()
-```
+
 
 
 ###### 5-19 years ######
 
-```{r}
 pop <- pop_519
 num_cases <- base_519
 cases_after_vax <- intv_519
 vax_comp_i <- vc_519
-```
+
 
 ## 5-19 years, HIGH
-```{r}
+
 risk_group <- high_019
 prob <- c(p_519_high_death, p_519_high_hosp, p_519_high_out, p_519_high_rest)
 r_cost <- rc_519_high
@@ -191,10 +144,10 @@ cases_519_high <- i_cases
 outcomes_519_high <- num_outcomes_intv[2:4]
 icer_519_high <- calc_icer()
 deaths_519_high <- calc_deaths_b()
-```
+
 
 ## 5-19 years, low risk
-```{r}
+
 risk_group <- 1-high_019
 prob <- c(p_519_low_death, p_519_low_hosp, p_519_low_out, p_519_low_rest)
 r_cost <- rc_519_low
@@ -221,20 +174,19 @@ cases_519_low <- i_cases
 outcomes_519_low <- num_outcomes_intv[2:4]
 icer_519_low <- calc_icer()
 deaths_519_low <- calc_deaths_b()
-```
+
 
 
 ###### 20-64 years ######
 
-```{r}
 pop <- pop_2064
 num_cases <- base_2064
 cases_after_vax <- intv_2064
 vax_comp_i <- vc_2064
-```
+
 
 ## 20-64 years, HIGH
-```{r}
+
 risk_group <- high_2064
 prob <- c(p_2064_high_death, p_2064_high_hosp, p_2064_high_out, p_2064_high_rest)
 r_cost <- rc_2064_high
@@ -261,10 +213,10 @@ cases_2064_high <- i_cases
 outcomes_2064_high <- num_outcomes_intv[2:4]
 icer_2064_high <- calc_icer()
 deaths_2064_high <- calc_deaths_b()
-```
+
 
 ## 20-64 years, low risk
-```{r}
+
 risk_group <- 1-high_2064
 prob <- c(p_2064_low_death, p_2064_low_hosp, p_2064_low_out, p_2064_low_rest)
 r_cost <- rc_2064_low
@@ -291,20 +243,19 @@ cases_2064_low <- i_cases
 outcomes_2064_low <- num_outcomes_intv[2:4]
 icer_2064_low <- calc_icer()
 deaths_2064_low <- calc_deaths_b()
-```
+
 
 
 ###### 65+ years ######
 
-```{r}
 pop <- pop_65
 num_cases <- base_65
 cases_after_vax <- intv_65
 vax_comp_i <- vc_65
-```
+
 
 ## 65+ years, HIGH
-```{r}
+
 risk_group <- high_65
 prob <- c(p_65_high_death, p_65_high_hosp, p_65_high_out, p_65_high_rest)
 r_cost <- rc_65_high
@@ -331,10 +282,10 @@ cases_65_high <- i_cases
 outcomes_65_high <- num_outcomes_intv[2:4]
 icer_65_high <- calc_icer()
 deaths_65_high <- calc_deaths_b()
-```
+
 
 ## 65+ years, low risk
-```{r}
+
 risk_group <- 1-high_65
 prob <- c(p_65_low_death, p_65_low_hosp, p_65_low_out, p_65_low_rest)
 r_cost <- rc_65_low
@@ -361,4 +312,5 @@ cases_65_low <- i_cases
 outcomes_65_low <- num_outcomes_intv[2:4]
 icer_65_low <- calc_icer()
 deaths_65_low <- calc_deaths_b()
-```
+
+

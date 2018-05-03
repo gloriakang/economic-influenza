@@ -1,16 +1,33 @@
 ---
-title: "results"
+title: "30% VE"
 author: "Gloria Kang"
-output: 
+output:
+  html_notebook: 
+    code_folding: hide
+    theme: cosmo
+  pdf_document: default
   html_document: 
-    fig_caption: yes
     keep_md: yes
     self_contained: no
+    theme: cosmo
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = FALSE)
 ```
+
+```{r}
+rm(list = ls(all.names = TRUE))
+```
+
+```{r}
+# load RData
+#load("output/vaxbase-30.RData")
+#load("output/6667-30.RData")
+#load("output/7777-30.RData")
+load("output/7778-30.RData")
+```
+
 
 # total clinical costs
 ```{r}
