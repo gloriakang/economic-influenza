@@ -1,5 +1,32 @@
-# economic-influenza
-Repository for economic evaluation of influenza
+# Project repository for economic evaluation of influenza vaccination in Seattle
+http://rpubs.com/gkang
+
+1. Run `analysis.Rmd`
+  - Select input file: `input/input_<scenario>_<efficacy>.R`
+  - Select save file: `output/<scenario>-<efficacy>.RData`
+
+2. Run `reports/results-<scenario>-<efficacy>.Rmd`
+
+
+
+---
+## Files:
+
+- input/: contains compliance levels, number of cases
+  - `var.R` contains global variables
+
+- output/: contains .RData saved from `analysis.Rmd`
+
+- reports/: contains .Rmd files of .RData results
+
+- code/: contains `functions.r`
+
+- df/: contains dataframe of results
+
+
+
+---
+## Notes:
 
 Updating costs to US 2018$ values using the medical cost component of the Consumer Price Index:
 - Unadjusted index Jan 2018 = 513.135
