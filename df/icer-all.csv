@@ -1,0 +1,241 @@
+scenario,age,v.eff,risk,pop.size,cost.diff,cases,cases.per100k,cases.averted,cases.averted.per100k,icer.case.averted,deaths,deaths.per100k,deaths.averted,deaths.averted.per100k,icer.death.averted,dalys,dalys.per100k,dalys.averted,dalys.averted.per100k,icer.daly.averted
+vaxbase,0-4 yrs,60,High,14310.91,na,na,na,na,na,1420.00,na,na,na,na,218250.20,na,na,na,na,2814.36
+vaxbase,0-4 yrs,60,Non-high,209297.09,na,na,na,na,na,191.99,na,na,na,na,1414412.00,na,na,na,na,16717.13
+vaxbase,0-4 yrs,60,All,223608,na,na,na,na,na,270.58,na,na,na,na,497893.31,na,na,na,na,6286.59
+vaxbase,5-19 yrs,60,High,40938.3,na,na,na,na,na,2962.85,na,na,na,na,454511.20,na,na,na,na,6718.53
+vaxbase,5-19 yrs,60,Non-high,598722.7,na,na,na,na,na,279.15,na,na,na,na,2054897.00,na,na,na,na,27508.48
+vaxbase,5-19 yrs,60,All,639661,na,na,na,na,na,450.90,na,na,na,na,828332.40,na,na,na,na,11953.34
+vaxbase,20-64 yrs,60,High,321847.06,na,na,na,na,na,2325.11,na,na,na,na,180019.90,na,na,na,na,4618.77
+vaxbase,20-64 yrs,60,Non-high,1913201.94,na,na,na,na,na,365.43,na,na,na,na,1207339.00,na,na,na,na,28656.43
+vaxbase,20-64 yrs,60,All,2235049,na,na,na,na,na,647.62,na,na,na,na,305631.46,na,na,na,na,7764.71
+vaxbase,65+ yrs,60,High,157981.7,na,na,na,na,na,5067.41,na,na,na,na,192518.40,na,na,na,na,13427.92
+vaxbase,65+ yrs,60,Non-high,150576.3,na,na,na,na,na,683.48,na,na,na,na,197724.40,na,na,na,na,13558.52
+vaxbase,65+ yrs,60,All,308558,na,na,na,na,na,2928.05,na,na,na,na,193097.56,na,na,na,na,13442.67
+vaxbase,All,60,High,535077.97,na,na,na,na,na,na,na,na,na,na,na,na,na,na,na,na
+vaxbase,All,60,Non-high,2871798.03,na,na,na,na,na,na,na,na,na,na,na,na,na,na,na,na
+vaxbase,All,60,All,3406876,na,na,na,na,na,664.59,na,na,na,na,319780.13,na,na,na,na,9426.00
+vaxbase,0-4 yrs,50,High,14310.91,na,na,na,na,na,1359.83,na,na,na,na,209001.60,na,na,na,na,2695.13
+vaxbase,0-4 yrs,50,Non-high,209297.09,na,na,na,na,na,131.82,na,na,na,na,971102.40,na,na,na,na,11477.36
+vaxbase,0-4 yrs,50,All,223608,na,na,na,na,na,210.41,na,na,na,na,387168.37,na,na,na,na,4888.55
+vaxbase,5-19 yrs,50,High,40938.3,na,na,na,na,na,2934.30,na,na,na,na,450131.50,na,na,na,na,6653.77
+vaxbase,5-19 yrs,50,Non-high,598722.7,na,na,na,na,na,250.60,na,na,na,na,1844731.00,na,na,na,na,24694.91
+vaxbase,5-19 yrs,50,All,639661,na,na,na,na,na,422.35,na,na,na,na,775884.59,na,na,na,na,11196.45
+vaxbase,20-64 yrs,50,High,321847.06,na,na,na,na,na,2282.37,na,na,na,na,176710.60,na,na,na,na,4533.86
+vaxbase,20-64 yrs,50,Non-high,1913201.94,na,na,na,na,na,322.69,na,na,na,na,1066123.00,na,na,na,na,25304.64
+vaxbase,20-64 yrs,50,All,2235049,na,na,na,na,na,604.88,na,na,na,na,285460.20,na,na,na,na,7252.25
+vaxbase,65+ yrs,50,High,157981.7,na,na,na,na,na,4950.89,na,na,na,na,188091.70,na,na,na,na,13119.15
+vaxbase,65+ yrs,50,Non-high,150576.3,na,na,na,na,na,566.96,na,na,na,na,164016.70,na,na,na,na,11247.05
+vaxbase,65+ yrs,50,All,308558,na,na,na,na,na,2811.53,na,na,na,na,185413.41,na,na,na,na,12907.72
+vaxbase,All,50,High,535077.97,na,na,na,na,na,na,na,na,na,na,na,na,na,na,na,na
+vaxbase,All,50,Non-high,2871798.03,na,na,na,na,na,na,na,na,na,na,na,na,na,na,na,na
+vaxbase,All,50,All,3406876,na,na,na,na,na,625.97,na,na,na,na,297551.68,na,na,na,na,8814.64
+vaxbase,0-4 yrs,40,High,14310.91,1649841,1241.004,8671.732451,1222.19,8540.2663,1349.91,8.074,56.41848682,7.95193,55.566,207476.80,626.1414,4375.272541,616.6802,4309.16,2675.36
+vaxbase,0-4 yrs,40,Non-high,209297.09,2178804,18149.68,8671.730779,17874.53,8540.2669,121.89,2.464,1.177273905,2.42625,1.159,898012.90,208.4655,99.6026642,205.2552,98.07,10615.10
+vaxbase,0-4 yrs,40,All,223608,3828645,19390.684,8671.730886,19096.72,8540.267,200.49,10.538,4.712711531,10.37818,4.64,368912.91,834.6069,373.2455363,821.9354,367.58,4658.09
+vaxbase,5-19 yrs,40,High,40938.3,23883781,8789.722,21470.65496,8146.534,19899.5396,2931.77,57.298,139.9618313,53.10539,129.721,449743.10,3876.2121,9468.42368,3592.623,8775.7,6648.01
+vaxbase,5-19 yrs,40,Non-high,598722.7,29555213,128549.7,21470.65759,119143.1,19899.5463,248.06,17.463,2.916709207,16.18497,2.703,1826090.00,1304.4847,217.8779358,1209.0192,201.93,24445.61
+vaxbase,5-19 yrs,40,All,639661,53438994,137339.422,21470.65743,127289.634,19899.546,419.82,74.761,11.68759702,69.29036,10.83,771232.74,5180.6967,809.9128634,4801.6422,750.65,11129.32
+vaxbase,20-64 yrs,40,High,321847.06,58227765,26168.07,8130.591693,25581.26,7948.266,2276.19,337.983,105.0135441,330.4033,102.658,176232.40,13173.1332,4092.979252,12877.6973,4001.19,4521.60
+vaxbase,20-64 yrs,40,Non-high,1913201.94,48130676,155554.6,8130.58969,152066.4,7948.2671,316.54,47.082,2.460900698,46.02656,2.406,1045715.00,1983.635,103.6814246,1939.1837,101.36,24820.07
+vaxbase,20-64 yrs,40,All,2235049,106358441,181722.67,8130.589978,177647.66,7948.267,598.70,385.065,17.22848134,376.42986,16.84,282545.18,15156.7683,678.1403118,14816.881,662.93,7178.19
+vaxbase,65+ yrs,40,High,157981.7,42918842,8777.236,5555.856294,8699.515,5506.6601,4933.48,231.032,146.2397264,228.9859,144.945,187430.10,3312.3425,2096.662,3283.0086,2078.0943,13073.02
+vaxbase,65+ yrs,40,Non-high,150576.3,4556697,8365.804,5555.856916,8291.725,5506.6599,549.55,28.918,19.204881,28.66231,19.035,158978.70,421.7098,280.064,417.9909,277.5941,10901.43
+vaxbase,65+ yrs,40,All,308558,47475539,17143.04,5555.856597,16991.24,5506.66,2794.12,259.95,84.24672185,257.64821,83.5,184264.97,3734.0523,1210.1622,3700.9995,1199.450194,12827.76
+vaxbase,All,40,High,535077.97,126680229,44976.032,8405.50998,43649.499,8157.596,2902.21,634.387,118.5597311,620.44652,115.9544136,204175.90,20987.8292,3922.387102,20370.0091,3806.923536,6218.96
+vaxbase,All,40,Non-high,2871798.03,84421390,310619.784,10816.21272,297375.755,10355.03722,283.89,95.927,3.340311503,93.30009,3.248838845,904837.18,3918.295,136.4404793,3771.449,131.327097,22384.34
+vaxbase,All,40,All,3406876,211101619,355595.816,10437.59198,341025.158,10009.911,619.02,730.314,21.43647142,713.74661,20.95,295765.49,24906.1242,731.0546143,24141.4581,708.6098261,8744.36
+vaxbase,0-4 yrs,30,High,14310.91,na,na,na,na,na,0.00,na,na,na,na,0.00,na,na,na,na,0.00
+vaxbase,0-4 yrs,30,Non-high,209297.09,na,na,na,na,na,0.00,na,na,na,na,0.00,na,na,na,na,0.00
+vaxbase,0-4 yrs,30,All,223608,na,na,na,na,na,0.00,na,na,na,na,0.00,na,na,na,na,0.00
+vaxbase,5-19 yrs,30,High,40938.3,na,na,na,na,na,0.00,na,na,na,na,0.00,na,na,na,na,0.00
+vaxbase,5-19 yrs,30,Non-high,598722.7,na,na,na,na,na,0.00,na,na,na,na,0.00,na,na,na,na,0.00
+vaxbase,5-19 yrs,30,All,639661,na,na,na,na,na,0.00,na,na,na,na,0.00,na,na,na,na,0.00
+vaxbase,20-64 yrs,30,High,321847.06,na,na,na,na,na,0.00,na,na,na,na,0.00,na,na,na,na,0.00
+vaxbase,20-64 yrs,30,Non-high,1913201.94,na,na,na,na,na,0.00,na,na,na,na,0.00,na,na,na,na,0.00
+vaxbase,20-64 yrs,30,All,2235049,na,na,na,na,na,0.00,na,na,na,na,0.00,na,na,na,na,0.00
+vaxbase,65+ yrs,30,High,157981.7,na,na,na,na,na,0.00,na,na,na,na,0.00,na,na,na,na,0.00
+vaxbase,65+ yrs,30,Non-high,150576.3,na,na,na,na,na,0.00,na,na,na,na,0.00,na,na,na,na,0.00
+vaxbase,65+ yrs,30,All,308558,na,na,na,na,na,0.00,na,na,na,na,0.00,na,na,na,na,0.00
+vaxbase,All,30,High,535077.97,na,na,na,na,na,na,na,na,na,na,na,na,na,na,na,na
+vaxbase,All,30,Non-high,2871798.03,na,na,na,na,na,na,na,na,na,na,na,na,na,na,na,na
+vaxbase,All,30,All,3406876,na,na,na,na,na,0.00,na,na,na,na,0.00,na,na,na,na,0.00
+vax6667,0-4 yrs,30,High,14310.91,na,na,na,na,na,1305.73,na,na,na,na,200686.90,na,na,na,na,2587.92
+vax6667,0-4 yrs,30,Non-high,209297.09,na,na,na,na,na,77.72,na,na,na,na,572552.30,na,na,na,na,6766.89
+vax6667,0-4 yrs,30,All,223608,na,na,na,na,na,156.31,na,na,na,na,287622.98,na,na,na,na,3631.66
+vax6667,5-19 yrs,30,High,40938.3,na,na,na,na,na,2911.73,na,na,na,na,446668.80,na,na,na,na,6602.58
+vax6667,5-19 yrs,30,Non-high,598722.7,na,na,na,na,na,228.02,na,na,na,na,1678565.00,na,na,na,na,22470.46
+vax6667,5-19 yrs,30,All,639661,na,na,na,na,na,399.78,na,na,na,na,734417.55,na,na,na,na,10598.04
+vax6667,20-64 yrs,30,High,321847.06,na,na,na,na,na,2165.69,na,na,na,na,167677.40,na,na,na,na,4302.10
+vax6667,20-64 yrs,30,Non-high,1913201.94,na,na,na,na,na,206.02,na,na,na,na,680656.10,na,na,na,na,16155.50
+vax6667,20-64 yrs,30,All,2235049,na,na,na,na,na,488.21,na,na,na,na,230399.98,na,na,na,na,5853.42
+vax6667,65+ yrs,30,High,157981.7,na,na,na,na,na,4876.78,na,na,na,na,185276.10,na,na,na,na,12922.77
+vax6667,65+ yrs,30,Non-high,150576.3,na,na,na,na,na,492.85,na,na,na,na,142577.20,na,na,na,na,9776.87
+vax6667,65+ yrs,30,All,308558,na,na,na,na,na,2737.42,na,na,na,na,180526.02,na,na,na,na,12567.47
+vax6667,All,30,High,535077.97,na,na,na,na,na,na,na,na,na,na,na,na,na,na,na,na
+vax6667,All,30,Non-high,2871798.03,na,na,na,na,na,na,na,na,na,na,na,na,na,na,na,na
+vax6667,All,30,All,3406876,na,na,na,na,na,550.51,na,na,na,na,261118.06,na,na,na,na,7744.85
+vax6667,0-4 yrs,40,High,14310.91,na,na,na,na,na,1400.44,na,na,na,na,215244.40,na,na,na,na,2775.60
+vax6667,0-4 yrs,40,Non-high,209297.09,na,na,na,na,na,172.43,na,na,na,na,1270335.00,na,na,na,na,15014.25
+vax6667,0-4 yrs,40,All,223608,na,na,na,na,na,251.03,na,na,na,na,461907.29,na,na,na,na,5832.22
+vax6667,5-19 yrs,40,High,40938.3,na,na,na,na,na,2954.35,na,na,na,na,453207.20,na,na,na,na,6699.26
+vax6667,5-19 yrs,40,Non-high,598722.7,na,na,na,na,na,270.65,na,na,na,na,1992323.00,na,na,na,na,26670.80
+vax6667,5-19 yrs,40,All,639661,na,na,na,na,na,442.40,na,na,na,na,812716.69,na,na,na,na,11728.00
+vax6667,20-64 yrs,40,High,321847.06,na,na,na,na,na,2265.90,na,na,na,na,175435.80,na,na,na,na,4501.15
+vax6667,20-64 yrs,40,Non-high,1913201.94,na,na,na,na,na,306.22,na,na,na,na,1011723.00,na,na,na,na,24013.46
+vax6667,20-64 yrs,40,All,2235049,na,na,na,na,na,588.42,na,na,na,na,277689.67,na,na,na,na,7054.84
+vax6667,65+ yrs,40,High,157981.7,na,na,na,na,na,5042.39,na,na,na,na,191567.80,na,na,na,na,13361.61
+vax6667,65+ yrs,40,Non-high,150576.3,na,na,na,na,na,658.46,na,na,na,na,190485.90,na,na,na,na,13062.16
+vax6667,65+ yrs,40,All,308558,na,na,na,na,na,2903.03,na,na,na,na,191447.43,na,na,na,na,13327.79
+vax6667,All,40,High,535077.97,na,na,na,na,na,na,na,na,na,na,na,na,na,na,na,na
+vax6667,All,40,Non-high,2871798.03,na,na,na,na,na,na,na,na,na,na,na,na,na,na,na,na
+vax6667,All,40,All,3406876,na,na,na,na,na,628.71,na,na,na,na,302157.78,na,na,na,na,8910.00
+vax6667,0-4 yrs,50,High,14310.91,na,na,na,na,na,1409.14,na,na,na,na,216580.80,na,na,na,na,2792.83
+vax6667,0-4 yrs,50,Non-high,209297.09,na,na,na,na,na,181.13,na,na,na,na,1334395.00,na,na,na,na,15771.43
+vax6667,0-4 yrs,50,All,223608,na,na,na,na,na,259.72,na,na,na,na,477907.72,na,na,na,na,6034.24
+vax6667,5-19 yrs,50,High,40938.3,na,na,na,na,na,2958.32,na,na,na,na,453816.20,na,na,na,na,6708.26
+vax6667,5-19 yrs,50,Non-high,598722.7,na,na,na,na,na,274.62,na,na,na,na,2021547.00,na,na,na,na,27062.03
+vax6667,5-19 yrs,50,All,639661,na,na,na,na,na,446.37,na,na,na,na,820009.59,na,na,na,na,11833.24
+vax6667,20-64 yrs,50,High,321847.06,na,na,na,na,na,2275.36,na,na,na,na,176168.50,na,na,na,na,4519.95
+vax6667,20-64 yrs,50,Non-high,1913201.94,na,na,na,na,na,315.69,na,na,na,na,1042992.00,na,na,na,na,24755.63
+vax6667,20-64 yrs,50,All,2235049,na,na,na,na,na,597.88,na,na,na,na,282156.09,na,na,na,na,7168.31
+vax6667,65+ yrs,50,High,157981.7,na,na,na,na,na,5058.41,na,na,na,na,192176.50,na,na,na,na,13404.07
+vax6667,65+ yrs,50,Non-high,150576.3,na,na,na,na,na,674.48,na,na,na,na,195120.80,na,na,na,na,13379.99
+vax6667,65+ yrs,50,All,308558,na,na,na,na,na,2919.05,na,na,na,na,192504.01,na,na,na,na,13401.35
+vax6667,All,50,High,535077.97,na,na,na,na,na,na,na,na,na,na,na,na,na,na,na,na
+vax6667,All,50,Non-high,2871798.03,na,na,na,na,na,na,na,na,na,na,na,na,na,na,na,na
+vax6667,All,50,All,3406876,na,na,na,na,na,636.03,na,na,na,na,306111.10,na,na,na,na,9021.88
+vax6667,0-4 yrs,60,High,14310.91,na,na,na,na,na,1420.76,na,na,na,na,218367.30,na,na,na,na,2815.86
+vax6667,0-4 yrs,60,Non-high,209297.09,na,na,na,na,na,192.75,na,na,na,na,1420023.00,na,na,na,na,16783.54
+vax6667,0-4 yrs,60,All,223608,na,na,na,na,na,271.34,na,na,na,na,499294.89,na,na,na,na,6304.28
+vax6667,5-19 yrs,60,High,40938.3,na,na,na,na,na,2963.48,na,na,na,na,454606.70,na,na,na,na,6719.95
+vax6667,5-19 yrs,60,Non-high,598722.7,na,na,na,na,na,279.77,na,na,na,na,2059483.00,na,na,na,na,27569.90
+vax6667,5-19 yrs,60,All,639661,na,na,na,na,na,451.53,na,na,na,na,829476.74,na,na,na,na,11969.87
+vax6667,20-64 yrs,60,High,321847.06,na,na,na,na,na,2287.90,na,na,na,na,177138.80,na,na,na,na,4544.85
+vax6667,20-64 yrs,60,Non-high,1913201.94,na,na,na,na,na,328.22,na,na,na,na,1084395.00,na,na,na,na,25738.34
+vax6667,20-64 yrs,60,All,2235049,na,na,na,na,na,610.41,na,na,na,na,288070.15,na,na,na,na,7318.56
+vax6667,65+ yrs,60,High,157981.7,na,na,na,na,na,5079.27,na,na,na,na,192969.00,na,na,na,na,13459.35
+vax6667,65+ yrs,60,Non-high,150576.3,na,na,na,na,na,695.34,na,na,na,na,201155.80,na,na,na,na,13793.83
+vax6667,65+ yrs,60,All,308558,na,na,na,na,na,2939.91,na,na,na,na,193879.77,na,na,na,na,13497.13
+vax6667,All,60,High,535077.97,na,na,na,na,na,na,na,na,na,na,na,na,na,na,na,na
+vax6667,All,60,Non-high,2871798.03,na,na,na,na,na,na,na,na,na,na,na,na,na,na,na,na
+vax6667,All,60,All,3406876,na,na,na,na,na,645.49,na,na,na,na,311361.50,na,na,na,na,9167.39
+vax7777,0-4 yrs,30,High,14310.91,na,na,na,na,na,1361.07,na,na,na,na,209192.40,na,na,na,na,2697.57
+vax7777,0-4 yrs,30,Non-high,209297.09,na,na,na,na,na,133.06,na,na,na,na,980244.00,na,na,na,na,11585.58
+vax7777,0-4 yrs,30,All,223608,na,na,na,na,na,211.65,na,na,na,na,389451.76,na,na,na,na,4917.37
+vax7777,5-19 yrs,30,High,40938.3,na,na,na,na,na,2937.75,na,na,na,na,450659.90,na,na,na,na,6661.60
+vax7777,5-19 yrs,30,Non-high,598722.7,na,na,na,na,na,254.04,na,na,na,na,1870085.00,na,na,na,na,25034.41
+vax7777,5-19 yrs,30,All,639661,na,na,na,na,na,425.80,na,na,na,na,782211.86,na,na,na,na,11287.79
+vax7777,20-64 yrs,30,High,321847.06,na,na,na,na,na,2223.34,na,na,na,na,172140.80,na,na,na,na,4416.61
+vax7777,20-64 yrs,30,Non-high,1913201.94,na,na,na,na,na,263.67,na,na,na,na,871118.70,na,na,na,na,20676.18
+vax7777,20-64 yrs,30,All,2235049,na,na,na,na,na,545.86,na,na,na,na,257605.75,na,na,na,na,6544.59
+vax7777,65+ yrs,30,High,157981.7,na,na,na,na,na,5012.30,na,na,na,na,190424.80,na,na,na,na,13281.89
+vax7777,65+ yrs,30,Non-high,150576.3,na,na,na,na,na,628.37,na,na,na,na,181782.40,na,na,na,na,12465.32
+vax7777,65+ yrs,30,All,308558,na,na,na,na,na,2872.95,na,na,na,na,189463.35,na,na,na,na,13189.67
+vax7777,All,30,High,535077.97,na,na,na,na,na,na,na,na,na,na,na,na,na,na,na,na
+vax7777,All,30,Non-high,2871798.03,na,na,na,na,na,na,na,na,na,na,na,na,na,na,na,na
+vax7777,All,30,All,3406876,na,na,na,na,na,596.77,na,na,na,na,286822.98,na,na,na,na,8458.90
+vax7777,0-4 yrs,40,High,14310.91,na,na,na,na,na,1396.13,na,na,na,na,214580.60,na,na,na,na,2767.03
+vax7777,0-4 yrs,40,Non-high,209297.09,na,na,na,na,na,168.11,na,na,na,na,1238516.00,na,na,na,na,14638.24
+vax7777,0-4 yrs,40,All,223608,na,na,na,na,na,246.71,na,na,na,na,453959.98,na,na,na,na,5731.87
+vax7777,5-19 yrs,40,High,40938.3,na,na,na,na,na,2953.14,na,na,na,na,453020.20,na,na,na,na,6696.50
+vax7777,5-19 yrs,40,Non-high,598722.7,na,na,na,na,na,269.43,na,na,na,na,1983350.00,na,na,na,na,26550.71
+vax7777,5-19 yrs,40,All,639661,na,na,na,na,na,441.19,na,na,na,na,810477.43,na,na,na,na,11695.69
+vax7777,20-64 yrs,40,High,321847.06,na,na,na,na,na,2261.53,na,na,na,na,175097.40,na,na,na,na,4492.47
+vax7777,20-64 yrs,40,Non-high,1913201.94,na,na,na,na,na,301.85,na,na,na,na,997283.10,na,na,na,na,23670.72
+vax7777,20-64 yrs,40,All,2235049,na,na,na,na,na,584.05,na,na,na,na,275627.09,na,na,na,na,7002.44
+vax7777,65+ yrs,40,High,157981.7,na,na,na,na,na,5067.00,na,na,na,na,192502.70,na,na,na,na,13426.83
+vax7777,65+ yrs,40,Non-high,150576.3,na,na,na,na,na,683.07,na,na,na,na,197605.00,na,na,na,na,13550.34
+vax7777,65+ yrs,40,All,308558,na,na,na,na,na,2927.64,na,na,na,na,193070.32,na,na,na,na,13440.78
+vax7777,All,40,High,535077.97,na,na,na,na,na,na,na,na,na,na,na,na,na,na,na,na
+vax7777,All,40,Non-high,2871798.03,na,na,na,na,na,na,na,na,na,na,na,na,na,na,na,na
+vax7777,All,40,All,3406876,na,na,na,na,na,626.18,na,na,na,na,301848.35,na,na,na,na,8889.88
+vax7777,0-4 yrs,50,High,14310.91,na,na,na,na,na,1404.39,na,na,na,na,215850.40,na,na,na,na,2783.40
+vax7777,0-4 yrs,50,Non-high,209297.09,na,na,na,na,na,176.38,na,na,na,na,1299382.00,na,na,na,na,15357.65
+vax7777,0-4 yrs,50,All,223608,na,na,na,na,na,254.97,na,na,na,na,469162.40,na,na,na,na,5923.82
+vax7777,5-19 yrs,50,High,40938.3,na,na,na,na,na,2956.69,na,na,na,na,453564.80,na,na,na,na,6704.55
+vax7777,5-19 yrs,50,Non-high,598722.7,na,na,na,na,na,272.98,na,na,na,na,2009482.00,na,na,na,na,26900.55
+vax7777,5-19 yrs,50,All,639661,na,na,na,na,na,444.74,na,na,na,na,816998.97,na,na,na,na,11789.80
+vax7777,20-64 yrs,50,High,321847.06,na,na,na,na,na,2270.38,na,na,na,na,175782.40,na,na,na,na,4510.05
+vax7777,20-64 yrs,50,Non-high,1913201.94,na,na,na,na,na,310.70,na,na,na,na,1026514.00,na,na,na,na,24364.52
+vax7777,20-64 yrs,50,All,2235049,na,na,na,na,na,592.89,na,na,na,na,279802.43,na,na,na,na,7108.51
+vax7777,65+ yrs,50,High,157981.7,na,na,na,na,na,5079.73,na,na,na,na,192986.70,na,na,na,na,13460.58
+vax7777,65+ yrs,50,Non-high,150576.3,na,na,na,na,na,695.81,na,na,na,na,201290.00,na,na,na,na,13803.03
+vax7777,65+ yrs,50,All,308558,na,na,na,na,na,2940.38,na,na,na,na,193910.36,na,na,na,na,13499.26
+vax7777,All,50,High,535077.97,na,na,na,na,na,na,na,na,na,na,na,na,na,na,na,na
+vax7777,All,50,Non-high,2871798.03,na,na,na,na,na,na,na,na,na,na,na,na,na,na,na,na
+vax7777,All,50,All,3406876,na,na,na,na,na,632.95,na,na,na,na,305355.67,na,na,na,na,8990.00
+vax7777,0-4 yrs,60,High,14310.91,na,na,na,na,na,1404.39,na,na,na,na,215851.30,na,na,na,na,2783.42
+vax7777,0-4 yrs,60,Non-high,209297.09,na,na,na,na,na,176.38,na,na,na,na,1299425.00,na,na,na,na,15358.17
+vax7777,0-4 yrs,60,All,223608,na,na,na,na,na,254.97,na,na,na,na,469173.28,na,na,na,na,5923.96
+vax7777,5-19 yrs,60,High,40938.3,na,na,na,na,na,2956.69,na,na,na,na,453565.20,na,na,na,na,6704.55
+vax7777,5-19 yrs,60,Non-high,598722.7,na,na,na,na,na,272.98,na,na,na,na,2009500.00,na,na,na,na,26900.79
+vax7777,5-19 yrs,60,All,639661,na,na,na,na,na,444.74,na,na,na,na,817003.39,na,na,na,na,11789.87
+vax7777,20-64 yrs,60,High,321847.06,na,na,na,na,na,2270.38,na,na,na,na,175782.80,na,na,na,na,4510.06
+vax7777,20-64 yrs,60,Non-high,1913201.94,na,na,na,na,na,310.70,na,na,na,na,1026529.00,na,na,na,na,24364.89
+vax7777,20-64 yrs,60,All,2235049,na,na,na,na,na,592.90,na,na,na,na,279804.60,na,na,na,na,7108.57
+vax7777,65+ yrs,60,High,157981.7,na,na,na,na,na,5079.74,na,na,na,na,192986.90,na,na,na,na,13460.60
+vax7777,65+ yrs,60,Non-high,150576.3,na,na,na,na,na,695.81,na,na,na,na,201291.70,na,na,na,na,13803.15
+vax7777,65+ yrs,60,All,308558,na,na,na,na,na,2940.38,na,na,na,na,193910.74,na,na,na,na,13499.28
+vax7777,All,60,High,535077.97,na,na,na,na,na,na,na,na,na,na,na,na,na,na,na,na
+vax7777,All,60,Non-high,2871798.03,na,na,na,na,na,na,na,na,na,na,na,na,na,na,na,na
+vax7777,All,60,All,3406876,na,na,na,na,na,632.95,na,na,na,na,305358.46,na,na,na,na,8990.06
+vax7778,0-4 yrs,30,High,14310.91,na,na,na,na,na,1364.00,na,na,na,na,209642.40,na,na,na,na,2703.37
+vax7778,0-4 yrs,30,Non-high,209297.09,na,na,na,na,na,135.98,na,na,na,na,1001817.00,na,na,na,na,11840.56
+vax7778,0-4 yrs,30,All,223608,na,na,na,na,na,214.58,na,na,na,na,394839.99,na,na,na,na,4985.41
+vax7778,5-19 yrs,30,High,40938.3,na,na,na,na,na,2938.98,na,na,na,na,450848.00,na,na,na,na,6664.38
+vax7778,5-19 yrs,30,Non-high,598722.7,na,na,na,na,na,255.27,na,na,na,na,1879115.00,na,na,na,na,25155.29
+vax7778,5-19 yrs,30,All,639661,na,na,na,na,na,427.03,na,na,na,na,784465.22,na,na,na,na,11320.30
+vax7778,20-64 yrs,30,High,321847.06,na,na,na,na,na,2226.77,na,na,na,na,172406.20,na,na,na,na,4423.42
+vax7778,20-64 yrs,30,Non-high,1913201.94,na,na,na,na,na,267.09,na,na,na,na,882444.30,na,na,na,na,20945.00
+vax7778,20-64 yrs,30,All,2235049,na,na,na,na,na,549.29,na,na,na,na,259223.48,na,na,na,na,6585.70
+vax7778,65+ yrs,30,High,157981.7,na,na,na,na,na,4982.39,na,na,na,na,189288.50,na,na,na,na,13202.63
+vax7778,65+ yrs,30,Non-high,150576.3,na,na,na,na,na,598.47,na,na,na,na,173130.10,na,na,na,na,11872.01
+vax7778,65+ yrs,30,All,308558,na,na,na,na,na,2843.04,na,na,na,na,187490.97,na,na,na,na,13052.35
+vax7778,All,30,High,535077.97,na,na,na,na,na,na,na,na,na,na,na,na,na,na,na,na
+vax7778,All,30,Non-high,2871798.03,na,na,na,na,na,na,na,na,na,na,na,na,na,na,na,na
+vax7778,All,30,All,3406876,na,na,na,na,na,597.82,na,na,na,na,287185.16,na,na,na,na,8471.00
+vax7778,0-4 yrs,40,High,14310.91,na,na,na,na,na,1400.95,na,na,na,na,215322.60,na,na,na,na,2776.60
+vax7778,0-4 yrs,40,Non-high,209297.09,na,na,na,na,na,172.94,na,na,na,na,1274082.00,na,na,na,na,15058.62
+vax7778,0-4 yrs,40,All,223608,na,na,na,na,na,251.53,na,na,na,na,462843.17,na,na,na,na,5844.03
+vax7778,5-19 yrs,40,High,40938.3,na,na,na,na,na,2955.17,na,na,na,na,453331.80,na,na,na,na,6701.10
+vax7778,5-19 yrs,40,Non-high,598722.7,na,na,na,na,na,271.46,na,na,na,na,1998303.00,na,na,na,na,26750.88
+vax7778,5-19 yrs,40,All,639661,na,na,na,na,na,443.22,na,na,na,na,814209.04,na,na,na,na,11749.54
+vax7778,20-64 yrs,40,High,321847.06,na,na,na,na,na,2266.67,na,na,na,na,175495.10,na,na,na,na,4502.68
+vax7778,20-64 yrs,40,Non-high,1913201.94,na,na,na,na,na,306.99,na,na,na,na,1014253.00,na,na,na,na,24073.51
+vax7778,20-64 yrs,40,All,2235049,na,na,na,na,na,589.18,na,na,na,na,278051.06,na,na,na,na,7064.02
+vax7778,65+ yrs,40,High,157981.7,na,na,na,na,na,5047.74,na,na,na,na,191771.00,na,na,na,na,13375.79
+vax7778,65+ yrs,40,Non-high,150576.3,na,na,na,na,na,663.81,na,na,na,na,192033.20,na,na,na,na,13168.27
+vax7778,65+ yrs,40,All,308558,na,na,na,na,na,2908.38,na,na,na,na,191800.17,na,na,na,na,13352.35
+vax7778,All,40,High,535077.97,na,na,na,na,na,na,na,na,na,na,na,na,na,na,na,na
+vax7778,All,40,Non-high,2871798.03,na,na,na,na,na,na,na,na,na,na,na,na,na,na,na,na
+vax7778,All,40,All,3406876,na,na,na,na,na,628.83,na,na,na,na,303219.33,na,na,na,na,8928.90
+vax7778,0-4 yrs,50,High,14310.91,na,na,na,na,na,1404.39,na,na,na,na,215850.50,na,na,na,na,2783.41
+vax7778,0-4 yrs,50,Non-high,209297.09,na,na,na,na,na,176.38,na,na,na,na,1299386.00,na,na,na,na,15357.70
+vax7778,0-4 yrs,50,All,223608,na,na,na,na,na,254.97,na,na,na,na,469163.38,na,na,na,na,5923.83
+vax7778,5-19 yrs,50,High,40938.3,na,na,na,na,na,2956.69,na,na,na,na,453564.90,na,na,na,na,6704.55
+vax7778,5-19 yrs,50,Non-high,598722.7,na,na,na,na,na,272.98,na,na,na,na,2009487.00,na,na,na,na,26900.60
+vax7778,5-19 yrs,50,All,639661,na,na,na,na,na,444.74,na,na,na,na,817000.23,na,na,na,na,11789.82
+vax7778,20-64 yrs,50,High,321847.06,na,na,na,na,na,2270.38,na,na,na,na,175782.40,na,na,na,na,4510.05
+vax7778,20-64 yrs,50,Non-high,1913201.94,na,na,na,na,na,310.70,na,na,na,na,1026515.00,na,na,na,na,24364.55
+vax7778,20-64 yrs,50,All,2235049,na,na,na,na,na,592.89,na,na,na,na,279802.60,na,na,na,na,7108.52
+vax7778,65+ yrs,50,High,157981.7,na,na,na,na,na,5053.86,na,na,na,na,192003.60,na,na,na,na,13392.01
+vax7778,65+ yrs,50,Non-high,150576.3,na,na,na,na,na,669.93,na,na,na,na,193804.10,na,na,na,na,13289.71
+vax7778,65+ yrs,50,All,308558,na,na,na,na,na,2914.50,na,na,na,na,192203.88,na,na,na,na,13380.46
+vax7778,All,50,High,535077.97,na,na,na,na,na,na,na,na,na,na,na,na,na,na,na,na
+vax7778,All,50,Non-high,2871798.03,na,na,na,na,na,na,na,na,na,na,na,na,na,na,na,na
+vax7778,All,50,All,3406876,na,na,na,na,na,631.68,na,na,na,na,304743.84,na,na,na,na,8972.02
+vax7778,0-4 yrs,60,High,14310.91,na,na,na,na,na,1404.39,na,na,na,na,215850.80,na,na,na,na,2783.41
+vax7778,0-4 yrs,60,Non-high,209297.09,na,na,na,na,na,176.38,na,na,na,na,1299404.00,na,na,na,na,15357.91
+vax7778,0-4 yrs,60,All,223608,na,na,na,na,na,254.97,na,na,na,na,469167.92,na,na,na,na,5923.89
+vax7778,5-19 yrs,60,High,40938.3,na,na,na,na,na,2956.69,na,na,na,na,453565.20,na,na,na,na,6704.55
+vax7778,5-19 yrs,60,Non-high,598722.7,na,na,na,na,na,272.98,na,na,na,na,2009500.00,na,na,na,na,26900.79
+vax7778,5-19 yrs,60,All,639661,na,na,na,na,na,444.74,na,na,na,na,817003.17,na,na,na,na,11789.87
+vax7778,20-64 yrs,60,High,321847.06,na,na,na,na,na,2270.38,na,na,na,na,175782.70,na,na,na,na,4510.06
+vax7778,20-64 yrs,60,Non-high,1913201.94,na,na,na,na,na,310.70,na,na,na,na,1026527.00,na,na,na,na,24364.84
+vax7778,20-64 yrs,60,All,2235049,na,na,na,na,na,592.90,na,na,na,na,279804.34,na,na,na,na,7108.56
+vax7778,65+ yrs,60,High,157981.7,na,na,na,na,na,5053.87,na,na,na,na,192003.80,na,na,na,na,13392.03
+vax7778,65+ yrs,60,Non-high,150576.3,na,na,na,na,na,669.94,na,na,na,na,193806.20,na,na,na,na,13289.85
+vax7778,65+ yrs,60,All,308558,na,na,na,na,na,2914.51,na,na,na,na,192204.32,na,na,na,na,13380.49
+vax7778,All,60,High,535077.97,na,na,na,na,na,na,na,na,na,na,na,na,na,na,na,na
+vax7778,All,60,Non-high,2871798.03,na,na,na,na,na,na,na,na,na,na,na,na,na,na,na,na
+vax7778,All,60,All,3406876,na,na,na,na,na,631.69,na,na,na,na,304745.54,na,na,na,na,8972.08
