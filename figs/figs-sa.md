@@ -1,8 +1,6 @@
 ---
 title: "sensitivity analysis"
 output: 
-  html_notebook: 
-    theme: cosmo
   html_document: 
     keep_md: yes
     self_contained: no
@@ -11,17 +9,17 @@ editor_options:
   chunk_output_type: inline
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
 
-```{r}
+
+
+```r
 rm(list = ls(all.names = TRUE))
 library(ggplot2)
 library(tidyr)
 ```
 
-```{r}
+
+```r
 df <- read.csv("~/git/economic-influenza/df/icer-all.csv")
 
 df$age <- factor(df$age, levels = c("0-4 yrs", "5-19 yrs", "20-64 yrs", "65+ yrs", "All"))
@@ -38,40 +36,62 @@ group_df <- df[(df$risk=="All"),]
 
 # ICER sensitivity analysis
 
-```{r}
+
+```r
 # icer per case averted
 ggplot(group_df, aes(x = age, y = icer.case.averted, color = v.eff, group = v.eff)) + labs(color = "Vaccine \nefficacy") +
   geom_point() + geom_line(linetype = "dotted") + ylab("$ saved per case averted") +
   facet_grid(~ scenario) + ggtitle("ICER per case averted")
+```
 
+![](figs-sa_files/figure-html/unnamed-chunk-3-1.png)<!-- -->
+
+```r
 # icer per death averted
 ggplot(group_df, aes(x = age, y = icer.death.averted, color = v.eff, group = v.eff)) + labs(color = "Vaccine \nefficacy") +
   geom_point() + geom_line(linetype = "dotted") + ylab("$ saved per death averted") +
   facet_grid(~ scenario)+ ggtitle("ICER per death averted")
+```
 
+![](figs-sa_files/figure-html/unnamed-chunk-3-2.png)<!-- -->
+
+```r
 # icer per daly averted
 ggplot(group_df, aes(x = age, y = icer.daly.averted, color = v.eff, group = v.eff)) + labs(color = "Vaccine \nefficacy") +
   geom_point() + geom_line(linetype = "dotted") + ylab("$ saved per DALY averted") +
   facet_grid(~ scenario) + ggtitle("ICER per DALY averted")
 ```
 
+![](figs-sa_files/figure-html/unnamed-chunk-3-3.png)<!-- -->
 
 
-```{r}
+
+
+```r
 #
 ggplot(group_df, aes(x = age, y = icer.case.averted, color = v.eff, group = v.eff)) + labs(color = "Vaccine \nefficacy") +
   geom_point() + geom_line(linetype = "dotted") + ylab("$ saved per case averted") +
   facet_grid(v.eff ~ scenario) + ggtitle("ICER per case averted")
+```
 
+![](figs-sa_files/figure-html/unnamed-chunk-4-1.png)<!-- -->
+
+```r
 #
 ggplot(group_df, aes(x = age, y = icer.death.averted, color = v.eff, group = v.eff)) + labs(color = "Vaccine \nefficacy") +
   geom_point() + geom_line(linetype = "dotted") + ylab("$ saved per death averted") +
   facet_grid(v.eff ~ scenario) + ggtitle("ICER per death averted")
+```
 
+![](figs-sa_files/figure-html/unnamed-chunk-4-2.png)<!-- -->
+
+```r
 #
 ggplot(group_df, aes(x = age, y = icer.daly.averted, color = v.eff, group = v.eff)) + labs(color = "Vaccine \nefficacy") +
   geom_point() + geom_line(linetype = "dotted") + ylab("$ saved per DALY averted") +
   facet_grid(v.eff ~ scenario) + ggtitle("ICER per DALY averted")
 ```
+
+![](figs-sa_files/figure-html/unnamed-chunk-4-3.png)<!-- -->
 
 

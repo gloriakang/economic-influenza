@@ -1,0 +1,97 @@
+---
+title: "base vaccination"
+output: 
+  html_document: 
+    keep_md: yes
+    self_contained: no
+editor_options: 
+  chunk_output_type: inline
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+rm(list = ls(all.names = TRUE))
+library(ggplot2)
+library(tidyr)
+```
+
+```{r}
+df <- read.csv("~/git/economic-influenza/df/icer-vaxbase-40.csv")
+df$age <- factor(df$age, levels = c("0-4 yrs", "5-19 yrs", "20-64 yrs", "65+ yrs", "All"))
+df$risk <- factor(df$risk, levels = c("High", "Non-high", "All"))
+
+age_group_df <- df[1:12,]
+risk_group_df <- df[(df$risk!="All"),]
+```
+
+
+## Cases, deaths, DALYs
+
+```{r}
+# stacked bar
+ggplot(risk_group_df, aes(x = age, y = cases, fill = risk)) + geom_bar(stat = "identity")
+ggplot(risk_group_df, aes(x = age, y = deaths, fill = risk)) + geom_bar(stat = "identity")
+ggplot(risk_group_df, aes(x = age, y = dalys, fill = risk)) + geom_bar(stat = "identity")
+```
+
+## Cases, deaths, DALYs per 100K
+
+```{r}
+# bar plot
+ggplot(df, aes(x = age, y = cases.per100k, fill = risk)) + geom_bar(stat = "identity", position = "dodge")
+ggplot(df, aes(x = age, y = deaths.per100k, fill = risk)) + geom_bar(stat = "identity", position = "dodge")
+ggplot(df, aes(x = age, y = dalys.per100k, fill = risk)) + geom_bar(stat = "identity", position = "dodge")
+
+# line plot
+ggplot(df, aes(x = age, y = cases.per100k, color = risk, group = risk)) + geom_point() + geom_line(linetype = "dotted")
+ggplot(df, aes(x = age, y = deaths.per100k, color = risk, group = risk)) + geom_point() + geom_line(linetype = "dotted")
+ggplot(df, aes(x = age, y = dalys.per100k, color = risk, group = risk)) + geom_point() + geom_line(linetype = "dotted")
+```
+
+## Averted cases, deaths, DALYs
+
+```{r}
+# stacked bar
+ggplot(risk_group_df, aes(x = age, y = cases.averted, fill = risk)) + geom_bar(stat = "identity", position = "stack")
+ggplot(risk_group_df, aes(x = age, y = deaths.averted, fill = risk)) + geom_bar(stat = "identity", position = "stack")
+ggplot(risk_group_df, aes(x = age, y = dalys.averted, fill = risk)) + geom_bar(stat = "identity", position = "stack")
+```
+
+## Averted cases, deaths, DALYs per 100K
+
+```{r}
+# bar plot
+ggplot(df, aes(x = age, y = cases.averted.per100k, fill = risk)) + geom_bar(stat = "identity", position = "dodge")
+ggplot(df, aes(x = age, y = deaths.averted.per100k, fill = risk)) + geom_bar(stat = "identity", position = "dodge")
+ggplot(df, aes(x = age, y = dalys.averted.per100k, fill = risk)) + geom_bar(stat = "identity", position = "dodge")
+
+# line plot
+ggplot(df, aes(x = age, y = cases.averted.per100k, color = risk, group = risk)) + geom_point() + geom_line(linetype = "dotted")
+ggplot(df, aes(x = age, y = deaths.averted.per100k, color = risk, group = risk)) + geom_point() + geom_line(linetype = "dotted")
+ggplot(df, aes(x = age, y = dalys.averted.per100k, color = risk, group = risk)) + geom_point() + geom_line(linetype = "dotted")
+```
+
+## ICER per case, death, DALY averted
+
+```{r}
+# bar plot
+ggplot(df, aes(x = age, y = icer.case.averted, fill = risk)) + geom_bar(stat = "identity", position = "dodge")
+ggplot(df, aes(x = age, y = icer.death.averted, fill = risk)) + geom_bar(stat = "identity", position = "dodge")
+ggplot(df, aes(x = age, y = icer.daly.averted, fill = risk)) + geom_bar(stat = "identity", position = "dodge")
+
+# line plot
+ggplot(df, aes(x = age, y = icer.case.averted, color = risk, group = risk)) + geom_point() + geom_line(linetype = "dotted")
+ggplot(df, aes(x = age, y = icer.death.averted, color = risk, group = risk)) + geom_point() + geom_line(linetype = "dotted")
+ggplot(df, aes(x = age, y = icer.daly.averted, color = risk, group = risk)) + geom_point() + geom_line(linetype = "dotted")
+```
+
+
+```{r eval=FALSE, include=FALSE}
+# violin plot
+
+# scatter plot: dalys averted per 100K by cost difference
+ggplot(df, aes(x = cost.diff, y = dalys.averted.per100k, shape = risk, color = age)) + geom_point()
+```
