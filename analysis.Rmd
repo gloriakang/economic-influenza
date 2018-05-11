@@ -38,13 +38,11 @@ source("input/input_base.R")
 #source("input/input_70_30.R")
 #source("input/input_70_40.R")
 #source("input/input_70_50.R")
-#source("input/input_70_60.R")
-
+source("input/input_70_60.R")
 ```
 
 # SAVE RDATA!!!
-
-```{r}
+```{r eval=FALSE, include=FALSE}
 ##### save RData #####
 #save.image(file = "output/vaxbase_10.RData")
 #save.image(file = "output/vaxbase_20.RData")
@@ -58,7 +56,7 @@ source("input/input_base.R")
 #save.image(file = "output/vax70_30.RData")
 #save.image(file = "output/vax70_40.RData")
 #save.image(file = "output/vax70_50.RData")
-#save.image(file = "output/vax70_60.RData")
+save.image(file = "output/vax70_60.RData")
 ```
 
 ###### 0-4 years ######
