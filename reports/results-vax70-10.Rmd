@@ -1,5 +1,5 @@
 ---
-title: "vax-70"
+title: "vax-70 10%"
 author: "Gloria Kang"
 output:
   html_notebook: 
@@ -22,7 +22,7 @@ rm(list = ls(all.names = TRUE))
 
 ```{r}
 # load RData
-#load("output/vax70_10.RData")
+load("output/vax70_10.RData")
 #load("output/vax70_20.RData")
 #load("output/vax70_30.RData")
 #load("output/vax70_40.RData")
