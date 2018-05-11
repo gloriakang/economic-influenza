@@ -24,54 +24,41 @@ source("input/input_base.R")
 ```
 
 ```{r}
-## 30% VE
+## base vaccination
+#source("input/input_vaxbase_10.R")
+#source("input/input_vaxbase_20.R")
 #source("input/input_vaxbase_30.R")
-#source("input/input_6667_30.R")
-#source("input/input_7777_30.R")
-#source("input/input_7778_30.R")
-
-## 40% VE (baseline)
-#source("input/input_vaxbase_40.R")  # base vax 51,51,33,63
-#source("input/input_6667_40.R")  # vax 60,60,60,70
-#source("input/input_7777_40.R")  # vax 70,70,70,70
-#source("input/input_7778_40.R")  # vax 70,70,70,80
-
-## 50% VE
+#source("input/input_vaxbase_40.R")
 #source("input/input_vaxbase_50.R")
-#source("input/input_6667_50.R")
-#source("input/input_7777_50.R")
-#source("input/input_7778_50.R")
-
-## 60% VE
 #source("input/input_vaxbase_60.R")
-#source("input/input_6667_60.R")
-#source("input/input_7777_60.R")
-#source("input/input_7778_60.R")
+
+## 70% vaccination
+#source("input/input_70_10.R")
+#source("input/input_70_20.R")
+#source("input/input_70_30.R")
+#source("input/input_70_40.R")
+#source("input/input_70_50.R")
+#source("input/input_70_60.R")
+
 ```
 
 # SAVE RDATA!!!
 
 ```{r}
 ##### save RData #####
-#save.image(file = "output/vaxbase-30.RData")
-#save.image(file = "output/6667-30.RData")
-#save.image(file = "output/7777-30.RData")
-#save.image(file = "output/7778-30.RData")
+#save.image(file = "output/vaxbase_10.RData")
+#save.image(file = "output/vaxbase_20.RData")
+#save.image(file = "output/vaxbase_30.RData")
+#save.image(file = "output/vaxbase_40.RData")
+#save.image(file = "output/vaxbase_50.RData")
+#save.image(file = "output/vaxbase_60.RData")
 
-#save.image(file = "output/vaxbase-40.RData")
-#save.image(file = "output/6667-40.RData")
-#save.image(file = "output/7777-40.RData")
-#save.image(file = "output/7778-40.RData")
-
-#save.image(file = "output/vaxbase-50.RData")
-#save.image(file = "output/6667-50.RData")
-#save.image(file = "output/7777-50.RData")
-#save.image(file = "output/7778-50.RData")
-
-#save.image(file = "output/vaxbase-60.RData")
-#save.image(file = "output/6667-60.RData")
-#save.image(file = "output/7777-60.RData")
-#save.image(file = "output/7778-60.RData")
+#save.image(file = "output/vax70_10.RData")
+#save.image(file = "output/vax70_20.RData")
+#save.image(file = "output/vax70_30.RData")
+#save.image(file = "output/vax70_40.RData")
+#save.image(file = "output/vax70_50.RData")
+#save.image(file = "output/vax70_60.RData")
 ```
 
 ###### 0-4 years ######
