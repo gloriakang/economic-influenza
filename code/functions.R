@@ -36,8 +36,8 @@ calc_num_outcomes_base <- function(p_death, p_hosp, p_out, p_rest){
   num_rest = p_rest * subpop_cases_base
   num_outcome_total = num_death + num_hosp + num_out + num_rest
   num_outcomes_base = c(num_death, num_hosp, num_out, num_rest)
-  print(sprintf("base num: deaths = %f, hosps = %f, outps = %f, rest = %f",
-                num_death, num_hosp, num_out, num_rest))
+  #print(sprintf("base num: deaths = %f, hosps = %f, outps = %f, rest = %f",
+  #              num_death, num_hosp, num_out, num_rest))
   #print(sprintf("base total outcomes = %f", num_outcome_total))
   return(num_outcomes_base)
 }
@@ -65,9 +65,9 @@ calc_total_cost_base <- function(death, hosp, out, rest){
   total_cost_out = cost_outcome[3] * num_outcomes_base[3]
   total_cost_rest = cost_outcome[4] * num_outcomes_base[4]
   total_costs = total_cost_death + total_cost_hosp + total_cost_out + total_cost_rest
-  print(sprintf("base cc: deaths = %f, hosps = %f, outps = %f, rest = %f",
-                total_cost_death, total_cost_hosp, total_cost_out, total_cost_rest))
-  print(sprintf("base total clin costs = %f", total_costs))
+  #print(sprintf("base cc: deaths = %f, hosps = %f, outps = %f, rest = %f",
+  #              total_cost_death, total_cost_hosp, total_cost_out, total_cost_rest))
+  #print(sprintf("base total clin costs = %f", total_costs))
   return(c(total_cost_death, total_cost_hosp, total_cost_out, total_cost_rest, total_costs))
 }
 
@@ -115,6 +115,25 @@ calc_deaths_b <- function(){
   return(c(deaths_averted, cost_per_death_averted, num_deaths_i))
 }
 
+### for results
+summarize <- function(){
+  total_cost_vax_b <- calc_vaccination_cost(vax_comp_b)
+  total_cost_vax_i <- calc_vaccination_cost(vax_comp_i)
+  costs <- cost_cpi_outcome(r_cost[1], r_cost[2], r_cost[3], r_cost[4])
+  # base
+  b_cases <- calc_subpop_cases_base(num_cases, risk_group)
+  num_outcomes_base <- calc_num_outcomes_base(prob[1], prob[2], prob[3], prob[4])
+  cc_base <- calc_total_cost_base(r_cost[1],r_cost[2],r_cost[3],r_cost[4])
+  # intv
+  i_cases <- calc_subpop_cases_intv(cases_after_vax, risk_group)
+  num_outcomes_intv <- calc_num_outcomes_intv(prob[1], prob[2], prob[3], prob[4])
+  cc_intv <- calc_total_cost_intv(r_cost[1],r_cost[2],r_cost[3],r_cost[4])
+  print(sprintf("total vax costs = %f", total_cost_vax_i))
+  print(sprintf("base cases = %f", b_cases))
+  print(sprintf("intv cases = %f", i_cases))
+}
+
+
 # DALY
 # calc_daly <- function(){
 #   dalys_averted = 
@@ -124,9 +143,6 @@ calc_deaths_b <- function(){
 #   daly = cost_diff / dalys_averted
 #   return(daly)
 # }
-
-
-
 
 
 
