@@ -37,8 +37,7 @@ load("output/vaxbase_10.RData")
 #load("output/vax70_60.RData")
 ```
 
-
-# total clinical costs
+# Clinical costs (high, low, all)
 ```{r}
 costs_04_high; costs_04_low; costs_04_high + costs_04_low
 costs_519_high; costs_519_low; costs_519_high + costs_519_low
@@ -46,7 +45,7 @@ costs_2064_high; costs_2064_low; costs_2064_high + costs_2064_low
 costs_65_high; costs_65_low; costs_65_high + costs_65_low
 ```
 
-# number of cases
+# Number of cases (high, low, all)
 ```{r}
 cases_04_high; cases_04_low; cases_04_high + cases_04_low
 cases_519_high; cases_519_low; cases_519_high + cases_519_low
@@ -54,31 +53,44 @@ cases_2064_high; cases_2064_low; cases_2064_high + cases_2064_low
 cases_65_high; cases_65_low; cases_65_high + cases_65_low
 ```
 
-# cost difference (base - intv)
+# Cost difference (high, low, all)
 ```{r}
-icer_04_high[1]; icer_04_low[1]; icer_04_high[1] + icer_04_low[1]
-icer_519_high[1]; icer_519_low[1]; icer_519_high[1] + icer_519_low[1]
-icer_2064_high[1]; icer_2064_low[1]; icer_2064_high[1] + icer_2064_low[1]
-icer_65_high[1]; icer_65_low[1]; icer_65_high[1] + icer_65_low[1]
+icer_04_high[1]; icer_04_low[1]; (cost_diff_04 <- icer_04_high[1] + icer_04_low[1])
+icer_519_high[1]; icer_519_low[1]; (cost_diff_519 <- icer_519_high[1] + icer_519_low[1])
+icer_2064_high[1]; icer_2064_low[1]; (cost_diff_2064 <- icer_2064_high[1] + icer_2064_low[1])
+icer_65_high[1]; icer_65_low[1]; (cost_diff_65 <- icer_65_high[1] + icer_65_low[1])
 ```
 
-# cases averted (base - intv)
+## Total cost difference in scenario
 ```{r}
-icer_04_high[2]; icer_04_low[2]; icer_04_high[2]; icer_04_low[2]; 
-icer_519_high[2]; icer_519_low[2]; icer_519_high[2]; icer_519_low[2]; 
-icer_2064_high[2]; icer_2064_low[2]; icer_2064_high[2]; icer_2064_low[2]; 
-icer_65_high[2]; icer_65_low[2]; icer_65_high[2]; icer_65_low[2]; 
+(total_cost_difference <- cost_diff_04 + cost_diff_519 + cost_diff_2064 + cost_diff_65)
 ```
 
-# ICER per case averted
+# Cases averted (high, low, all)
 ```{r}
-icer_04_high[3]; icer_04_low[3]; icer_04_high[3] + icer_04_low[3]
-icer_519_high[3]; icer_519_low[3]; icer_519_high[3] + icer_519_low[3]
-icer_2064_high[3]; icer_2064_low[3]; icer_2064_high[3] + icer_2064_low[3]
-icer_65_high[3]; icer_65_low[3]; icer_65_high[3] + icer_65_low[3]
+icer_04_high[2]; icer_04_low[2]; (case_avert_04 <- icer_04_high[2] + icer_04_low[2])
+icer_519_high[2]; icer_519_low[2]; (case_avert_519 <- icer_519_high[2] + icer_519_low[2])
+icer_2064_high[2]; icer_2064_low[2]; (case_avert_2064 <- icer_2064_high[2] + icer_2064_low[2])
+icer_65_high[2]; icer_65_low[2]; (case_avert_65 <- icer_65_high[2] + icer_65_low[2])
+```
+## Total cases averted in scenario
+```{r}
+(total_cases_averted <- case_avert_04 + case_avert_519 + case_avert_2064 + case_avert_65)
 ```
 
-# number of deaths
+# ICER per case averted (high, low, all)
+```{r}
+icer_04_high[3]; icer_04_low[3]; (icer_04_high[1] + icer_04_low[1]) / (icer_04_high[2] + icer_04_low[2])
+icer_519_high[3]; icer_519_low[3]; (icer_519_high[1] + icer_519_low[1]) / (icer_519_high[2] + icer_519_low[2])
+icer_2064_high[3]; icer_2064_low[3]; (icer_2064_high[1] + icer_2064_low[1]) / (icer_2064_high[2] + icer_2064_low[2])
+icer_65_high[3]; icer_65_low[3]; (icer_65_high[1] + icer_65_low[1]) / (icer_65_high[2] + icer_65_low[2])
+```
+## Total ICER per case averted in scenario
+```{r}
+total_cost_difference / total_cases_averted
+```
+
+# Deaths (high, low, all)
 ```{r}
 deaths_04_high[3]; deaths_04_low[3]; deaths_04_high[3] + deaths_04_low[3]
 deaths_519_high[3]; deaths_519_low[3]; deaths_519_high[3] + deaths_519_low[3]
@@ -86,23 +98,33 @@ deaths_2064_high[3]; deaths_2064_low[3]; deaths_2064_high[3] + deaths_2064_low[3
 deaths_65_high[3]; deaths_65_low[3]; deaths_65_high[3] + deaths_65_low[3]
 ```
 
-# deaths averted
+# Deaths averted (high, low, all)
 ```{r}
-deaths_04_high[1]; deaths_04_low[1]; deaths_04_high[1] + deaths_04_low[1]
-deaths_519_high[1]; deaths_519_low[1]; deaths_519_high[1] + deaths_519_low[1]
-deaths_2064_high[1]; deaths_2064_low[1]; deaths_2064_high[1] + deaths_2064_low[1]
-deaths_65_high[1]; deaths_65_low[1]; deaths_65_high[1] + deaths_65_low[1]
+deaths_04_high[1]; deaths_04_low[1]; (death_avert_04 <- deaths_04_high[1] + deaths_04_low[1])
+deaths_519_high[1]; deaths_519_low[1]; (death_avert_519 <- deaths_519_high[1] + deaths_519_low[1])
+deaths_2064_high[1]; deaths_2064_low[1]; (death_avert_2064 <- deaths_2064_high[1] + deaths_2064_low[1])
+deaths_65_high[1]; deaths_65_low[1]; (death_avert_65 <- deaths_65_high[1] + deaths_65_low[1])
 ```
 
-# ICER per death averted
+## Total deaths averted in scenario
 ```{r}
-deaths_04_high[2]; deaths_04_low[2]; deaths_04_high[2] + deaths_04_low[2]
-deaths_519_high[2]; deaths_519_low[2]; deaths_519_high[2] + deaths_519_low[2]
-deaths_2064_high[2]; deaths_2064_low[2]; deaths_2064_high[2] + deaths_2064_low[2]
-deaths_65_high[2]; deaths_65_low[2]; deaths_65_high[2] + deaths_65_low[2]
+(total_deaths_averted <- death_avert_04 + death_avert_519 + death_avert_2064 + death_avert_65)
 ```
 
-# health outcomes
+# ICER per death averted (high, low, all)
+```{r}
+deaths_04_high[2]; deaths_04_low[2]; (icer_04_high[1] + icer_04_low[1]) / (deaths_04_high[1] + deaths_04_low[1])
+deaths_519_high[2]; deaths_519_low[2]; (icer_519_high[1] + icer_519_low[1]) / (deaths_519_high[1] + deaths_519_low[1])
+deaths_2064_high[2]; deaths_2064_low[2]; (icer_2064_high[1] + icer_2064_low[1]) / (deaths_2064_high[1] + deaths_2064_low[1])
+deaths_65_high[2]; deaths_65_low[2]; (icer_65_high[1] + icer_65_low[1]) / (deaths_65_high[1] + deaths_65_low[1])
+```
+
+## Total ICER per death averted in scenario
+```{r}
+total_cost_difference / total_deaths_averted
+```
+
+# Other health outcomes
 ```{r}
 outcomes_04_high; outcomes_04_low
 outcomes_519_high; outcomes_519_low

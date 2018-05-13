@@ -86,6 +86,8 @@ b_cases <- calc_subpop_cases_base(num_cases, risk_group)  # base
 num_outcomes_base <- calc_num_outcomes_base(prob[1], prob[2], prob[3], prob[4])  # base
 cc_base <- calc_total_cost_base(r_cost[1],r_cost[2],r_cost[3],r_cost[4])  # base
 
+cc_base
+
 # intv summary
 i_cases <- calc_subpop_cases_intv(cases_after_vax, risk_group)  # intv
 num_outcomes_intv <- calc_num_outcomes_intv(prob[1], prob[2], prob[3], prob[4])  # intv
