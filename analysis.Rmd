@@ -1,12 +1,14 @@
 ---
 title: "analysis"
 output: 
+  html_notebook: 
+    code_folding: hide
+    theme: cosmo
+  pdf_document: default
   html_document: 
     keep_md: yes
     self_contained: no
     theme: cosmo
-  pdf_document: default
-  html_notebook: default
 ---
 
 ```{r setup, include=FALSE}
@@ -18,6 +20,8 @@ rm(list = ls(all.names = TRUE))
 ```
 
 ```{r}
+library(knitr)
+
 source("code/functions.R")
 source("input/var.R")
 source("input/input_base.R")
@@ -86,8 +90,6 @@ b_cases <- calc_subpop_cases_base(num_cases, risk_group)  # base
 num_outcomes_base <- calc_num_outcomes_base(prob[1], prob[2], prob[3], prob[4])  # base
 cc_base <- calc_total_cost_base(r_cost[1],r_cost[2],r_cost[3],r_cost[4])  # base
 
-cc_base
-
 # intv summary
 i_cases <- calc_subpop_cases_intv(cases_after_vax, risk_group)  # intv
 num_outcomes_intv <- calc_num_outcomes_intv(prob[1], prob[2], prob[3], prob[4])  # intv
@@ -96,6 +98,7 @@ cc_intv <- calc_total_cost_intv(r_cost[1],r_cost[2],r_cost[3],r_cost[4])  # intv
 print(sprintf("total vax costs = %f", total_cost_vax_i))
 print(sprintf("base cases = %f", b_cases))
 print(sprintf("intv cases = %f", i_cases))
+
 
 costs_04_high <- cc_intv[5]
 cases_04_high <- i_cases
