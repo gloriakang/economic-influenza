@@ -1,5 +1,5 @@
 ---
-title: "vaxbase70 50%"
+title: "vax70 50%"
 output:
   html_notebook: 
     code_folding: hide
