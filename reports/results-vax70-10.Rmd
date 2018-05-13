@@ -1,5 +1,5 @@
 ---
-title: "results-temp"
+title: "vax70 10%"
 output:
   html_notebook: 
     code_folding: hide
@@ -25,14 +25,14 @@ library(knitr)
 # load RData
 #load("output/base.RData")
 
-load("output/vaxbase_10.RData")
+#load("output/vaxbase_10.RData")
 #load("output/vaxbase_20.RData")
 #load("output/vaxbase_30.RData")
 #load("output/vaxbase_40.RData")
 #load("output/vaxbase_50.RData")
 #load("output/vaxbase_60.RData")
 
-#load("output/vax70_10.RData")
+load("output/vax70_10.RData")
 #load("output/vax70_20.RData")
 #load("output/vax70_30.RData")
 #load("output/vax70_40.RData")
