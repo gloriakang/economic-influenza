@@ -1,5 +1,5 @@
 ---
-title: "results-temp"
+title: "vaxbase70 50%"
 output:
   html_notebook: 
     code_folding: hide
@@ -13,6 +13,7 @@ output:
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_knit$set(root.dir = "../")
 ```
 
 ```{r}
@@ -36,7 +37,7 @@ library(knitr)
 #load("output/vax70_20.RData")
 #load("output/vax70_30.RData")
 #load("output/vax70_40.RData")
-#load("output/vax70_50.RData")
+load("output/vax70_50.RData")
 #load("output/vax70_60.RData")
 
 rm(b_cases, cc_intv, cc_base, costs, num_cases, num_outcomes_base, num_outcomes_intv, pop, prob, r_cost, risk_group, vax_comp_i)

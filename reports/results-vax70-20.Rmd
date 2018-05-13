@@ -13,6 +13,7 @@ output:
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_knit$set(root.dir = "../")
 ```
 
 ```{r}
@@ -33,7 +34,7 @@ library(knitr)
 #load("output/vaxbase_60.RData")
 
 #load("output/vax70_10.RData")
-#load("output/vax70_20.RData")
+load("output/vax70_20.RData")
 #load("output/vax70_30.RData")
 #load("output/vax70_40.RData")
 #load("output/vax70_50.RData")
