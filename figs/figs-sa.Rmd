@@ -22,25 +22,26 @@ library(tidyr)
 ```
 
 ```{r}
-data <- read.csv("~/git/economic-influenza/df/icer-all.csv", as.is = TRUE)
+data <- read.csv("df/icer-all.csv", as.is = TRUE)
 
 df <- data[(data$scenario!="base"),]
+
 df$age <- factor(df$age, levels = c("0-4 yrs", "5-19 yrs", "20-64 yrs", "65+ yrs", "All"))
 df$risk <- factor(df$risk, levels = c("High", "Non-high", "All"))
-df$scenario <- factor(df$scenario, levels = c("vaxbase", "vax70"))
-df$v.eff <- factor(df$v.eff)
+# df$scenario <- factor(df$scenario, levels = c("vaxbase", "vax70"))
+# df$v.eff <- factor(df$v.eff)
 
-df$cases.averted <- as.integer(df$cases.averted)
-df$cases.averted.per100k <- as.integer(df$cases.averted.per100k)
-df$icer.case.averted <- as.integer(df$icer.case.averted)
+df$cases.averted <- as.numeric(df$cases.averted)
+df$cases.averted.per100k <- as.numeric(df$cases.averted.per100k)
+df$icer.case.averted <- as.numeric(df$icer.case.averted)
 
-df$deaths.averted <- as.integer(df$deaths.averted)
-df$deaths.averted.per100k <- as.integer(df$ deaths.averted.per100k)
-df$icer.death.averted <- as.integer(df$icer.death.averted)
-df$dalys <- as.integer(df$dalys)
-df$dalys.per100k <- as.integer(df$dalys.per100k)
-df$dalys.averted <- as.integer(df$dalys.averted)
-df$dalys.averted.per100k <- as.integer(df$dalys.averted.per100k)
+df$deaths.averted <- as.numeric(df$deaths.averted)
+df$deaths.averted.per100k <- as.numeric(df$ deaths.averted.per100k)
+df$icer.death.averted <- as.numeric(df$icer.death.averted)
+df$dalys <- as.numeric(df$dalys)
+df$dalys.per100k <- as.numeric(df$dalys.per100k)
+df$dalys.averted <- as.numeric(df$dalys.averted)
+df$dalys.averted.per100k <- as.numeric(df$dalys.averted.per100k)
 
 df$icer.daly.averted <- as.numeric(df$icer.daly.averted)
 
@@ -49,14 +50,18 @@ df$icer.daly.averted <- as.numeric(df$icer.daly.averted)
 
 ```{r}
 # subset relevant efficacies
-df2 <- df[(df$v.eff!=50 & df$v.eff!=60),]
-df3 <- df2[1:90,]
+df2 <- df[!df$v.eff %in% c(50, 60), ]
+table(df2$v.eff, useNA = 'always')
+
+df3 <- df2[!(df2$scenario == 'vax70' & df2$v.eff %in% c(40)), ]
+table(df3$scenario, df3$v.eff, useNA = 'always')
 
 # subset by age group
 age_group_df <- df3[(df3$risk=="All"),]
 
 # subset by risk group
 risk_group_df <- df3[(df3$risk!="All"),]
+
 ```
 
 
