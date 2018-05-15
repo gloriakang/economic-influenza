@@ -29,8 +29,8 @@ source("input/input_base.R")
 
 ```{r}
 ## base vaccination
-source("input/input_vaxbase_10.R")
-#source("input/input_vaxbase_20.R")
+#source("input/input_vaxbase_10.R")
+source("input/input_vaxbase_20.R")
 #source("input/input_vaxbase_30.R")
 #source("input/input_vaxbase_40.R")
 #source("input/input_vaxbase_50.R")
@@ -47,9 +47,11 @@ source("input/input_vaxbase_10.R")
 
 # SAVE RDATA!!!
 ```{r eval=FALSE, include=FALSE}
+rm(b_cases, cc_intv, cc_base, costs, num_cases, num_outcomes_base, num_outcomes_intv, pop, prob, r_cost, risk_group, vax_comp_i)
+
 ##### save RData #####
 #save.image(file = "output/vaxbase_10.RData")
-#save.image(file = "output/vaxbase_20.RData")
+save.image(file = "output/vaxbase_20.RData")
 #save.image(file = "output/vaxbase_30.RData")
 #save.image(file = "output/vaxbase_40.RData")
 #save.image(file = "output/vaxbase_50.RData")

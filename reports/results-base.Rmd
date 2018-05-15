@@ -40,15 +40,15 @@ load("output/base.RData")
 #load("output/vax70_50.RData")
 #load("output/vax70_60.RData")
 
-rm(b_cases, cc_intv, cc_base, costs, num_cases, num_outcomes_base, num_outcomes_intv, pop, prob, r_cost, risk_group, vax_comp_i)
+#rm(b_cases, cc_intv, cc_base, costs, num_cases, num_outcomes_base, num_outcomes_intv, pop, prob, r_cost, risk_group, vax_comp_i)
 ```
 
 
 # Clinical costs in age group (high, low, all)
 ```{r}
-costs_04_high; costs_04_low; (costs_04 <- costs_04_high + costs_04_low)
-costs_519_high; costs_519_low; (costs_519 <- costs_519_high + costs_519_low)
-costs_2064_high; costs_2064_low; (costs_2064 <- costs_2064_high + costs_2064_low)
+costs_04_high; costs_04_low; (costs_04 <- costs_04_high + costs_04_low);
+costs_519_high; costs_519_low; (costs_519 <- costs_519_high + costs_519_low);
+costs_2064_high; costs_2064_low; (costs_2064 <- costs_2064_high + costs_2064_low);
 costs_65_high; costs_65_low; (costs_65 <- costs_65_high + costs_65_low)
 ```
 
