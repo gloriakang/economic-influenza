@@ -40,7 +40,7 @@ load("output/vax70_20.RData")
 #load("output/vax70_50.RData")
 #load("output/vax70_60.RData")
 
-rm(b_cases, cc_intv, cc_base, costs, num_cases, num_outcomes_base, num_outcomes_intv, pop, prob, r_cost, risk_group, vax_comp_i)
+#rm(b_cases, cc_intv, cc_base, costs, num_cases, num_outcomes_base, num_outcomes_intv, pop, prob, r_cost, risk_group, vax_comp_i)
 ```
 
 
