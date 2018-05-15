@@ -2,23 +2,27 @@
 title: "figures"
 output: 
   html_document: 
+    css: ~/git/economic-influenza/css/default.css
+    fig_caption: yes
+    fig_width: 7.5
     keep_md: yes
-    self_contained: no
     theme: cosmo
   html_notebook: 
+    css: ~/git/economic-influenza/css/default.css
     theme: cosmo
 editor_options: 
   chunk_output_type: inline
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = TRUE, cache = TRUE, warning = FALSE, message = FALSE, tidy = TRUE)
 ```
 
 ```{r}
 rm(list = ls(all.names = TRUE))
 library(ggplot2)
 library(tidyr)
+library(knitr); library(rmarkdown)
 ```
 
 ```{r}
@@ -40,10 +44,10 @@ df$icer.daly.averted <- as.numeric(df$icer.daly.averted)
 
 ```{r}
 # subset relevant efficacies
-df2 <- df[!df$v.eff %in% c(50, 60), ]
+df2 <- df[!df$v.eff %in% c(60), ]
 table(df2$v.eff, useNA = 'always')
 
-df3 <- df2[!(df2$scenario == 'vax70' & df2$v.eff %in% c(40)), ]
+df3 <- df2[!(df2$scenario == 'vax70' & df2$v.eff %in% c(40,50)), ]
 table(df3$scenario, df3$v.eff, useNA = 'always')
 
 # factors
@@ -161,7 +165,6 @@ ggplot(vaxbase_df, aes(x = age, y = dalys.per100k, color = risk, group = risk)) 
   geom_point() + geom_line(linetype = "dotted") + ylab("DALYs") +
   facet_grid(v.eff~risk) + ggtitle("DALYs per 100k in each age and risk group by vaccine efficacy")
 ```
-
 
 
 # Vax 70% scenario

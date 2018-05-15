@@ -2,10 +2,13 @@
 title: "figures"
 output: 
   html_document: 
+    css: ~/git/economic-influenza/css/default.css
+    fig_caption: yes
+    fig_width: 7.5
     keep_md: yes
-    self_contained: no
     theme: cosmo
   html_notebook: 
+    css: ~/git/economic-influenza/css/default.css
     theme: cosmo
 editor_options: 
   chunk_output_type: inline
@@ -18,17 +21,14 @@ editor_options:
 rm(list = ls(all.names = TRUE))
 library(ggplot2)
 library(tidyr)
+library(knitr); library(rmarkdown)
 ```
 
 
 ```r
-data <- read.csv("~/git/economic-influenza/df/icer-all.csv")
-
+data <- read.csv("df/icer-all.csv", as.is = TRUE)
 df <- data[(data$scenario!="base"),]
-df$age <- factor(df$age, levels = c("0-4 yrs", "5-19 yrs", "20-64 yrs", "65+ yrs", "All"))
-df$risk <- factor(df$risk, levels = c("High", "Non-high", "All"))
-df$scenario <- factor(df$scenario, levels = c("vaxbase", "vax70"))
-df$v.eff <- factor(df$v.eff)
+
 df$cases.averted <- as.numeric(df$cases.averted)
 df$cases.averted.per100k <- as.numeric(df$cases.averted.per100k)
 df$icer.case.averted <- as.numeric(df$icer.case.averted)
@@ -40,15 +40,40 @@ df$dalys.per100k <- as.numeric(df$dalys.per100k)
 df$dalys.averted <- as.numeric(df$dalys.averted)
 df$dalys.averted.per100k <- as.numeric(df$dalys.averted.per100k)
 df$icer.daly.averted <- as.numeric(df$icer.daly.averted)
-
-df <- as.data.frame(df)
 ```
 
 
 ```r
 # subset relevant efficacies
-df2 <- df[(df$v.eff!=50 & df$v.eff!=60),]
-df3 <- df2[1:90,]
+df2 <- df[!df$v.eff %in% c(60), ]
+table(df2$v.eff, useNA = 'always')
+```
+
+```
+## 
+##   10   20   30   40   50 <NA> 
+##   30   30   30   30   30    0
+```
+
+```r
+df3 <- df2[!(df2$scenario == 'vax70' & df2$v.eff %in% c(40,50)), ]
+table(df3$scenario, df3$v.eff, useNA = 'always')
+```
+
+```
+##          
+##           10 20 30 40 50 <NA>
+##   vax70   15 15 15  0  0    0
+##   vaxbase 15 15 15 15 15    0
+##   <NA>     0  0  0  0  0    0
+```
+
+```r
+# factors
+df3$age <- factor(df3$age, levels = c("0-4 yrs", "5-19 yrs", "20-64 yrs", "65+ yrs", "All"))
+df3$risk <- factor(df3$risk, levels = c("High", "Non-high", "All"))
+df3$scenario <- factor(df3$scenario, levels = c("vaxbase", "vax70"))
+df3$v.eff <- factor(df3$v.eff)
 
 # subset by age group
 age_group_df <- df3[(df3$risk=="All"),]
@@ -56,7 +81,6 @@ age_group_df <- df3[(df3$risk=="All"),]
 # subset by risk group
 risk_group_df <- df3[(df3$risk!="All"),]
 ```
-
 
 # ICER sensitivity analysis
 
@@ -228,7 +252,6 @@ ggplot(vaxbase_df, aes(x = age, y = dalys.per100k, color = risk, group = risk)) 
 ```
 
 ![](figs-sa_files/figure-html/unnamed-chunk-9-4.png)<!-- -->
-
 
 
 # Vax 70% scenario
