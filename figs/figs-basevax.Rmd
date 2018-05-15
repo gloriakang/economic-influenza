@@ -1,5 +1,5 @@
 ---
-title: "base vaccination"
+title: "base vaccination 20%"
 output: 
   html_document: 
     keep_md: yes
@@ -10,6 +10,7 @@ editor_options:
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_knit$set(root.dir = "../")
 ```
 
 ```{r}
@@ -19,14 +20,17 @@ library(tidyr)
 ```
 
 ```{r}
-df <- read.csv("~/git/economic-influenza/df/icer-vaxbase-40.csv")
+df <- read.csv("~/git/economic-influenza/df/icer-all.csv")
 df$age <- factor(df$age, levels = c("0-4 yrs", "5-19 yrs", "20-64 yrs", "65+ yrs", "All"))
 df$risk <- factor(df$risk, levels = c("High", "Non-high", "All"))
 
-age_group_df <- df[1:12,]
+# subset df
+#age_group_df <- df[1:12,]
+
+# vaxbase 20%
+df <- df[(df$scenario == "vaxbase" & df$v.eff == "20"),]
 risk_group_df <- df[(df$risk!="All"),]
 ```
-
 
 ## Cases, deaths, DALYs
 
