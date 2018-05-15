@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title>figures</title>
+
+<script src="figs-sa_files/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="figs-sa_files/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<script src="figs-sa_files/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="figs-sa_files/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="figs-sa_files/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="figs-sa_files/navigation-1.1/tabsets.js"></script>
+<link href="figs-sa_files/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="figs-sa_files/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">figures</h1>
+
+</div>
+
+
+<pre class="r"><code>rm(list = ls(all.names = TRUE))
+library(ggplot2)
+library(tidyr)</code></pre>
+<pre class="r"><code>data &lt;- read.csv(&quot;~/git/economic-influenza/df/icer-all.csv&quot;)
+
+df &lt;- data[(data$scenario!=&quot;base&quot;),]
+df$age &lt;- factor(df$age, levels = c(&quot;0-4 yrs&quot;, &quot;5-19 yrs&quot;, &quot;20-64 yrs&quot;, &quot;65+ yrs&quot;, &quot;All&quot;))
+df$risk &lt;- factor(df$risk, levels = c(&quot;High&quot;, &quot;Non-high&quot;, &quot;All&quot;))
+df$scenario &lt;- factor(df$scenario, levels = c(&quot;vaxbase&quot;, &quot;vax70&quot;))
+df$v.eff &lt;- factor(df$v.eff)
+df$cases.averted &lt;- as.numeric(df$cases.averted)
+df$cases.averted.per100k &lt;- as.numeric(df$cases.averted.per100k)
+df$icer.case.averted &lt;- as.numeric(df$icer.case.averted)
+df$deaths.averted &lt;- as.numeric(df$deaths.averted)
+df$deaths.averted.per100k &lt;- as.numeric(df$ deaths.averted.per100k)
+df$icer.death.averted &lt;- as.numeric(df$icer.death.averted)
+df$dalys &lt;- as.numeric(df$dalys)
+df$dalys.per100k &lt;- as.numeric(df$dalys.per100k)
+df$dalys.averted &lt;- as.numeric(df$dalys.averted)
+df$dalys.averted.per100k &lt;- as.numeric(df$dalys.averted.per100k)
+df$icer.daly.averted &lt;- as.numeric(df$icer.daly.averted)
+
+df &lt;- as.data.frame(df)</code></pre>
+<pre class="r"><code># subset relevant efficacies
+df2 &lt;- df[(df$v.eff!=50 &amp; df$v.eff!=60),]
+df3 &lt;- df2[1:90,]
+
+# subset by age group
+age_group_df &lt;- df3[(df3$risk==&quot;All&quot;),]
+
+# subset by risk group
+risk_group_df &lt;- df3[(df3$risk!=&quot;All&quot;),]</code></pre>
+<div id="icer-sensitivity-analysis" class="section level1">
+<h1>ICER sensitivity analysis</h1>
+<pre class="r"><code># icer per case averted
+ggplot(age_group_df, aes(x = age, y = icer.case.averted, color = v.eff, group = v.eff)) + labs(color = &quot;Vaccine \nefficacy&quot;) +
+  geom_point() + geom_line(linetype = &quot;dotted&quot;) + ylab(&quot;$ saved per case averted&quot;) +
+  facet_grid(~ scenario) + ggtitle(&quot;ICER per case averted&quot;)</code></pre>
+<p><img src="figs-sa_files/figure-html/unnamed-chunk-4-1.png" /><!-- --></p>
+<pre class="r"><code># icer per death averted
+ggplot(age_group_df, aes(x = age, y = icer.death.averted, color = v.eff, group = v.eff)) + labs(color = &quot;Vaccine \nefficacy&quot;) +
+  geom_point() + geom_line(linetype = &quot;dotted&quot;) + ylab(&quot;$ saved per death averted&quot;) +
+  facet_grid(~ scenario)+ ggtitle(&quot;ICER per death averted&quot;)</code></pre>
+<p><img src="figs-sa_files/figure-html/unnamed-chunk-4-2.png" /><!-- --></p>
+<pre class="r"><code># icer per daly averted
+ggplot(age_group_df, aes(x = age, y = icer.daly.averted, color = v.eff, group = v.eff)) + labs(color = &quot;Vaccine \nefficacy&quot;) +
+  geom_point() + geom_line(linetype = &quot;dotted&quot;) + ylab(&quot;$ saved per DALY averted&quot;) +
+  facet_grid(~ scenario) + ggtitle(&quot;ICER per DALY averted&quot;)</code></pre>
+<p><img src="figs-sa_files/figure-html/unnamed-chunk-4-3.png" /><!-- --></p>
+<pre class="r"><code># icer per case averted
+ggplot(age_group_df, aes(x = age, y = icer.case.averted, color = v.eff, group = v.eff)) + labs(color = &quot;Vaccine \nefficacy&quot;) +
+  geom_point() + geom_line(linetype = &quot;dotted&quot;) + ylab(&quot;$ saved per case averted&quot;) +
+  facet_grid(v.eff ~ scenario) + ggtitle(&quot;ICER per case averted&quot;)</code></pre>
+<p><img src="figs-sa_files/figure-html/unnamed-chunk-5-1.png" /><!-- --></p>
+<pre class="r"><code># icer per death averted
+ggplot(age_group_df, aes(x = age, y = icer.death.averted, color = v.eff, group = v.eff)) + labs(color = &quot;Vaccine \nefficacy&quot;) +
+  geom_point() + geom_line(linetype = &quot;dotted&quot;) + ylab(&quot;$ saved per death averted&quot;) +
+  facet_grid(v.eff ~ scenario) + ggtitle(&quot;ICER per death averted&quot;)</code></pre>
+<p><img src="figs-sa_files/figure-html/unnamed-chunk-5-2.png" /><!-- --></p>
+<pre class="r"><code># icer per DALY averted
+ggplot(age_group_df, aes(x = age, y = icer.daly.averted, color = v.eff, group = v.eff)) + labs(color = &quot;Vaccine \nefficacy&quot;) +
+  geom_point() + geom_line(linetype = &quot;dotted&quot;) + ylab(&quot;$ saved per DALY averted&quot;) +
+  facet_grid(v.eff ~ scenario) + ggtitle(&quot;ICER per DALY averted&quot;)</code></pre>
+<p><img src="figs-sa_files/figure-html/unnamed-chunk-5-3.png" /><!-- --></p>
+</div>
+<div id="vax-base-scenario" class="section level1">
+<h1>Vax base scenario</h1>
+<pre class="r"><code># subset vax base data
+vaxbase_df &lt;- df3[(df3$scenario==&quot;vaxbase&quot;),]
+vaxbase_df_risk &lt;- risk_group_df[(risk_group_df$scenario==&quot;vaxbase&quot;),]
+vaxbase_df_age &lt;- age_group_df[(age_group_df$scenario==&quot;vaxbase&quot;),]</code></pre>
+<div id="cases" class="section level2">
+<h2>Cases</h2>
+<pre class="r"><code>ggplot(vaxbase_df_age, aes(x = age, y = cases, color = v.eff, group = v.eff)) + geom_point() + geom_line(linetype = &quot;dotted&quot;) +
+  ggtitle(&quot;Number of cases in each age group by vaccine efficacy&quot;)</code></pre>
+<p><img src="figs-sa_files/figure-html/unnamed-chunk-7-1.png" /><!-- --></p>
+<pre class="r"><code>ggplot(vaxbase_df_age, aes(x = age, y = cases, color = v.eff, group = v.eff)) + labs(color = &quot;Vaccine \nefficacy&quot;) +
+  geom_point() + geom_line(linetype = &quot;dotted&quot;) + ylab(&quot;cases&quot;) +
+  facet_grid(~v.eff) + ggtitle(&quot;Number of cases in each age group by vaccine efficacy&quot;)</code></pre>
+<p><img src="figs-sa_files/figure-html/unnamed-chunk-7-2.png" /><!-- --></p>
+<pre class="r"><code>ggplot(vaxbase_df, aes(x = age, y = cases, color = risk, group = risk)) + labs(color = &quot;Risk \ngroup&quot;) +
+  geom_point() + geom_line(linetype = &quot;dotted&quot;) + ylab(&quot;cases&quot;) +
+  facet_grid(~v.eff) + ggtitle(&quot;Number of cases in each age and risk group by vaccine efficacy&quot;)</code></pre>
+<p><img src="figs-sa_files/figure-html/unnamed-chunk-7-3.png" /><!-- --></p>
+<pre class="r"><code>ggplot(vaxbase_df, aes(x = age, y = cases, color = risk, group = risk)) + labs(color = &quot;Risk \ngroup&quot;) +
+  geom_point() + geom_line(linetype = &quot;dotted&quot;) + ylab(&quot;cases&quot;) +
+  facet_grid(v.eff~risk) + ggtitle(&quot;Number of cases in each age and risk group by vaccine efficacy&quot;)</code></pre>
+<p><img src="figs-sa_files/figure-html/unnamed-chunk-7-4.png" /><!-- --></p>
+</div>
+<div id="deaths-per-100k" class="section level2">
+<h2>Deaths per 100k</h2>
+<pre class="r"><code>ggplot(vaxbase_df_age, aes(x = age, y = deaths.per100k, color = v.eff, group = v.eff)) + geom_point() + geom_line(linetype = &quot;dotted&quot;) +
+  ggtitle(&quot;Deaths per 100k in each age group by vaccine efficacy&quot;)</code></pre>
+<p><img src="figs-sa_files/figure-html/unnamed-chunk-8-1.png" /><!-- --></p>
+<pre class="r"><code>ggplot(vaxbase_df_age, aes(x = age, y = deaths.per100k, color = v.eff, group = v.eff)) + labs(color = &quot;Vaccine \nefficacy&quot;) +
+  geom_point() + geom_line(linetype = &quot;dotted&quot;) + ylab(&quot;deaths&quot;) +
+  facet_grid(~v.eff) + ggtitle(&quot;Deaths per 100k in each age group by vaccine efficacy&quot;)</code></pre>
+<p><img src="figs-sa_files/figure-html/unnamed-chunk-8-2.png" /><!-- --></p>
+<pre class="r"><code>ggplot(vaxbase_df, aes(x = age, y = deaths.per100k, color = risk, group = risk)) + labs(color = &quot;Risk \ngroup&quot;) +
+  geom_point() + geom_line(linetype = &quot;dotted&quot;) + ylab(&quot;deaths&quot;) +
+  facet_grid(~v.eff) + ggtitle(&quot;Deaths per 100k in each age and risk group by vaccine efficacy&quot;)</code></pre>
+<p><img src="figs-sa_files/figure-html/unnamed-chunk-8-3.png" /><!-- --></p>
+<pre class="r"><code>ggplot(vaxbase_df, aes(x = age, y = deaths.per100k, color = risk, group = risk)) + labs(color = &quot;Risk \ngroup&quot;) +
+  geom_point() + geom_line(linetype = &quot;dotted&quot;) + ylab(&quot;deaths&quot;) +
+  facet_grid(v.eff~risk) + ggtitle(&quot;Deaths per 100k in each age and risk group by vaccine efficacy&quot;)</code></pre>
+<p><img src="figs-sa_files/figure-html/unnamed-chunk-8-4.png" /><!-- --></p>
+</div>
+<div id="dalys-per-100k" class="section level2">
+<h2>DALYs per 100k</h2>
+<pre class="r"><code>ggplot(vaxbase_df_age, aes(x = age, y = dalys.per100k, color = v.eff, group = v.eff)) + geom_point() + geom_line(linetype = &quot;dotted&quot;) +
+  ggtitle(&quot;DALYs per 100k in each age group by vaccine efficacy&quot;)</code></pre>
+<p><img src="figs-sa_files/figure-html/unnamed-chunk-9-1.png" /><!-- --></p>
+<pre class="r"><code>ggplot(vaxbase_df_age, aes(x = age, y = dalys.per100k, color = v.eff, group = v.eff)) + labs(color = &quot;Vaccine \nefficacy&quot;) +
+  geom_point() + geom_line(linetype = &quot;dotted&quot;) + ylab(&quot;DALYs&quot;) +
+  facet_grid(~v.eff) + ggtitle(&quot;DALYs per 100k in each age group by vaccine efficacy&quot;)</code></pre>
+<p><img src="figs-sa_files/figure-html/unnamed-chunk-9-2.png" /><!-- --></p>
+<pre class="r"><code>ggplot(vaxbase_df, aes(x = age, y = dalys.per100k, color = risk, group = risk)) + labs(color = &quot;Risk \ngroup&quot;) +
+  geom_point() + geom_line(linetype = &quot;dotted&quot;) + ylab(&quot;DALYs&quot;) +
+  facet_grid(~v.eff) + ggtitle(&quot;DALYs per 100k in each age and risk group by vaccine efficacy&quot;)</code></pre>
+<p><img src="figs-sa_files/figure-html/unnamed-chunk-9-3.png" /><!-- --></p>
+<pre class="r"><code>ggplot(vaxbase_df, aes(x = age, y = dalys.per100k, color = risk, group = risk)) + labs(color = &quot;Risk \ngroup&quot;) +
+  geom_point() + geom_line(linetype = &quot;dotted&quot;) + ylab(&quot;DALYs&quot;) +
+  facet_grid(v.eff~risk) + ggtitle(&quot;DALYs per 100k in each age and risk group by vaccine efficacy&quot;)</code></pre>
+<p><img src="figs-sa_files/figure-html/unnamed-chunk-9-4.png" /><!-- --></p>
+</div>
+</div>
+<div id="vax-70-scenario" class="section level1">
+<h1>Vax 70% scenario</h1>
+<pre class="r"><code># subset vax70% data
+vax70_df &lt;- df3[(df3$scenario==&quot;vax70&quot;),]
+vax70_df_risk &lt;- risk_group_df[(risk_group_df$scenario==&quot;vax70&quot;),]
+vax70_df_age &lt;- age_group_df[(age_group_df$scenario==&quot;vax70&quot;),]</code></pre>
+<div id="cases-1" class="section level2">
+<h2>Cases</h2>
+<pre class="r"><code>ggplot(vax70_df_age, aes(x = age, y = cases, color = v.eff, group = v.eff)) + geom_point() + geom_line(linetype = &quot;dotted&quot;) +
+  ggtitle(&quot;Number of cases in each age group by vaccine efficacy&quot;)</code></pre>
+<p><img src="figs-sa_files/figure-html/unnamed-chunk-11-1.png" /><!-- --></p>
+<pre class="r"><code>ggplot(vax70_df_age, aes(x = age, y = cases, color = v.eff, group = v.eff)) + labs(color = &quot;Vaccine \nefficacy&quot;) +
+  geom_point() + geom_line(linetype = &quot;dotted&quot;) + ylab(&quot;cases&quot;) +
+  facet_grid(~v.eff) + ggtitle(&quot;Number of cases in each age group by vaccine efficacy&quot;)</code></pre>
+<p><img src="figs-sa_files/figure-html/unnamed-chunk-11-2.png" /><!-- --></p>
+<pre class="r"><code>ggplot(vax70_df, aes(x = age, y = cases, color = risk, group = risk)) + labs(color = &quot;Risk \ngroup&quot;) +
+  geom_point() + geom_line(linetype = &quot;dotted&quot;) + ylab(&quot;cases&quot;) +
+  facet_grid(~v.eff) + ggtitle(&quot;Number of cases in each age and risk group by vaccine efficacy&quot;)</code></pre>
+<p><img src="figs-sa_files/figure-html/unnamed-chunk-11-3.png" /><!-- --></p>
+<pre class="r"><code>ggplot(vax70_df, aes(x = age, y = cases, color = risk, group = risk)) + labs(color = &quot;Risk \ngroup&quot;) +
+  geom_point() + geom_line(linetype = &quot;dotted&quot;) + ylab(&quot;cases&quot;) +
+  facet_grid(v.eff~risk) + ggtitle(&quot;Number of cases in each age and risk group by vaccine efficacy&quot;)</code></pre>
+<p><img src="figs-sa_files/figure-html/unnamed-chunk-11-4.png" /><!-- --></p>
+</div>
+<div id="deaths-per-100k-1" class="section level2">
+<h2>Deaths per 100k</h2>
+<pre class="r"><code>ggplot(vax70_df_age, aes(x = age, y = deaths.per100k, color = v.eff, group = v.eff)) + geom_point() + geom_line(linetype = &quot;dotted&quot;) +
+  ggtitle(&quot;Deaths per 100k in each age group by vaccine efficacy&quot;)</code></pre>
+<p><img src="figs-sa_files/figure-html/unnamed-chunk-12-1.png" /><!-- --></p>
+<pre class="r"><code>ggplot(vax70_df_age, aes(x = age, y = deaths.per100k, color = v.eff, group = v.eff)) + labs(color = &quot;Vaccine \nefficacy&quot;) +
+  geom_point() + geom_line(linetype = &quot;dotted&quot;) + ylab(&quot;deaths&quot;) +
+  facet_grid(~v.eff) + ggtitle(&quot;Deaths per 100k in each age group by vaccine efficacy&quot;)</code></pre>
+<p><img src="figs-sa_files/figure-html/unnamed-chunk-12-2.png" /><!-- --></p>
+<pre class="r"><code>ggplot(vax70_df, aes(x = age, y = deaths.per100k, color = risk, group = risk)) + labs(color = &quot;Risk \ngroup&quot;) +
+  geom_point() + geom_line(linetype = &quot;dotted&quot;) + ylab(&quot;deaths&quot;) +
+  facet_grid(~v.eff) + ggtitle(&quot;Deaths per 100k in each age and risk group by vaccine efficacy&quot;)</code></pre>
+<p><img src="figs-sa_files/figure-html/unnamed-chunk-12-3.png" /><!-- --></p>
+<pre class="r"><code>ggplot(vax70_df, aes(x = age, y = deaths.per100k, color = risk, group = risk)) + labs(color = &quot;Risk \ngroup&quot;) +
+  geom_point() + geom_line(linetype = &quot;dotted&quot;) + ylab(&quot;deaths&quot;) +
+  facet_grid(v.eff~risk) + ggtitle(&quot;Deaths per 100k in each age and risk group by vaccine efficacy&quot;)</code></pre>
+<p><img src="figs-sa_files/figure-html/unnamed-chunk-12-4.png" /><!-- --></p>
+</div>
+</div>
+<div id="dalys-per-100k-1" class="section level1">
+<h1>DALYs per 100k</h1>
+<pre class="r"><code>ggplot(vax70_df_age, aes(x = age, y = dalys.per100k, color = v.eff, group = v.eff)) + geom_point() + geom_line(linetype = &quot;dotted&quot;) +
+  ggtitle(&quot;DALYs per 100k in each age group by vaccine efficacy&quot;)</code></pre>
+<p><img src="figs-sa_files/figure-html/unnamed-chunk-13-1.png" /><!-- --></p>
+<pre class="r"><code>ggplot(vax70_df_age, aes(x = age, y = dalys.per100k, color = v.eff, group = v.eff)) + labs(color = &quot;Vaccine \nefficacy&quot;) +
+  geom_point() + geom_line(linetype = &quot;dotted&quot;) + ylab(&quot;DALYs&quot;) +
+  facet_grid(~v.eff) + ggtitle(&quot;DALYs per 100k in each age group by vaccine efficacy&quot;)</code></pre>
+<p><img src="figs-sa_files/figure-html/unnamed-chunk-13-2.png" /><!-- --></p>
+<pre class="r"><code>ggplot(vax70_df, aes(x = age, y = dalys.per100k, color = risk, group = risk)) + labs(color = &quot;Risk \ngroup&quot;) +
+  geom_point() + geom_line(linetype = &quot;dotted&quot;) + ylab(&quot;DALYs&quot;) +
+  facet_grid(~v.eff) + ggtitle(&quot;DALYs per 100k in each age and risk group by vaccine efficacy&quot;)</code></pre>
+<p><img src="figs-sa_files/figure-html/unnamed-chunk-13-3.png" /><!-- --></p>
+<pre class="r"><code>ggplot(vax70_df, aes(x = age, y = dalys.per100k, color = risk, group = risk)) + labs(color = &quot;Risk \ngroup&quot;) +
+  geom_point() + geom_line(linetype = &quot;dotted&quot;) + ylab(&quot;DALYs&quot;) +
+  facet_grid(v.eff~risk) + ggtitle(&quot;DALYs per 100k in each age and risk group by vaccine efficacy&quot;)</code></pre>
+<p><img src="figs-sa_files/figure-html/unnamed-chunk-13-4.png" /><!-- --></p>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
