@@ -209,10 +209,14 @@ calc_daly <- function(cases, deaths, yll){
 
 # DALYs (high, low, all)
 ```{r}
-(daly_04 <- calc_daly(cases_04, deaths_04, yll_04))
-(daly_519 <- calc_daly(cases_519, deaths_519, yll_519))
-(daly_2064 <- calc_daly(cases_2064, deaths_2064, yll_2064))
-(daly_65 <- calc_daly(cases_65, deaths_65, yll_65))
+daly_04 <- calc_daly(cases_04, deaths_04, yll_04)
+daly_04[1]; daly_04[2]; daly_04[3]
+daly_519 <- calc_daly(cases_519, deaths_519, yll_519)
+daly_519[1]; daly_519[2]; daly_519[3]
+daly_2064 <- calc_daly(cases_2064, deaths_2064, yll_2064)
+daly_2064[1]; daly_2064[2]; daly_2064[3]
+daly_65 <- calc_daly(cases_65, deaths_65, yll_65)
+daly_65[1]; daly_65[2]; daly_65[3]
 ```
 
 # Total DALYs in scenario (high, low, all)
@@ -226,14 +230,17 @@ calc_daly <- function(cases, deaths, yll){
 # DALYs averted (high, low, all)
 ```{r}
 source("input/input_base.R")
-
-(daly_avert_04 <- (daly_b_04 - daly_04))
-(daly_avert_519 <- (daly_b_519 - daly_519))
-(daly_avert_2064 <- (daly_b_2064 - daly_2064))
-(daly_avert_65 <- (daly_b_65 - daly_65))
+daly_avert_04 <- (daly_b_04 - daly_04)
+daly_avert_04[1]; daly_avert_04[2]; daly_avert_04[3]
+daly_avert_519 <- (daly_b_519 - daly_519)
+daly_avert_519[1]; daly_avert_519[2]; daly_avert_519[3]
+daly_avert_2064 <- (daly_b_2064 - daly_2064)
+daly_avert_2064[1]; daly_avert_2064[2]; daly_avert_2064[3]
+daly_avert_65 <- (daly_b_65 - daly_65)
+daly_avert_65[1]; daly_avert_65[2]; daly_avert_65[3]
 ```
 
-## Total DALYs averted in scenario
+## Total DALYs averted in scenario (high, low, all)
 ```{r}
 (hr_dalyavert <- daly_avert_04[1] + daly_avert_519[1] + daly_avert_2064[1] + daly_avert_65[1])
 (lr_dalyavert <- daly_avert_04[2] + daly_avert_519[2] + daly_avert_2064[2] + daly_avert_65[2])
@@ -248,9 +255,10 @@ icer_2064_high[1] / daly_avert_2064[1]; icer_2064_low[1] / daly_avert_2064[2]; c
 icer_65_high[1] / daly_avert_65[1]; icer_65_low[1] / daly_avert_65[2]; cost_diff_65 / daly_avert_65[3]
 ```
 
-# ICER per DALY averted in scenario
+# ICER per DALY averted in scenario (high, low, all)
 ```{r}
 (hr_icerdaly <- hr_costdiff / hr_dalyavert)
 (lr_icerdaly <- lr_costdiff / lr_dalyavert)
 (total_icer_daly <- total_cost_difference / total_dalys_averted)
 ```
+

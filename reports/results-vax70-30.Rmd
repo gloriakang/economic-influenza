@@ -1,5 +1,5 @@
 ---
-title: "vaxbase70 30%"
+title: "vax70 30%"
 output:
   html_notebook: 
     code_folding: hide
@@ -26,23 +26,10 @@ library(knitr)
 # load RData
 #load("output/base.RData")
 
-#load("output/vaxbase_10.RData")
-#load("output/vaxbase_20.RData")
-#load("output/vaxbase_30.RData")
-#load("output/vaxbase_40.RData")
-#load("output/vaxbase_50.RData")
-#load("output/vaxbase_60.RData")
-
-#load("output/vax70_10.RData")
-#load("output/vax70_20.RData")
 load("output/vax70_30.RData")
-#load("output/vax70_40.RData")
-#load("output/vax70_50.RData")
-#load("output/vax70_60.RData")
 
-rm(b_cases, cc_intv, cc_base, costs, num_cases, num_outcomes_base, num_outcomes_intv, pop, prob, r_cost, risk_group, vax_comp_i)
+#rm(b_cases, cc_intv, cc_base, costs, num_cases, num_outcomes_base, num_outcomes_intv, pop, prob, r_cost, risk_group, vax_comp_i)
 ```
-
 
 # Clinical costs in age group (high, low, all)
 ```{r}
@@ -58,7 +45,6 @@ costs_65_high; costs_65_low; (costs_65 <- costs_65_high + costs_65_low)
 (lr_cc <- costs_04_low + costs_519_low + costs_2064_low + costs_65_low)
 (total_clinical_costs <- hr_cc + lr_cc)
 ```
-
 
 # Number of cases in age group (high, low, all)
 ```{r}
@@ -80,7 +66,6 @@ cases_65_high; cases_65_low; cases_65_high + cases_65_low
 (i_cases <- hr_cases + lr_cases)
 ```
 
-
 # Cost difference in age group (high, low, all)
 ```{r}
 icer_04_high[1]; icer_04_low[1]; (cost_diff_04 <- icer_04_high[1] + icer_04_low[1])
@@ -95,7 +80,6 @@ icer_65_high[1]; icer_65_low[1]; (cost_diff_65 <- icer_65_high[1] + icer_65_low[
 (lr_costdiff <- icer_04_low[1] + icer_519_low[1] + icer_2064_low[1] + icer_65_low[1])
 (total_cost_difference <- cost_diff_04 + cost_diff_519 + cost_diff_2064 + cost_diff_65)
 ```
-
 
 # Cases averted in age group (high, low, all)
 ```{r}
@@ -112,7 +96,6 @@ icer_65_high[2]; icer_65_low[2]; (case_avert_65 <- icer_65_high[2] + icer_65_low
 (total_cases_averted <- case_avert_04 + case_avert_519 + case_avert_2064 + case_avert_65)
 ```
 
-
 # ICER per case averted in age group (high, low, all)
 ```{r}
 icer_04_high[3]; icer_04_low[3]; (icer_04_high[1] + icer_04_low[1]) / (icer_04_high[2] + icer_04_low[2])
@@ -127,7 +110,6 @@ icer_65_high[3]; icer_65_low[3]; (icer_65_high[1] + icer_65_low[1]) / (icer_65_h
 (lr_icercase <- lr_costdiff / lr_caseavert)
 (total_icer_case <- total_cost_difference / total_cases_averted)
 ```
-
 
 # Deaths in age group (high, low, all)
 ```{r}
@@ -149,7 +131,6 @@ deaths_65_high[3]; deaths_65_low[3]; deaths_65_high[3] + deaths_65_low[3]
 (total_deaths <- hr_deaths + lr_deaths)
 ```
 
-
 # Deaths averted (high, low, all)
 ```{r}
 deaths_04_high[1]; deaths_04_low[1]; (death_avert_04 <- deaths_04_high[1] + deaths_04_low[1])
@@ -165,7 +146,6 @@ deaths_65_high[1]; deaths_65_low[1]; (death_avert_65 <- deaths_65_high[1] + deat
 (total_deaths_averted <- death_avert_04 + death_avert_519 + death_avert_2064 + death_avert_65)
 ```
 
-
 # ICER per death averted (high, low, all)
 ```{r}
 deaths_04_high[2]; deaths_04_low[2]; (icer_04_high[1] + icer_04_low[1]) / (deaths_04_high[1] + deaths_04_low[1])
@@ -180,7 +160,6 @@ deaths_65_high[2]; deaths_65_low[2]; (icer_65_high[1] + icer_65_low[1]) / (death
 (lr_icerdeath <- lr_costdiff / lr_deathavert)
 (total_icer_death <- total_cost_difference / total_deaths_averted)
 ```
-
 
 # Other health outcomes
 ```{r}
@@ -209,10 +188,14 @@ calc_daly <- function(cases, deaths, yll){
 
 # DALYs (high, low, all)
 ```{r}
-(daly_04 <- calc_daly(cases_04, deaths_04, yll_04))
-(daly_519 <- calc_daly(cases_519, deaths_519, yll_519))
-(daly_2064 <- calc_daly(cases_2064, deaths_2064, yll_2064))
-(daly_65 <- calc_daly(cases_65, deaths_65, yll_65))
+daly_04 <- calc_daly(cases_04, deaths_04, yll_04)
+daly_04[1]; daly_04[2]; daly_04[3]
+daly_519 <- calc_daly(cases_519, deaths_519, yll_519)
+daly_519[1]; daly_519[2]; daly_519[3]
+daly_2064 <- calc_daly(cases_2064, deaths_2064, yll_2064)
+daly_2064[1]; daly_2064[2]; daly_2064[3]
+daly_65 <- calc_daly(cases_65, deaths_65, yll_65)
+daly_65[1]; daly_65[2]; daly_65[3]
 ```
 
 # Total DALYs in scenario (high, low, all)
@@ -222,18 +205,20 @@ calc_daly <- function(cases, deaths, yll){
 (total_dalys <- daly_04[3] + daly_519[3] + daly_2064[3] + daly_65[3])
 ```
 
-
 # DALYs averted (high, low, all)
 ```{r}
 source("input/input_base.R")
-
-(daly_avert_04 <- (daly_b_04 - daly_04))
-(daly_avert_519 <- (daly_b_519 - daly_519))
-(daly_avert_2064 <- (daly_b_2064 - daly_2064))
-(daly_avert_65 <- (daly_b_65 - daly_65))
+daly_avert_04 <- (daly_b_04 - daly_04)
+daly_avert_04[1]; daly_avert_04[2]; daly_avert_04[3]
+daly_avert_519 <- (daly_b_519 - daly_519)
+daly_avert_519[1]; daly_avert_519[2]; daly_avert_519[3]
+daly_avert_2064 <- (daly_b_2064 - daly_2064)
+daly_avert_2064[1]; daly_avert_2064[2]; daly_avert_2064[3]
+daly_avert_65 <- (daly_b_65 - daly_65)
+daly_avert_65[1]; daly_avert_65[2]; daly_avert_65[3]
 ```
 
-## Total DALYs averted in scenario
+## Total DALYs averted in scenario (high, low, all)
 ```{r}
 (hr_dalyavert <- daly_avert_04[1] + daly_avert_519[1] + daly_avert_2064[1] + daly_avert_65[1])
 (lr_dalyavert <- daly_avert_04[2] + daly_avert_519[2] + daly_avert_2064[2] + daly_avert_65[2])
@@ -248,7 +233,7 @@ icer_2064_high[1] / daly_avert_2064[1]; icer_2064_low[1] / daly_avert_2064[2]; c
 icer_65_high[1] / daly_avert_65[1]; icer_65_low[1] / daly_avert_65[2]; cost_diff_65 / daly_avert_65[3]
 ```
 
-# ICER per DALY averted in scenario
+# ICER per DALY averted in scenario (high, low, all)
 ```{r}
 (hr_icerdaly <- hr_costdiff / hr_dalyavert)
 (lr_icerdaly <- lr_costdiff / lr_dalyavert)

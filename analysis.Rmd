@@ -29,7 +29,7 @@ source("input/input_base.R")
 
 ```{r}
 ## base vaccination
-source("input/input_vaxbase_10.R")
+#source("input/input_vaxbase_10.R")
 #source("input/input_vaxbase_20.R")
 #source("input/input_vaxbase_30.R")
 #source("input/input_vaxbase_40.R")
@@ -39,7 +39,7 @@ source("input/input_vaxbase_10.R")
 ## 70% vaccination
 #source("input/input_70_10.R")
 #source("input/input_70_20.R")
-#source("input/input_70_30.R")
+source("input/input_70_30.R")
 #source("input/input_70_40.R")
 #source("input/input_70_50.R")
 #source("input/input_70_60.R")
@@ -59,7 +59,7 @@ rm(b_cases, cc_intv, cc_base, costs, num_cases, num_outcomes_base, num_outcomes_
 
 #save.image(file = "output/vax70_10.RData")
 #save.image(file = "output/vax70_20.RData")
-#save.image(file = "output/vax70_30.RData")
+save.image(file = "output/vax70_30.RData")
 #save.image(file = "output/vax70_40.RData")
 #save.image(file = "output/vax70_50.RData")
 #save.image(file = "output/vax70_60.RData")

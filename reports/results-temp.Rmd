@@ -1,5 +1,5 @@
 ---
-title: "results-temp"
+title: "results-temp-2"
 output:
   html_notebook: 
     code_folding: hide
@@ -26,7 +26,7 @@ library(knitr)
 # load RData
 #load("output/base.RData")
 
-#load("output/vaxbase_10.RData")
+load("output/vaxbase_10.RData")
 #load("output/vaxbase_20.RData")
 #load("output/vaxbase_30.RData")
 #load("output/vaxbase_40.RData")
@@ -40,7 +40,7 @@ library(knitr)
 #load("output/vax70_50.RData")
 #load("output/vax70_60.RData")
 
-rm(b_cases, cc_intv, cc_base, costs, num_cases, num_outcomes_base, num_outcomes_intv, pop, prob, r_cost, risk_group, vax_comp_i)
+#rm(b_cases, cc_intv, cc_base, costs, num_cases, num_outcomes_base, num_outcomes_intv, pop, prob, r_cost, risk_group, vax_comp_i)
 ```
 
 
