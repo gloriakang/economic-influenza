@@ -1,0 +1,121 @@
+"","scenario","age","v.eff","metric","High","Non-high","All"
+"1","vaxbase","0-4 yrs","10","cases.averted.per100k",5034.12,5034.11,5034.11
+"2","vaxbase","5-19 yrs","10","cases.averted.per100k",8014.99,8014.96,8014.98
+"3","vaxbase","20-64 yrs","10","cases.averted.per100k",3811.35,3811.35,3811.35
+"4","vaxbase","65+ yrs","10","cases.averted.per100k",3583.69,3583.68,3583.69
+"5","vaxbase","All","10","cases.averted.per100k",4098.46,4764.92,4660.26
+"6","vaxbase","0-4 yrs","10","dalys.averted.per100k",2540.04,57.81,216.68
+"7","vaxbase","5-19 yrs","10","dalys.averted.per100k",3534.57,81.33,302.34
+"8","vaxbase","20-64 yrs","10","dalys.averted.per100k",1918.65,48.6,317.89
+"9","vaxbase","65+ yrs","10","dalys.averted.per100k",1352.41,180.65,780.59
+"10","vaxbase","All","10","dalys.averted.per100k",1891.72,63.02,350.23
+"11","vaxbase","0-4 yrs","10","deaths.averted.per100k",32.75,0.68,2.74
+"12","vaxbase","5-19 yrs","10","deaths.averted.per100k",52.25,1.09,4.36
+"13","vaxbase","20-64 yrs","10","deaths.averted.per100k",49.23,1.15,8.08
+"14","vaxbase","65+ yrs","10","deaths.averted.per100k",94.33,12.39,54.34
+"15","vaxbase","All","10","deaths.averted.per100k",62.33,1.69,11.22
+"16","vaxbase","0-4 yrs","20","cases.averted.per100k",10041.65,10041.64,10041.64
+"17","vaxbase","5-19 yrs","20","cases.averted.per100k",16549.91,16549.9,16549.91
+"18","vaxbase","20-64 yrs","20","cases.averted.per100k",7762.62,7762.62,7762.62
+"19","vaxbase","65+ yrs","20","cases.averted.per100k",7037.03,7037.03,7037.03
+"20","vaxbase","All","20","cases.averted.per100k",8281.64,9722.67,9496.35
+"21","vaxbase","0-4 yrs","20","dalys.averted.per100k",5066.67,115.32,432.21
+"22","vaxbase","5-19 yrs","20","dalys.averted.per100k",7298.43,167.94,624.29
+"23","vaxbase","20-64 yrs","20","dalys.averted.per100k",3907.73,98.99,647.45
+"24","vaxbase","65+ yrs","20","dalys.averted.per100k",2655.62,354.73,1532.79
+"25","vaxbase","All","20","dalys.averted.per100k",3828.46,127.96,709.16
+"26","vaxbase","0-4 yrs","20","deaths.averted.per100k",65.33,1.36,5.46
+"27","vaxbase","5-19 yrs","20","deaths.averted.per100k",107.89,2.25,9.01
+"28","vaxbase","20-64 yrs","20","deaths.averted.per100k",100.26,2.35,16.45
+"29","vaxbase","65+ yrs","20","deaths.averted.per100k",185.23,24.33,106.71
+"30","vaxbase","All","20","deaths.averted.per100k",125,3.41,22.51
+"31","vaxbase","0-4 yrs","30","cases.averted.per100k",14953.79,14953.79,14953.79
+"32","vaxbase","5-19 yrs","30","cases.averted.per100k",25443.07,25443.06,25443.07
+"33","vaxbase","20-64 yrs","30","cases.averted.per100k",11795.2,11795.2,11795.2
+"34","vaxbase","65+ yrs","30","cases.averted.per100k",10359.22,10359.22,10359.22
+"35","vaxbase","All","30","cases.averted.per100k",12499.89,14795.46,14434.92
+"36","vaxbase","0-4 yrs","30","dalys.averted.per100k",7545.17,171.73,643.63
+"37","vaxbase","5-19 yrs","30","dalys.averted.per100k",11220.27,258.19,959.76
+"38","vaxbase","20-64 yrs","30","dalys.averted.per100k",5937.75,150.41,983.79
+"39","vaxbase","65+ yrs","30","dalys.averted.per100k",3909.34,522.2,2256.42
+"40","vaxbase","All","30","dalys.averted.per100k",5786.01,193.93,1072.21
+"41","vaxbase","0-4 yrs","30","deaths.averted.per100k",97.29,2.03,8.13
+"42","vaxbase","5-19 yrs","30","deaths.averted.per100k",165.86,3.46,13.85
+"43","vaxbase","20-64 yrs","30","deaths.averted.per100k",152.34,3.57,24.99
+"44","vaxbase","65+ yrs","30","deaths.averted.per100k",272.67,35.81,157.08
+"45","vaxbase","All","30","deaths.averted.per100k",187.43,5.12,33.76
+"46","vaxbase","0-4 yrs","40","cases.averted.per100k",19755.86,19755.86,19755.86
+"47","vaxbase","5-19 yrs","40","cases.averted.per100k",34878.24,34878.22,34878.22
+"48","vaxbase","20-64 yrs","40","cases.averted.per100k",15974.71,15974.71,15974.71
+"49","vaxbase","65+ yrs","40","cases.averted.per100k",13486.38,13486.39,13486.39
+"50","vaxbase","All","40","cases.averted.per100k",16787.45,20060.88,19546.76
+"51","vaxbase","0-4 yrs","40","dalys.averted.per100k",9968.13,226.88,850.32
+"52","vaxbase","5-19 yrs","40","dalys.averted.per100k",15381.13,353.93,1315.67
+"53","vaxbase","20-64 yrs","40","dalys.averted.per100k",8041.74,203.71,1332.39
+"54","vaxbase","65+ yrs","40","dalys.averted.per100k",5089.47,679.84,2937.57
+"55","vaxbase","All","40","dalys.averted.per100k",7783.13,261.68,1442.99
+"56","vaxbase","0-4 yrs","40","deaths.averted.per100k",128.54,2.68,10.74
+"57","vaxbase","5-19 yrs","40","deaths.averted.per100k",227.36,4.74,18.99
+"58","vaxbase","20-64 yrs","40","deaths.averted.per100k",206.33,4.84,33.85
+"59","vaxbase","65+ yrs","40","deaths.averted.per100k",354.98,46.62,204.5
+"60","vaxbase","All","40","deaths.averted.per100k",249.75,6.85,45
+"61","vaxbase","0-4 yrs","50","cases.averted.per100k",33185.56,33185.55,33185.56
+"62","vaxbase","5-19 yrs","50","cases.averted.per100k",65626.66,65626.64,65626.65
+"63","vaxbase","20-64 yrs","50","cases.averted.per100k",30682.76,30682.76,30682.76
+"64","vaxbase","65+ yrs","50","cases.averted.per100k",22212.94,22212.94,22212.94
+"65","vaxbase","All","50","cases.averted.per100k",30922.5,37706.31,36640.84
+"66","vaxbase","0-4 yrs","50","dalys.averted.per100k",16744.29,381.11,1428.35
+"67","vaxbase","5-19 yrs","50","dalys.averted.per100k",28941.04,665.95,2475.56
+"68","vaxbase","20-64 yrs","50","dalys.averted.per100k",15445.83,391.27,2559.13
+"69","vaxbase","65+ yrs","50","dalys.averted.per100k",8382.68,1119.74,4838.36
+"70","vaxbase","All","50","dalys.averted.per100k",14427.67,485.99,2675.65
+"71","vaxbase","0-4 yrs","50","deaths.averted.per100k",215.92,4.5,18.03
+"72","vaxbase","5-19 yrs","50","deaths.averted.per100k",427.81,8.92,35.72
+"73","vaxbase","20-64 yrs","50","deaths.averted.per100k",396.29,9.29,65.02
+"74","vaxbase","65+ yrs","50","deaths.averted.per100k",584.68,76.78,336.83
+"75","vaxbase","All","50","deaths.averted.per100k",449.5,12.4,81.05
+"76","vax70","0-4 yrs","10","cases.averted.per100k",7661.48,7661.48,7661.48
+"77","vax70","5-19 yrs","10","cases.averted.per100k",11866.27,11866.26,11866.27
+"78","vax70","20-64 yrs","10","cases.averted.per100k",7006.57,7006.57,7006.57
+"79","vax70","65+ yrs","10","cases.averted.per100k",5374.17,5374.17,5374.17
+"80","vax70","All","10","cases.averted.per100k",6913.93,7981.87,7814.14
+"81","vax70","0-4 yrs","10","dalys.averted.per100k",3865.72,87.99,329.76
+"82","vax70","5-19 yrs","10","dalys.averted.per100k",5232.96,120.41,447.62
+"83","vax70","20-64 yrs","10","dalys.averted.per100k",3527.14,89.35,584.39
+"84","vax70","65+ yrs","10","dalys.averted.per100k",2028.1,270.91,1170.59
+"85","vax70","All","10","dalys.averted.per100k",3224.11,105.25,595.09
+"86","vax70","0-4 yrs","10","deaths.averted.per100k",49.85,1.04,4.16
+"87","vax70","5-19 yrs","10","deaths.averted.per100k",77.35,1.61,6.46
+"88","vax70","20-64 yrs","10","deaths.averted.per100k",90.5,2.12,14.85
+"89","vax70","65+ yrs","10","deaths.averted.per100k",141.46,18.58,81.49
+"90","vax70","All","10","deaths.averted.per100k",103.45,2.8,18.61
+"91","vax70","0-4 yrs","20","cases.averted.per100k",15371.04,15371.04,15371.04
+"92","vax70","5-19 yrs","20","cases.averted.per100k",25151,25150.98,25150.99
+"93","vax70","20-64 yrs","20","cases.averted.per100k",14046.48,14046.48,14046.48
+"94","vax70","65+ yrs","20","cases.averted.per100k",10576.31,10576.31,10576.31
+"95","vax70","All","20","cases.averted.per100k",13906.93,16276.17,15904.06
+"96","vax70","0-4 yrs","20","dalys.averted.per100k",7755.7,176.52,661.59
+"97","vax70","5-19 yrs","20","dalys.averted.per100k",11091.46,255.22,948.74
+"98","vax70","20-64 yrs","20","dalys.averted.per100k",7071.05,179.12,1171.56
+"99","vax70","65+ yrs","20","dalys.averted.per100k",3991.27,533.15,2303.7
+"100","vax70","All","20","dalys.averted.per100k",6487.66,213.36,1198.79
+"101","vax70","0-4 yrs","20","deaths.averted.per100k",100.01,2.09,8.35
+"102","vax70","5-19 yrs","20","deaths.averted.per100k",163.95,3.42,13.69
+"103","vax70","20-64 yrs","20","deaths.averted.per100k",181.42,4.25,29.76
+"104","vax70","65+ yrs","20","deaths.averted.per100k",278.39,36.56,160.37
+"105","vax70","All","20","deaths.averted.per100k",206.54,5.61,37.17
+"106","vax70","0-4 yrs","30","cases.averted.per100k",33185.56,33185.55,33185.56
+"107","vax70","5-19 yrs","30","cases.averted.per100k",65626.66,65626.64,65626.65
+"108","vax70","20-64 yrs","30","cases.averted.per100k",30682.76,30682.76,30682.76
+"109","vax70","65+ yrs","30","cases.averted.per100k",22212.94,22212.94,22212.94
+"110","vax70","All","30","cases.averted.per100k",30922.51,37706.29,36640.85
+"111","vax70","0-4 yrs","30","dalys.averted.per100k",16744.29,381.11,1428.35
+"112","vax70","5-19 yrs","30","dalys.averted.per100k",28941.04,665.95,2475.56
+"113","vax70","20-64 yrs","30","dalys.averted.per100k",15445.83,391.27,2559.13
+"114","vax70","65+ yrs","30","dalys.averted.per100k",8382.68,1119.74,4838.36
+"115","vax70","All","30","dalys.averted.per100k",14427.67,485.99,2675.65
+"116","vax70","0-4 yrs","30","deaths.averted.per100k",215.92,4.5,18.03
+"117","vax70","5-19 yrs","30","deaths.averted.per100k",427.81,8.92,35.72
+"118","vax70","20-64 yrs","30","deaths.averted.per100k",396.29,9.29,65.02
+"119","vax70","65+ yrs","30","deaths.averted.per100k",584.68,76.78,336.83
+"120","vax70","All","30","deaths.averted.per100k",449.5,12.4,81.05

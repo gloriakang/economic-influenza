@@ -1,0 +1,121 @@
+"","scenario","age","v.eff","icer","High","Non-high","All"
+"1","vaxbase","0-4 yrs","10","icer.case.averted",1230.87,2.86,81.45
+"2","vaxbase","5-19 yrs","10","icer.case.averted",2823.01,139.3,311.06
+"3","vaxbase","20-64 yrs","10","icer.case.averted",2147.21,187.54,469.73
+"4","vaxbase","65+ yrs","10","icer.case.averted",4757.78,373.85,2618.42
+"5","vaxbase","All","10","icer.case.averted",2892.18,163.75,540.61
+"6","vaxbase","0-4 yrs","10","icer.daly.averted",2439.47,248.94,1892.4
+"7","vaxbase","5-19 yrs","10","icer.daly.averted",6401.45,13727.63,8246.15
+"8","vaxbase","20-64 yrs","10","icer.daly.averted",4265.39,14706.21,5631.84
+"9","vaxbase","65+ yrs","10","icer.daly.averted",12607.45,7416.29,12021.17
+"10","vaxbase","All","10","icer.daly.averted",6265.99,12380.68,7193.46
+"11","vaxbase","0-4 yrs","10","icer.death.averted",189181.4,21061.69,149877.74
+"12","vaxbase","5-19 yrs","10","icer.death.averted",433058.6,1025455,571431.74
+"13","vaxbase","20-64 yrs","10","icer.death.averted",166246.5,619594.4,221677.89
+"14","vaxbase","65+ yrs","10","icer.death.averted",180755.1,108151.3,172678.15
+"15","vaxbase","All","10","icer.death.averted",190161.71,460361.83,224570.87
+"16","vaxbase","0-4 yrs","20","icer.case.averted",1375.46,147.45,226.04
+"17","vaxbase","5-19 yrs","20","icer.case.averted",2916.93,233.22,404.98
+"18","vaxbase","20-64 yrs","20","icer.case.averted",2273.35,313.67,595.86
+"19","vaxbase","65+ yrs","20","icer.case.averted",5004.68,620.76,2865.33
+"20","vaxbase","All","20","icer.case.averted",3027.86,284.26,660.05
+"21","vaxbase","0-4 yrs","20","icer.daly.averted",2726.03,12839.22,5251.71
+"22","vaxbase","5-19 yrs","20","icer.daly.averted",6614.42,22982.67,10735.86
+"23","vaxbase","20-64 yrs","20","icer.daly.averted",4515.95,24597.43,7144.12
+"24","vaxbase","65+ yrs","20","icer.daly.averted",13261.72,12314.28,13154.72
+"25","vaxbase","All","20","icer.daly.averted",6549.8,21597.99,8838.71
+"26","vaxbase","0-4 yrs","20","icer.death.averted",211404.3,1086271,415933.9
+"27","vaxbase","5-19 yrs","20","icer.death.averted",447465.7,1716806,743960.58
+"28","vaxbase","20-64 yrs","20","icer.death.averted",176012.3,1036326,281204.04
+"29","vaxbase","65+ yrs","20","icer.death.averted",190135.4,179578.5,188960.95
+"30","vaxbase","All","20","icer.death.averted",200611.77,810786.13,278517.36
+"31","vaxbase","0-4 yrs","30","icer.case.averted",1423.21,195.2,273.79
+"32","vaxbase","5-19 yrs","30","icer.case.averted",2947.75,264.05,435.8
+"33","vaxbase","20-64 yrs","30","icer.case.averted",2314.94,355.27,637.46
+"34","vaxbase","65+ yrs","30","icer.case.averted",5086.85,702.93,2947.5
+"35","vaxbase","All","30","icer.case.averted",3063.21,323.53,696.14
+"36","vaxbase","0-4 yrs","30","icer.daly.averted",2820.66,16996.93,6361.06
+"37","vaxbase","5-19 yrs","30","icer.daly.averted",6684.32,26020.53,11553.08
+"38","vaxbase","20-64 yrs","30","icer.daly.averted",4598.58,27859.34,7642.84
+"39","vaxbase","65+ yrs","30","icer.daly.averted",13479.46,13944.35,13531.96
+"40","vaxbase","All","30","icer.daly.averted",6617.64,24683.29,9371.97
+"41","vaxbase","0-4 yrs","30","icer.death.averted",218743.1,1438037,503793.98
+"42","vaxbase","5-19 yrs","30","icer.death.averted",452194.6,1943734,800591.2
+"43","vaxbase","20-64 yrs","30","icer.death.averted",179232.9,1173755,300834.38
+"44","vaxbase","65+ yrs","30","icer.death.averted",193257.1,203349.7,194379.9
+"45","vaxbase","All","30","icer.death.averted",204285.21,934107.56,297674.13
+"46","vaxbase","0-4 yrs","40","icer.case.averted",1446.93,218.92,297.51
+"47","vaxbase","5-19 yrs","40","icer.case.averted",2963.27,279.57,451.32
+"48","vaxbase","20-64 yrs","40","icer.case.averted",2335.89,376.21,658.41
+"49","vaxbase","65+ yrs","40","icer.case.averted",5127.21,743.29,2987.86
+"50","vaxbase","All","40","icer.case.averted",3069.72,342.83,710.65
+"51","vaxbase","0-4 yrs","40","icer.daly.averted",2867.68,19062.88,6912.29
+"52","vaxbase","5-19 yrs","40","icer.daly.averted",6719.51,27549.86,11964.49
+"53","vaxbase","20-64 yrs","40","icer.daly.averted",4640.19,29502.16,7894.02
+"54","vaxbase","65+ yrs","40","icer.daly.averted",13586.4,14744.97,13717.25
+"55","vaxbase","All","40","icer.daly.averted",6621.08,26281.83,9626.54
+"56","vaxbase","0-4 yrs","40","icer.death.averted",222389.7,1612828,547451.56
+"57","vaxbase","5-19 yrs","40","icer.death.averted",454575.3,2057975,829100.15
+"58","vaxbase","20-64 yrs","40","icer.death.averted",180854.9,1242969,310720.98
+"59","vaxbase","65+ yrs","40","icer.death.averted",194790.4,215025.1,197041.46
+"60","vaxbase","All","40","icer.death.averted",206339.97,1004194.54,308702.69
+"61","vaxbase","0-4 yrs","50","icer.case.averted",1476.83,248.82,327.41
+"62","vaxbase","5-19 yrs","50","icer.case.averted",2982.88,299.17,470.93
+"63","vaxbase","20-64 yrs","50","icer.case.averted",2364.23,404.56,686.75
+"64","vaxbase","65+ yrs","50","icer.case.averted",5179.74,795.81,3040.38
+"65","vaxbase","All","50","icer.case.averted",3036.36,368.41,722.04
+"66","vaxbase","0-4 yrs","50","icer.daly.averted",2926.94,21666.4,7606.95
+"67","vaxbase","5-19 yrs","50","icer.daly.averted",6763.98,29482.12,12484.28
+"68","vaxbase","20-64 yrs","50","icer.daly.averted",4696.49,31724.6,8233.81
+"69","vaxbase","65+ yrs","50","icer.daly.averted",13725.58,15786.9,13958.38
+"70","vaxbase","All","50","icer.daly.averted",6507.76,28583.73,9887.77
+"71","vaxbase","0-4 yrs","50","icer.death.averted",226985.1,1833101,602468.8
+"72","vaxbase","5-19 yrs","50","icer.death.averted",457583.2,2202314,865120.8
+"73","vaxbase","20-64 yrs","50","icer.death.averted",183049.2,1336604,324095.7
+"74","vaxbase","65+ yrs","50","icer.death.averted",196785.9,230219.6,200505.2
+"75","vaxbase","All","50","icer.death.averted",208879.6,1120289,326416.5
+"76","vax70","0-4 yrs","10","icer.case.averted",1259.33,31.31,109.91
+"77","vax70","5-19 yrs","10","icer.case.averted",2836.29,152.58,324.34
+"78","vax70","20-64 yrs","10","icer.case.averted",2109.08,149.41,431.6
+"79","vax70","65+ yrs","10","icer.case.averted",4888.13,504.2,2748.77
+"80","vax70","All","10","icer.case.averted",2817.17,154.65,524.65
+"81","vax70","0-4 yrs","10","icer.daly.averted",2495.86,2726.77,2553.53
+"82","vax70","5-19 yrs","10","icer.daly.averted",6431.57,15036.31,8598.2
+"83","vax70","20-64 yrs","10","icer.daly.averted",4189.64,11716.12,5174.67
+"84","vax70","65+ yrs","10","icer.daly.averted",12952.85,10002.05,12619.6
+"85","vax70","All","10","icer.daly.averted",6041.27,11729.04,6889.2
+"86","vax70","0-4 yrs","10","icer.death.averted",193555,230699.8,202238.86
+"87","vax70","5-19 yrs","10","icer.death.averted",435095.8,1123213,595827.45
+"88","vax70","20-64 yrs","10","icer.death.averted",163294.3,493617.3,203683.33
+"89","vax70","65+ yrs","10","icer.death.averted",185707.1,145859.3,181274.25
+"90","vax70","All","10","icer.death.averted",188282.44,441067.65,220333.32
+"91","vax70","0-4 yrs","20","icer.case.averted",1390.48,162.47,241.06
+"92","vax70","5-19 yrs","20","icer.case.averted",2925.47,241.76,413.52
+"93","vax70","20-64 yrs","20","icer.case.averted",2252.39,292.71,574.9
+"94","vax70","65+ yrs","20","icer.case.averted",5071.49,687.56,2932.13
+"95","vax70","All","20","icer.case.averted",2953.04,280.78,647.78
+"96","vax70","0-4 yrs","20","icer.daly.averted",2755.8,14147.16,5600.69
+"97","vax70","5-19 yrs","20","icer.daly.averted",6633.78,23824.26,10962.26
+"98","vax70","20-64 yrs","20","icer.daly.averted",4474.31,22953.88,6892.84
+"99","vax70","65+ yrs","20","icer.daly.averted",13438.73,13639.45,13461.4
+"100","vax70","All","20","icer.daly.averted",6330.13,21419.56,8593.95
+"101","vax70","0-4 yrs","20","icer.death.averted",213713,1196930,443573.1
+"102","vax70","5-19 yrs","20","icer.death.averted",448775.8,1779673,759649.17
+"103","vax70","20-64 yrs","20","icer.death.averted",174389.6,967080.8,271312.98
+"104","vax70","65+ yrs","20","icer.death.averted",192673.2,198903.4,193366.29
+"105","vax70","All","20","icer.death.averted",198839.78,814103.43,277166.27
+"106","vax70","0-4 yrs","30","icer.case.averted",1460.45,232.44,311.03
+"107","vax70","5-19 yrs","30","icer.case.averted",2974.59,290.89,462.64
+"108","vax70","20-64 yrs","30","icer.case.averted",2329.72,370.04,652.24
+"109","vax70","65+ yrs","30","icer.case.averted",5170.72,786.79,3031.36
+"110","vax70","All","30","icer.case.averted",3012.03,345.37,698.82
+"111","vax70","0-4 yrs","30","icer.daly.averted",2894.46,20239.57,7226.25
+"112","vax70","5-19 yrs","30","icer.daly.averted",6745.19,28665.58,12264.63
+"113","vax70","20-64 yrs","30","icer.daly.averted",4627.93,29018.18,7820.02
+"114","vax70","65+ yrs","30","icer.daly.averted",13701.68,15607.99,13916.98
+"115","vax70","All","30","icer.daly.averted",6455.62,26795.69,9569.85
+"116","vax70","0-4 yrs","30","icer.death.averted",224466.6,1712382,572317.1
+"117","vax70","5-19 yrs","30","icer.death.averted",456312.1,2141318,849899.1
+"118","vax70","20-64 yrs","30","icer.death.averted",180377,1222578,307808.3
+"119","vax70","65+ yrs","30","icer.death.averted",196443.2,227610.4,199910.5
+"120","vax70","All","30","icer.death.averted",207206.1,1050210,315921.3
