@@ -71,6 +71,15 @@ ggplot(age_group_df, aes(x = age, y = icer.case.averted, color = v.eff, group = 
   geom_point() + geom_line(linetype = "dotted") + ylab("$ saved per case averted") +
   facet_grid(~ scenario) + ggtitle("ICER per case averted")
 
+## Alternatively:
+ggplot(df3[(df3$risk=="All"),], aes(x = age, y = icer.case.averted, group = v.eff, color = v.eff)) +
+  geom_point() + geom_line(linetype = "dotted") + labs(color = "Vaccine \nefficacy") +
+  ylab("$ saved per case averted") + facet_grid(~ scenario) + ggtitle("ICER per case averted")
+
+ggplot(df3[(df3$risk=="All"),], aes(x = age, y = icer.case.averted, group = scenario, color = scenario)) +
+  geom_point() + geom_line(linetype = "dotted") + labs(color = "Scenario") +
+  ylab("$ saved per case averted") + facet_wrap(~ v.eff) + ggtitle("ICER per case averted")
+
 # icer per death averted
 ggplot(age_group_df, aes(x = age, y = icer.death.averted, color = v.eff, group = v.eff)) + labs(color = "Vaccine \nefficacy") +
   geom_point() + geom_line(linetype = "dotted") + ylab("$ saved per death averted") +
