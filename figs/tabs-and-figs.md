@@ -21,8 +21,12 @@ editor_options:
 
 ```r
 rm(list = ls(all.names = TRUE))
-library(ggplot2); library(tidyr); library(dplyr)
-library(knitr); library(rmarkdown)
+library(ggplot2)
+library(tidyr)
+library(dplyr)
+library(knitr)
+library(rmarkdown)
+library(formatR)
 ```
 
 
@@ -59,7 +63,7 @@ df3$scenario <- factor(df3$scenario, levels = c("vaxbase", "vax70"))
 df3$v.eff <- factor(df3$v.eff)
 ```
 
-# TABLES
+# Tables
 
 
 
@@ -79,620 +83,664 @@ risk_df_base <- df_base[!(df_base$age == 'All'),]
 risk_df_vax70 <- df_vax70[!(df_vax70$age == 'All'),]
 ```
 
-# FIGURES. Base Vaccination Scenario
+# Base Vaccination Scenario
 
-## Fig. ICERs
+## Fig. ICER per case averted
 
 ```r
-# icer per case averted
-ggplot(age_df_base, aes(x = age, y = icer.case.averted, color = v.eff, group = v.eff)) +
-  geom_point() + geom_line(linetype = "dotted") + labs(color = "Vaccine \nefficacy") +
-  ylab("$ saved per case averted") + ggtitle("Base vaccination: ICER per case averted")
+ggplot(age_df_base, aes(x = age, y = icer.case.averted, color = v.eff, group = v.eff)) + 
+    geom_point() + geom_line(linetype = "dotted") + labs(x = "Age group", color = "Vaccine \nefficacy") + 
+    ylab("$ saved per case averted") + ggtitle("Base Vaccination: ICER per case averted")
 ```
 
 ![](tabs-and-figs_files/figure-html/unnamed-chunk-6-1.png)<!-- -->
 
 ```r
-ggplot(df_base[(df_base$age=="All"),], aes(x = v.eff, y = icer.case.averted, group = risk, color = risk)) +
-  geom_point() + geom_line(linetype = "dotted") + labs(color = "Risk") +
-  ylab("$ saved per case averted") + ggtitle("Base vaccination: ICER per case averted")
+ggplot(df_base[(df_base$age == "All"), ], aes(x = v.eff, y = icer.case.averted, 
+    group = risk, color = risk)) + geom_point() + geom_line(linetype = "dotted") + 
+    labs(x = "Vaccine efficacy (%)", color = "Risk") + ylab("$ saved per case averted") + 
+    ggtitle("Base Vaccination: ICER per case averted")
 ```
 
 ![](tabs-and-figs_files/figure-html/unnamed-chunk-6-2.png)<!-- -->
 
 ```r
-ggplot(df_base, aes(x = age, y = icer.case.averted, group = risk, color = risk)) +
-  geom_point() + geom_line(linetype = "dotted") + labs(color = "Risk group") + 
-  ylab("$ saved per case averted") + ggtitle("Base vaccination: ICER per case averted") + facet_grid(~ v.eff)
+ggplot(df_base, aes(x = age, y = icer.case.averted, group = risk, color = risk)) + 
+    geom_point() + geom_line(linetype = "dotted") + labs(x = "Age group", color = "Risk group") + 
+    ylab("$ saved per case averted") + ggtitle("Base Vaccination: ICER per case averted") + 
+    facet_grid(~v.eff)
 ```
 
 ![](tabs-and-figs_files/figure-html/unnamed-chunk-6-3.png)<!-- -->
 
-```r
-# icer per death averted
-ggplot(age_df_base, aes(x = age, y = icer.death.averted, color = v.eff, group = v.eff)) +
-  geom_point() + geom_line(linetype = "dotted") + labs(color = "Vaccine \nefficacy") + 
-  ylab("$ saved per death averted") + ggtitle("Base vaccination: ICER per death averted")
-```
-
-![](tabs-and-figs_files/figure-html/unnamed-chunk-6-4.png)<!-- -->
+## Fig. ICER per death averted
 
 ```r
-ggplot(df_base[(df_base$age=="All"),], aes(x = v.eff, y = icer.death.averted, group = risk, color = risk)) +
-  geom_point() + geom_line(linetype = "dotted") + labs(color = "Risk") +
-  ylab("$ saved per death averted") + ggtitle("Base vaccination: ICER per death averted")
+ggplot(age_df_base, aes(x = age, y = icer.death.averted, color = v.eff, group = v.eff)) + 
+    geom_point() + geom_line(linetype = "dotted") + labs(x = "Age group", color = "Vaccine \nefficacy") + 
+    ylab("$ saved per death averted") + ggtitle("Base Vaccination: ICER per death averted")
 ```
 
-![](tabs-and-figs_files/figure-html/unnamed-chunk-6-5.png)<!-- -->
+![](tabs-and-figs_files/figure-html/unnamed-chunk-7-1.png)<!-- -->
 
 ```r
-ggplot(df_base, aes(x = age, y = icer.death.averted, group = risk, color = risk)) +
-  geom_point() + geom_line(linetype = "dotted") + labs(color = "Risk group") + 
-  ylab("$ saved per death averted") + ggtitle("Base vaccination: ICER per death averted") + facet_grid(~ v.eff)
+ggplot(df_base[(df_base$age == "All"), ], aes(x = v.eff, y = icer.death.averted, 
+    group = risk, color = risk)) + geom_point() + geom_line(linetype = "dotted") + 
+    labs(x = "Vaccine efficacy (%)", color = "Risk") + ylab("$ saved per death averted") + 
+    ggtitle("Base Vaccination: ICER per death averted")
 ```
 
-![](tabs-and-figs_files/figure-html/unnamed-chunk-6-6.png)<!-- -->
+![](tabs-and-figs_files/figure-html/unnamed-chunk-7-2.png)<!-- -->
 
 ```r
-# icer per daly averted
-ggplot(age_df_base, aes(x = age, y = icer.daly.averted, color = v.eff, group = v.eff)) +
-  geom_point() + geom_line(linetype = "dotted") + labs(color = "Vaccine \nefficacy") + 
-  ylab("$ saved per DALY averted") + ggtitle("Base vaccination: ICER per DALY averted")
+ggplot(df_base, aes(x = age, y = icer.death.averted, group = risk, color = risk)) + 
+    geom_point() + geom_line(linetype = "dotted") + labs(x = "Age group", color = "Risk group") + 
+    ylab("$ saved per death averted") + ggtitle("Base Vaccination: ICER per death averted") + 
+    facet_grid(~v.eff)
 ```
 
-![](tabs-and-figs_files/figure-html/unnamed-chunk-6-7.png)<!-- -->
+![](tabs-and-figs_files/figure-html/unnamed-chunk-7-3.png)<!-- -->
+
+## Fig. ICER per DALY averted
 
 ```r
-ggplot(df_base[(df_base$age=="All"),], aes(x = v.eff, y = icer.daly.averted, group = risk, color = risk)) +
-  geom_point() + geom_line(linetype = "dotted") + labs(color = "Risk") +
-  ylab("$ saved per DALY averted") + ggtitle("Base vaccination: ICER per DALY averted")
+ggplot(age_df_base, aes(x = age, y = icer.daly.averted, color = v.eff, group = v.eff)) + 
+    geom_point() + geom_line(linetype = "dotted") + labs(x = "Age group", color = "Vaccine \nefficacy") + 
+    ylab("$ saved per DALY averted") + ggtitle("Base Vaccination: ICER per DALY averted")
 ```
 
-![](tabs-and-figs_files/figure-html/unnamed-chunk-6-8.png)<!-- -->
+![](tabs-and-figs_files/figure-html/unnamed-chunk-8-1.png)<!-- -->
 
 ```r
-ggplot(df_base, aes(x = age, y = icer.daly.averted, group = risk, color = risk)) +
-  geom_point() + geom_line(linetype = "dotted") + labs(color = "Risk group") + 
-  ylab("$ saved per DALY averted") + ggtitle("Base vaccination: ICER per DALY averted") + facet_grid(~ v.eff)
+ggplot(df_base[(df_base$age == "All"), ], aes(x = v.eff, y = icer.daly.averted, 
+    group = risk, color = risk)) + geom_point() + geom_line(linetype = "dotted") + 
+    labs(x = "Vaccine efficacy (%)", color = "Risk") + ylab("$ saved per DALY averted") + 
+    ggtitle("Base Vaccination: ICER per DALY averted")
 ```
 
-![](tabs-and-figs_files/figure-html/unnamed-chunk-6-9.png)<!-- -->
+![](tabs-and-figs_files/figure-html/unnamed-chunk-8-2.png)<!-- -->
 
+```r
+ggplot(df_base, aes(x = age, y = icer.daly.averted, group = risk, color = risk)) + 
+    geom_point() + geom_line(linetype = "dotted") + labs(x = "Age group", color = "Risk group") + 
+    ylab("$ saved per DALY averted") + ggtitle("Base Vaccination: ICER per DALY averted") + 
+    facet_grid(~v.eff)
+```
+
+![](tabs-and-figs_files/figure-html/unnamed-chunk-8-3.png)<!-- -->
+
+Set up plots.
 
 ```r
 # age
-g1 <- ggplot(age_df_base, aes(x = age, group = v.eff, color = v.eff)) +
-  geom_point() + geom_line(linetype = "dotted") + labs(x = "Age group", color = "Vaccine \nefficacy")
+g1 <- ggplot(age_df_base, aes(x = age, group = v.eff, color = v.eff)) + geom_point() + 
+    geom_line(linetype = "dotted") + labs(x = "Age group", color = "Vaccine \nefficacy")
 # risk
-g2 <- ggplot(df_base[(df_base$age=="All"),], aes(x = v.eff, group = risk, color = risk)) +
-  geom_point() + geom_line(linetype = "dotted") + labs(x = "Vaccine efficacy", color = "Risk group")
+g2 <- ggplot(df_base[(df_base$age == "All"), ], aes(x = v.eff, group = risk, 
+    color = risk)) + geom_point() + geom_line(linetype = "dotted") + labs(x = "Vaccine efficacy", 
+    color = "Risk group")
 
-g3 <- ggplot(risk_df_base, aes(x = age, group = risk, color = risk)) +
-  geom_point() + geom_line(linetype = "dotted") + labs(x = "Age group", color = "Risk group") +
-  facet_grid(~ v.eff)
+g3 <- ggplot(risk_df_base, aes(x = age, group = risk, color = risk)) + geom_point() + 
+    geom_line(linetype = "dotted") + labs(x = "Age group", color = "Risk group") + 
+    facet_grid(~v.eff)
 ```
 
 ## Fig. Cases, cases averted
 
 ```r
 # age groups
-g1 + aes(y = cases) + labs(y = "Cases", title = "Base vaccination: Cases")
-```
-
-![](tabs-and-figs_files/figure-html/unnamed-chunk-8-1.png)<!-- -->
-
-```r
-g1 + aes(y = cases.per100k) + labs(y = "Cases per 100k", title = "Base vaccination: Cases per 100k")
-```
-
-![](tabs-and-figs_files/figure-html/unnamed-chunk-8-2.png)<!-- -->
-
-```r
-g1 + aes(y = cases.averted) + labs(y = "Cases averted", title = "Base vaccination: Cases averted")
-```
-
-![](tabs-and-figs_files/figure-html/unnamed-chunk-8-3.png)<!-- -->
-
-```r
-g1 + aes(y = cases.averted.per100k) + labs(y = "Cases averted per 100k", title = "Base vaccination: Cases averted per 100k")
-```
-
-![](tabs-and-figs_files/figure-html/unnamed-chunk-8-4.png)<!-- -->
-
-```r
-# risk groups
-g2 + aes(y = cases) + labs(y = "Cases", title = "Base vaccination: Cases")
-```
-
-![](tabs-and-figs_files/figure-html/unnamed-chunk-8-5.png)<!-- -->
-
-```r
-g2 + aes(y = cases.per100k) + labs(y = "Cases per 100k", title = "Base vaccination: Cases per 100k")
-```
-
-![](tabs-and-figs_files/figure-html/unnamed-chunk-8-6.png)<!-- -->
-
-```r
-g2 + aes(y = cases.averted) + labs(y = "Cases averted", title = "Base vaccination: Cases averted")
-```
-
-![](tabs-and-figs_files/figure-html/unnamed-chunk-8-7.png)<!-- -->
-
-```r
-g2 + aes(y = cases.averted.per100k) + labs(y = "Cases averted per 100k", title = "Base vaccination: Cases averted per 100k")
-```
-
-![](tabs-and-figs_files/figure-html/unnamed-chunk-8-8.png)<!-- -->
-
-```r
-g3 + aes(y = cases) + labs(y = "Cases", title = "Base vaccination: Cases")
-```
-
-![](tabs-and-figs_files/figure-html/unnamed-chunk-8-9.png)<!-- -->
-
-```r
-g3 + aes(y = cases.per100k) + labs(y = "Cases per 100k", title = "Base vaccination: Cases per 100k")
-```
-
-![](tabs-and-figs_files/figure-html/unnamed-chunk-8-10.png)<!-- -->
-
-```r
-g3 + aes(y = cases.averted) + labs(y = "Cases averted", title = "Base vaccination: Cases averted")
-```
-
-![](tabs-and-figs_files/figure-html/unnamed-chunk-8-11.png)<!-- -->
-
-```r
-g3 + aes(y = cases.averted.per100k) + labs(y = "Cases averted per 100k", title = "Base vaccination: Cases averted per 100k")
-```
-
-![](tabs-and-figs_files/figure-html/unnamed-chunk-8-12.png)<!-- -->
-
-## Fig. Deaths, deaths averted
-
-```r
-# age groups
-g1 + aes(y = deaths) + labs(y = "Deaths", title = "Base vaccination: Deaths")
-```
-
-![](tabs-and-figs_files/figure-html/unnamed-chunk-9-1.png)<!-- -->
-
-```r
-g1 + aes(y = deaths.per100k) + labs(y = "Deaths per 100k", title = "Base vaccination: Deaths per 100k")
-```
-
-![](tabs-and-figs_files/figure-html/unnamed-chunk-9-2.png)<!-- -->
-
-```r
-g1 + aes(y = deaths.averted) + labs(y = "Deaths averted", title = "Base vaccination: Deaths averted")
-```
-
-![](tabs-and-figs_files/figure-html/unnamed-chunk-9-3.png)<!-- -->
-
-```r
-g1 + aes(y = deaths.averted.per100k) + labs(y = "Deaths averted per 100k", title = "Base vaccination: Deaths averted per 100k")
-```
-
-![](tabs-and-figs_files/figure-html/unnamed-chunk-9-4.png)<!-- -->
-
-```r
-# risk groups
-g2 + aes(y = deaths) + labs(y = "Deaths", title = "Base vaccination: Deaths")
-```
-
-![](tabs-and-figs_files/figure-html/unnamed-chunk-9-5.png)<!-- -->
-
-```r
-g2 + aes(y = deaths.per100k) + labs(y = "Deaths per 100k", title = "Base vaccination: Deaths per 100k")
-```
-
-![](tabs-and-figs_files/figure-html/unnamed-chunk-9-6.png)<!-- -->
-
-```r
-g2 + aes(y = deaths.averted) + labs(y = "Deaths averted", title = "Base vaccination: Deaths averted")
-```
-
-![](tabs-and-figs_files/figure-html/unnamed-chunk-9-7.png)<!-- -->
-
-```r
-g2 + aes(y = deaths.averted.per100k) + labs(y = "Deaths averted per 100k", title = "Base vaccination: Deaths averted per 100k")
-```
-
-![](tabs-and-figs_files/figure-html/unnamed-chunk-9-8.png)<!-- -->
-
-```r
-g3 + aes(y = deaths) + labs(y = "Deaths", title = "Base vaccination: Deaths")
-```
-
-![](tabs-and-figs_files/figure-html/unnamed-chunk-9-9.png)<!-- -->
-
-```r
-g3 + aes(y = deaths.per100k) + labs(y = "Deaths per 100k", title = "Base vaccination: Deaths per 100k")
-```
-
-![](tabs-and-figs_files/figure-html/unnamed-chunk-9-10.png)<!-- -->
-
-```r
-g3 + aes(y = deaths.averted) + labs(y = "Deaths averted", title = "Base vaccination: Deaths averted")
-```
-
-![](tabs-and-figs_files/figure-html/unnamed-chunk-9-11.png)<!-- -->
-
-```r
-g3 + aes(y = deaths.averted.per100k) + labs(y = "Deaths averted per 100k", title = "Base vaccination: Deaths averted per 100k")
-```
-
-![](tabs-and-figs_files/figure-html/unnamed-chunk-9-12.png)<!-- -->
-
-## Fig. DALYs, DALYs averted
-
-```r
-# age groups
-g1 + aes(y = dalys) + labs(y = "DALYs", title = "Base vaccination: DALYs")
+g1 + aes(y = cases) + labs(y = "Cases", title = "Base Vaccination: Cases")
 ```
 
 ![](tabs-and-figs_files/figure-html/unnamed-chunk-10-1.png)<!-- -->
 
 ```r
-g1 + aes(y = dalys.per100k) + labs(y = "DALYs per 100k", title = "Base vaccination: DALYs per 100k")
+g1 + aes(y = cases.per100k) + labs(y = "Cases per 100k", title = "Base Vaccination: Cases per 100k")
 ```
 
 ![](tabs-and-figs_files/figure-html/unnamed-chunk-10-2.png)<!-- -->
 
 ```r
-g1 + aes(y = dalys.averted) + labs(y = "DALYs averted", title = "Base vaccination: DALYs averted")
+g1 + aes(y = cases.averted) + labs(y = "Cases averted", title = "Base Vaccination: Cases averted")
 ```
 
 ![](tabs-and-figs_files/figure-html/unnamed-chunk-10-3.png)<!-- -->
 
 ```r
-g1 + aes(y = dalys.averted.per100k) + labs(y = "DALYs averted per 100k", title = "Base vaccination: DALYs averted per 100k")
+g1 + aes(y = cases.averted.per100k) + labs(y = "Cases averted per 100k", title = "Base Vaccination: Cases averted per 100k")
 ```
 
 ![](tabs-and-figs_files/figure-html/unnamed-chunk-10-4.png)<!-- -->
 
 ```r
 # risk groups
-g2 + aes(y = dalys) + labs(y = "DALYs", title = "Base vaccination: DALYs")
+g2 + aes(y = cases) + labs(y = "Cases", title = "Base Vaccination: Cases")
 ```
 
 ![](tabs-and-figs_files/figure-html/unnamed-chunk-10-5.png)<!-- -->
 
 ```r
-g2 + aes(y = dalys.per100k) + labs(y = "DALYs per 100k", title = "Base vaccination: DALYs per 100k")
+g2 + aes(y = cases.per100k) + labs(y = "Cases per 100k", title = "Base Vaccination: Cases per 100k")
 ```
 
 ![](tabs-and-figs_files/figure-html/unnamed-chunk-10-6.png)<!-- -->
 
 ```r
-g2 + aes(y = dalys.averted) + labs(y = "DALYs averted", title = "Base vaccination: DALYs averted")
+g2 + aes(y = cases.averted) + labs(y = "Cases averted", title = "Base Vaccination: Cases averted")
 ```
 
 ![](tabs-and-figs_files/figure-html/unnamed-chunk-10-7.png)<!-- -->
 
 ```r
-g2 + aes(y = dalys.averted.per100k) + labs(y = "DALYs averted per 100k", title = "Base vaccination: DALYs averted per 100k")
+g2 + aes(y = cases.averted.per100k) + labs(y = "Cases averted per 100k", title = "Base Vaccination: Cases averted per 100k")
 ```
 
 ![](tabs-and-figs_files/figure-html/unnamed-chunk-10-8.png)<!-- -->
 
 ```r
-g3 + aes(y = dalys) + labs(y = "DALYs", title = "Base vaccination: DALYs")
+g3 + aes(y = cases) + labs(y = "Cases", title = "Base Vaccination: Cases")
 ```
 
 ![](tabs-and-figs_files/figure-html/unnamed-chunk-10-9.png)<!-- -->
 
 ```r
-g3 + aes(y = dalys.per100k) + labs(y = "DALYs per 100k", title = "Base vaccination: DALYs per 100k")
+g3 + aes(y = cases.per100k) + labs(y = "Cases per 100k", title = "Base Vaccination: Cases per 100k")
 ```
 
 ![](tabs-and-figs_files/figure-html/unnamed-chunk-10-10.png)<!-- -->
 
 ```r
-g3 + aes(y = dalys.averted) + labs(y = "DALYs averted", title = "Base vaccination: DALYs averted")
+g3 + aes(y = cases.averted) + labs(y = "Cases averted", title = "Base Vaccination: Cases averted")
 ```
 
 ![](tabs-and-figs_files/figure-html/unnamed-chunk-10-11.png)<!-- -->
 
 ```r
-g3 + aes(y = dalys.averted.per100k) + labs(y = "DALYs averted per 100k", title = "Base vaccination: DALYs averted per 100k")
+g3 + aes(y = cases.averted.per100k) + labs(y = "Cases averted per 100k", title = "Base Vaccination: Cases averted per 100k")
 ```
 
 ![](tabs-and-figs_files/figure-html/unnamed-chunk-10-12.png)<!-- -->
 
-# FIGURES. 70% Vaccination Scenario
-
-## Fig. ICERs
+## Fig. Deaths, deaths averted
 
 ```r
-## Figure. 70% Vaccination: ICERs.
-g <- ggplot(df_vax70[(df_vax70$age=="All"),])
-t1 <- labs(y = "$ saved per case averted", title = "70% vaccination: ICER per case averted")
-t2 <- labs(y = "$ saved per death averted", title = "70% vaccination:ICER per death averted")
-t3 <- labs(y = "$ saved per DALY averted", title = "70% vaccination: ICER per DALY averted")
-
-# icer per case averted
-ggplot(age_df_vax70, aes(x = age, y = icer.case.averted, color = v.eff, group = v.eff)) +
-  geom_point() + geom_line(linetype = "dotted") + labs(color = "Vaccine \nefficacy") + t1
+# age groups
+g1 + aes(y = deaths) + labs(y = "Deaths", title = "Base Vaccination: Deaths")
 ```
 
 ![](tabs-and-figs_files/figure-html/unnamed-chunk-11-1.png)<!-- -->
 
 ```r
-g + aes(x = v.eff, y = icer.case.averted, group = risk, color = risk) + 
-  geom_point() + geom_line(linetype = "dotted") + t1
+g1 + aes(y = deaths.per100k) + labs(y = "Deaths per 100k", title = "Base Vaccination: Deaths per 100k")
 ```
 
 ![](tabs-and-figs_files/figure-html/unnamed-chunk-11-2.png)<!-- -->
 
 ```r
-# icer per death averted
-ggplot(age_df_vax70, aes(x = age, y = icer.death.averted, color = v.eff, group = v.eff)) +
-  geom_point() + geom_line(linetype = "dotted") + labs(color = "Vaccine \nefficacy") + t2
+g1 + aes(y = deaths.averted) + labs(y = "Deaths averted", title = "Base Vaccination: Deaths averted")
 ```
 
 ![](tabs-and-figs_files/figure-html/unnamed-chunk-11-3.png)<!-- -->
 
 ```r
-g + aes(x = v.eff, y = icer.death.averted, group = risk, color = risk) + 
-  geom_point() + geom_line(linetype = "dotted") + t2
+g1 + aes(y = deaths.averted.per100k) + labs(y = "Deaths averted per 100k", title = "Base Vaccination: Deaths averted per 100k")
 ```
 
 ![](tabs-and-figs_files/figure-html/unnamed-chunk-11-4.png)<!-- -->
 
 ```r
-# icer per daly averted
-ggplot(age_df_vax70, aes(x = age, y = icer.daly.averted, color = v.eff, group = v.eff)) +
-  geom_point() + geom_line(linetype = "dotted") + labs(color = "Vaccine \nefficacy") + t3
+# risk groups
+g2 + aes(y = deaths) + labs(y = "Deaths", title = "Base Vaccination: Deaths")
 ```
 
 ![](tabs-and-figs_files/figure-html/unnamed-chunk-11-5.png)<!-- -->
 
 ```r
-g + aes(x = v.eff, y = icer.daly.averted, group = risk, color = risk) + 
-  geom_point() + geom_line(linetype = "dotted") + t3
+g2 + aes(y = deaths.per100k) + labs(y = "Deaths per 100k", title = "Base Vaccination: Deaths per 100k")
 ```
 
 ![](tabs-and-figs_files/figure-html/unnamed-chunk-11-6.png)<!-- -->
 
 ```r
-# age
-h1 <- ggplot(age_df_vax70, aes(x = age, group = v.eff, color = v.eff)) +
-  geom_point() + geom_line(linetype = "dotted") + labs(x = "Age group", color = "Vaccine \nefficacy")
-# risk
-h2 <- ggplot(df_vax70[(df_vax70$age=="All"),], aes(x = v.eff, group = risk, color = risk)) +
-  geom_point() + geom_line(linetype = "dotted") + labs(x = "Vaccine efficacy", color = "Risk group")
+g2 + aes(y = deaths.averted) + labs(y = "Deaths averted", title = "Base Vaccination: Deaths averted")
+```
 
-h3 <- ggplot(risk_df_vax70, aes(x = age, group = risk, color = risk)) +
-  geom_point() + geom_line(linetype = "dotted") + labs(x = "Age group", color = "Risk group") +
-  facet_grid(~ v.eff)
+![](tabs-and-figs_files/figure-html/unnamed-chunk-11-7.png)<!-- -->
+
+```r
+g2 + aes(y = deaths.averted.per100k) + labs(y = "Deaths averted per 100k", title = "Base Vaccination: Deaths averted per 100k")
+```
+
+![](tabs-and-figs_files/figure-html/unnamed-chunk-11-8.png)<!-- -->
+
+```r
+g3 + aes(y = deaths) + labs(y = "Deaths", title = "Base Vaccination: Deaths")
+```
+
+![](tabs-and-figs_files/figure-html/unnamed-chunk-11-9.png)<!-- -->
+
+```r
+g3 + aes(y = deaths.per100k) + labs(y = "Deaths per 100k", title = "Base Vaccination: Deaths per 100k")
+```
+
+![](tabs-and-figs_files/figure-html/unnamed-chunk-11-10.png)<!-- -->
+
+```r
+g3 + aes(y = deaths.averted) + labs(y = "Deaths averted", title = "Base Vaccination: Deaths averted")
+```
+
+![](tabs-and-figs_files/figure-html/unnamed-chunk-11-11.png)<!-- -->
+
+```r
+g3 + aes(y = deaths.averted.per100k) + labs(y = "Deaths averted per 100k", title = "Base Vaccination: Deaths averted per 100k")
+```
+
+![](tabs-and-figs_files/figure-html/unnamed-chunk-11-12.png)<!-- -->
+
+## Fig. DALYs, DALYs averted
+
+```r
+# age groups
+g1 + aes(y = dalys) + labs(y = "DALYs", title = "Base Vaccination: DALYs")
+```
+
+![](tabs-and-figs_files/figure-html/unnamed-chunk-12-1.png)<!-- -->
+
+```r
+g1 + aes(y = dalys.per100k) + labs(y = "DALYs per 100k", title = "Base Vaccination: DALYs per 100k")
+```
+
+![](tabs-and-figs_files/figure-html/unnamed-chunk-12-2.png)<!-- -->
+
+```r
+g1 + aes(y = dalys.averted) + labs(y = "DALYs averted", title = "Base Vaccination: DALYs averted")
+```
+
+![](tabs-and-figs_files/figure-html/unnamed-chunk-12-3.png)<!-- -->
+
+```r
+g1 + aes(y = dalys.averted.per100k) + labs(y = "DALYs averted per 100k", title = "Base Vaccination: DALYs averted per 100k")
+```
+
+![](tabs-and-figs_files/figure-html/unnamed-chunk-12-4.png)<!-- -->
+
+```r
+# risk groups
+g2 + aes(y = dalys) + labs(y = "DALYs", title = "Base Vaccination: DALYs")
+```
+
+![](tabs-and-figs_files/figure-html/unnamed-chunk-12-5.png)<!-- -->
+
+```r
+g2 + aes(y = dalys.per100k) + labs(y = "DALYs per 100k", title = "Base Vaccination: DALYs per 100k")
+```
+
+![](tabs-and-figs_files/figure-html/unnamed-chunk-12-6.png)<!-- -->
+
+```r
+g2 + aes(y = dalys.averted) + labs(y = "DALYs averted", title = "Base Vaccination: DALYs averted")
+```
+
+![](tabs-and-figs_files/figure-html/unnamed-chunk-12-7.png)<!-- -->
+
+```r
+g2 + aes(y = dalys.averted.per100k) + labs(y = "DALYs averted per 100k", title = "Base Vaccination: DALYs averted per 100k")
+```
+
+![](tabs-and-figs_files/figure-html/unnamed-chunk-12-8.png)<!-- -->
+
+```r
+g3 + aes(y = dalys) + labs(y = "DALYs", title = "Base Vaccination: DALYs")
+```
+
+![](tabs-and-figs_files/figure-html/unnamed-chunk-12-9.png)<!-- -->
+
+```r
+g3 + aes(y = dalys.per100k) + labs(y = "DALYs per 100k", title = "Base Vaccination: DALYs per 100k")
+```
+
+![](tabs-and-figs_files/figure-html/unnamed-chunk-12-10.png)<!-- -->
+
+```r
+g3 + aes(y = dalys.averted) + labs(y = "DALYs averted", title = "Base Vaccination: DALYs averted")
+```
+
+![](tabs-and-figs_files/figure-html/unnamed-chunk-12-11.png)<!-- -->
+
+```r
+g3 + aes(y = dalys.averted.per100k) + labs(y = "DALYs averted per 100k", title = "Base Vaccination: DALYs averted per 100k")
+```
+
+![](tabs-and-figs_files/figure-html/unnamed-chunk-12-12.png)<!-- -->
+
+
+# 70% Vaccination Scenario
+
+## Fig. ICER per case averted
+
+```r
+g <- ggplot(df_vax70[(df_vax70$age == "All"), ], aes(x = v.eff, color = risk, 
+    group = risk))
+t1 <- labs(y = "$ saved per case averted", title = "70% Vaccination: ICER per case averted")
+t2 <- labs(y = "$ saved per death averted", title = "70% Vaccination: ICER per death averted")
+t3 <- labs(y = "$ saved per DALY averted", title = "70% Vaccination: ICER per DALY averted")
+
+ggplot(age_df_vax70, aes(x = age, y = icer.case.averted, color = v.eff, group = v.eff)) + 
+    geom_point() + geom_line(linetype = "dotted") + labs(x = "Age group", color = "Vaccine \nefficacy") + 
+    t1
+```
+
+![](tabs-and-figs_files/figure-html/unnamed-chunk-13-1.png)<!-- -->
+
+```r
+g + aes(y = icer.case.averted) + geom_point() + geom_line(linetype = "dotted") + 
+    t1 + labs(x = "Vaccine efficacy (%)", color = "Risk group")
+```
+
+![](tabs-and-figs_files/figure-html/unnamed-chunk-13-2.png)<!-- -->
+
+```r
+ggplot(df_vax70, aes(x = age, y = icer.case.averted, group = risk, color = risk)) + 
+    geom_point() + geom_line(linetype = "dotted") + labs(color = "Risk group") + 
+    ylab("$ saved per case averted") + ggtitle("70% Vaccination: ICER per case averted") + 
+    facet_grid(~v.eff)
+```
+
+![](tabs-and-figs_files/figure-html/unnamed-chunk-13-3.png)<!-- -->
+
+## Fig. ICER per death averted
+
+```r
+ggplot(age_df_vax70, aes(x = age, y = icer.death.averted, color = v.eff, group = v.eff)) + 
+    geom_point() + geom_line(linetype = "dotted") + labs(x = "Age group", color = "Vaccine \nefficacy") + 
+    t2
+```
+
+![](tabs-and-figs_files/figure-html/unnamed-chunk-14-1.png)<!-- -->
+
+```r
+g + aes(y = icer.death.averted) + geom_point() + geom_line(linetype = "dotted") + 
+    t2 + labs(x = "Vaccine efficacy (%)", color = "Risk group")
+```
+
+![](tabs-and-figs_files/figure-html/unnamed-chunk-14-2.png)<!-- -->
+
+```r
+ggplot(df_vax70, aes(x = age, y = icer.death.averted, group = risk, color = risk)) + 
+    geom_point() + geom_line(linetype = "dotted") + labs(color = "Risk group") + 
+    ylab("$ saved per death averted") + ggtitle("70% Vaccination: ICER per death averted") + 
+    facet_grid(~v.eff)
+```
+
+![](tabs-and-figs_files/figure-html/unnamed-chunk-14-3.png)<!-- -->
+
+## Fig. ICER per DALY averted
+
+```r
+ggplot(age_df_vax70, aes(x = age, y = icer.daly.averted, color = v.eff, group = v.eff)) + 
+    geom_point() + geom_line(linetype = "dotted") + labs(x = "Age group", color = "Vaccine \nefficacy") + 
+    t3
+```
+
+![](tabs-and-figs_files/figure-html/unnamed-chunk-15-1.png)<!-- -->
+
+```r
+g + aes(y = icer.daly.averted) + geom_point() + geom_line(linetype = "dotted") + 
+    t3 + labs(x = "Vaccine efficacy (%)", color = "Risk group")
+```
+
+![](tabs-and-figs_files/figure-html/unnamed-chunk-15-2.png)<!-- -->
+
+```r
+ggplot(df_vax70, aes(x = age, y = icer.daly.averted, group = risk, color = risk)) + 
+    geom_point() + geom_line(linetype = "dotted") + labs(color = "Risk group") + 
+    ylab("$ saved per DALY averted") + ggtitle("70% Vaccination: ICER per DALY averted") + 
+    facet_grid(~v.eff)
+```
+
+![](tabs-and-figs_files/figure-html/unnamed-chunk-15-3.png)<!-- -->
+
+Set up plots.
+
+```r
+# age
+h1 <- ggplot(age_df_vax70, aes(x = age, group = v.eff, color = v.eff)) + geom_point() + 
+    geom_line(linetype = "dotted") + labs(x = "Age group", color = "Vaccine \nefficacy")
+# risk
+h2 <- ggplot(df_vax70[(df_vax70$age == "All"), ], aes(x = v.eff, group = risk, 
+    color = risk)) + geom_point() + geom_line(linetype = "dotted") + labs(x = "Vaccine efficacy", 
+    color = "Risk group")
+
+h3 <- ggplot(risk_df_vax70, aes(x = age, group = risk, color = risk)) + geom_point() + 
+    geom_line(linetype = "dotted") + labs(x = "Age group", color = "Risk group") + 
+    facet_grid(~v.eff)
 ```
 
 ## Fig. Cases, cases averted
 
 ```r
 # age groups
-h1 + aes(y = cases) + labs(y = "Cases", title = "70% vaccination: Cases")
+h1 + aes(y = cases) + labs(y = "Cases", title = "70% Vaccination: Cases")
 ```
 
-![](tabs-and-figs_files/figure-html/unnamed-chunk-13-1.png)<!-- -->
+![](tabs-and-figs_files/figure-html/unnamed-chunk-17-1.png)<!-- -->
 
 ```r
-h1 + aes(y = cases.per100k) + labs(y = "Cases per 100k", title = "70% vaccination: Cases per 100k")
+h1 + aes(y = cases.per100k) + labs(y = "Cases per 100k", title = "70% Vaccination: Cases per 100k")
 ```
 
-![](tabs-and-figs_files/figure-html/unnamed-chunk-13-2.png)<!-- -->
+![](tabs-and-figs_files/figure-html/unnamed-chunk-17-2.png)<!-- -->
 
 ```r
-h1 + aes(y = cases.averted) + labs(y = "Cases averted", title = "70% vaccination: Cases averted")
+h1 + aes(y = cases.averted) + labs(y = "Cases averted", title = "70% Vaccination: Cases averted")
 ```
 
-![](tabs-and-figs_files/figure-html/unnamed-chunk-13-3.png)<!-- -->
+![](tabs-and-figs_files/figure-html/unnamed-chunk-17-3.png)<!-- -->
 
 ```r
-h1 + aes(y = cases.averted.per100k) + labs(y = "Cases averted per 100k", title = "70% vaccination: Cases averted per 100k")
+h1 + aes(y = cases.averted.per100k) + labs(y = "Cases averted per 100k", title = "70% Vaccination: Cases averted per 100k")
 ```
 
-![](tabs-and-figs_files/figure-html/unnamed-chunk-13-4.png)<!-- -->
+![](tabs-and-figs_files/figure-html/unnamed-chunk-17-4.png)<!-- -->
 
 ```r
 # risk groups
-h2 + aes(y = cases) + labs(y = "Cases", title = "70% vaccination: Cases")
+h2 + aes(y = cases) + labs(y = "Cases", title = "70% Vaccination: Cases")
 ```
 
-![](tabs-and-figs_files/figure-html/unnamed-chunk-13-5.png)<!-- -->
+![](tabs-and-figs_files/figure-html/unnamed-chunk-17-5.png)<!-- -->
 
 ```r
-h2 + aes(y = cases.per100k) + labs(y = "Cases per 100k", title = "70% vaccination: Cases per 100k")
+h2 + aes(y = cases.per100k) + labs(y = "Cases per 100k", title = "70% Vaccination: Cases per 100k")
 ```
 
-![](tabs-and-figs_files/figure-html/unnamed-chunk-13-6.png)<!-- -->
+![](tabs-and-figs_files/figure-html/unnamed-chunk-17-6.png)<!-- -->
 
 ```r
-h2 + aes(y = cases.averted) + labs(y = "Cases averted", title = "70% vaccination: Cases averted")
+h2 + aes(y = cases.averted) + labs(y = "Cases averted", title = "70% Vaccination: Cases averted")
 ```
 
-![](tabs-and-figs_files/figure-html/unnamed-chunk-13-7.png)<!-- -->
+![](tabs-and-figs_files/figure-html/unnamed-chunk-17-7.png)<!-- -->
 
 ```r
-h2 + aes(y = cases.averted.per100k) + labs(y = "Cases averted per 100k", title = "70% vaccination: Cases averted per 100k")
+h2 + aes(y = cases.averted.per100k) + labs(y = "Cases averted per 100k", title = "70% Vaccination: Cases averted per 100k")
 ```
 
-![](tabs-and-figs_files/figure-html/unnamed-chunk-13-8.png)<!-- -->
+![](tabs-and-figs_files/figure-html/unnamed-chunk-17-8.png)<!-- -->
 
 ```r
-h3 + aes(y = cases) + labs(y = "Cases", title = "70% vaccination: Cases")
+h3 + aes(y = cases) + labs(y = "Cases", title = "70% Vaccination: Cases")
 ```
 
-![](tabs-and-figs_files/figure-html/unnamed-chunk-13-9.png)<!-- -->
+![](tabs-and-figs_files/figure-html/unnamed-chunk-17-9.png)<!-- -->
 
 ```r
-h3 + aes(y = cases.per100k) + labs(y = "Cases per 100k", title = "70% vaccination: Cases per 100k")
+h3 + aes(y = cases.per100k) + labs(y = "Cases per 100k", title = "70% Vaccination: Cases per 100k")
 ```
 
-![](tabs-and-figs_files/figure-html/unnamed-chunk-13-10.png)<!-- -->
+![](tabs-and-figs_files/figure-html/unnamed-chunk-17-10.png)<!-- -->
 
 ```r
-h3 + aes(y = cases.averted) + labs(y = "Cases averted", title = "70% vaccination: Cases averted")
+h3 + aes(y = cases.averted) + labs(y = "Cases averted", title = "70% Vaccination: Cases averted")
 ```
 
-![](tabs-and-figs_files/figure-html/unnamed-chunk-13-11.png)<!-- -->
+![](tabs-and-figs_files/figure-html/unnamed-chunk-17-11.png)<!-- -->
 
 ```r
-h3 + aes(y = cases.averted.per100k) + labs(y = "Cases averted per 100k", title = "70% vaccination: Cases averted per 100k")
+h3 + aes(y = cases.averted.per100k) + labs(y = "Cases averted per 100k", title = "70% Vaccination: Cases averted per 100k")
 ```
 
-![](tabs-and-figs_files/figure-html/unnamed-chunk-13-12.png)<!-- -->
+![](tabs-and-figs_files/figure-html/unnamed-chunk-17-12.png)<!-- -->
 
 ## Fig. Deaths, deaths averted
 
 ```r
 # age groups
-h1 + aes(y = deaths) + labs(y = "Deaths", title = "70% vaccination: Deaths")
+h1 + aes(y = deaths) + labs(y = "Deaths", title = "70% Vaccination: Deaths")
 ```
 
-![](tabs-and-figs_files/figure-html/unnamed-chunk-14-1.png)<!-- -->
+![](tabs-and-figs_files/figure-html/unnamed-chunk-18-1.png)<!-- -->
 
 ```r
-h1 + aes(y = deaths.per100k) + labs(y = "Deaths per 100k", title = "70% vaccination: Deaths per 100k")
+h1 + aes(y = deaths.per100k) + labs(y = "Deaths per 100k", title = "70% Vaccination: Deaths per 100k")
 ```
 
-![](tabs-and-figs_files/figure-html/unnamed-chunk-14-2.png)<!-- -->
+![](tabs-and-figs_files/figure-html/unnamed-chunk-18-2.png)<!-- -->
 
 ```r
-h1 + aes(y = deaths.averted) + labs(y = "Deaths averted", title = "70% vaccination: Deaths averted")
+h1 + aes(y = deaths.averted) + labs(y = "Deaths averted", title = "70% Vaccination: Deaths averted")
 ```
 
-![](tabs-and-figs_files/figure-html/unnamed-chunk-14-3.png)<!-- -->
+![](tabs-and-figs_files/figure-html/unnamed-chunk-18-3.png)<!-- -->
 
 ```r
-h1 + aes(y = deaths.averted.per100k) + labs(y = "Deaths averted per 100k", title = "70% vaccination: Deaths averted per 100k")
+h1 + aes(y = deaths.averted.per100k) + labs(y = "Deaths averted per 100k", title = "70% Vaccination: Deaths averted per 100k")
 ```
 
-![](tabs-and-figs_files/figure-html/unnamed-chunk-14-4.png)<!-- -->
+![](tabs-and-figs_files/figure-html/unnamed-chunk-18-4.png)<!-- -->
 
 ```r
 # risk groups
-h2 + aes(y = deaths) + labs(y = "Deaths", title = "70% vaccination: Deaths")
+h2 + aes(y = deaths) + labs(y = "Deaths", title = "70% Vaccination: Deaths")
 ```
 
-![](tabs-and-figs_files/figure-html/unnamed-chunk-14-5.png)<!-- -->
+![](tabs-and-figs_files/figure-html/unnamed-chunk-18-5.png)<!-- -->
 
 ```r
-h2 + aes(y = deaths.per100k) + labs(y = "Deaths per 100k", title = "70% vaccination: Deaths per 100k")
+h2 + aes(y = deaths.per100k) + labs(y = "Deaths per 100k", title = "70% Vaccination: Deaths per 100k")
 ```
 
-![](tabs-and-figs_files/figure-html/unnamed-chunk-14-6.png)<!-- -->
+![](tabs-and-figs_files/figure-html/unnamed-chunk-18-6.png)<!-- -->
 
 ```r
-h2 + aes(y = deaths.averted) + labs(y = "Deaths averted", title = "70% vaccination: Deaths averted")
+h2 + aes(y = deaths.averted) + labs(y = "Deaths averted", title = "70% Vaccination: Deaths averted")
 ```
 
-![](tabs-and-figs_files/figure-html/unnamed-chunk-14-7.png)<!-- -->
+![](tabs-and-figs_files/figure-html/unnamed-chunk-18-7.png)<!-- -->
 
 ```r
-h2 + aes(y = deaths.averted.per100k) + labs(y = "Deaths averted per 100k", title = "70% vaccination: Deaths averted per 100k")
+h2 + aes(y = deaths.averted.per100k) + labs(y = "Deaths averted per 100k", title = "70% Vaccination: Deaths averted per 100k")
 ```
 
-![](tabs-and-figs_files/figure-html/unnamed-chunk-14-8.png)<!-- -->
+![](tabs-and-figs_files/figure-html/unnamed-chunk-18-8.png)<!-- -->
 
 ```r
-h3 + aes(y = deaths) + labs(y = "Deaths", title = "70% vaccination: Deaths")
+h3 + aes(y = deaths) + labs(y = "Deaths", title = "70% Vaccination: Deaths")
 ```
 
-![](tabs-and-figs_files/figure-html/unnamed-chunk-14-9.png)<!-- -->
+![](tabs-and-figs_files/figure-html/unnamed-chunk-18-9.png)<!-- -->
 
 ```r
-h3 + aes(y = deaths.per100k) + labs(y = "Deaths per 100k", title = "70% vaccination: Deaths per 100k")
+h3 + aes(y = deaths.per100k) + labs(y = "Deaths per 100k", title = "70% Vaccination: Deaths per 100k")
 ```
 
-![](tabs-and-figs_files/figure-html/unnamed-chunk-14-10.png)<!-- -->
+![](tabs-and-figs_files/figure-html/unnamed-chunk-18-10.png)<!-- -->
 
 ```r
-h3 + aes(y = deaths.averted) + labs(y = "Deaths averted", title = "70% vaccination: Deaths averted")
+h3 + aes(y = deaths.averted) + labs(y = "Deaths averted", title = "70% Vaccination: Deaths averted")
 ```
 
-![](tabs-and-figs_files/figure-html/unnamed-chunk-14-11.png)<!-- -->
+![](tabs-and-figs_files/figure-html/unnamed-chunk-18-11.png)<!-- -->
 
 ```r
-h3 + aes(y = deaths.averted.per100k) + labs(y = "Deaths averted per 100k", title = "70% vaccination: Deaths averted per 100k")
+h3 + aes(y = deaths.averted.per100k) + labs(y = "Deaths averted per 100k", title = "70% Vaccination: Deaths averted per 100k")
 ```
 
-![](tabs-and-figs_files/figure-html/unnamed-chunk-14-12.png)<!-- -->
+![](tabs-and-figs_files/figure-html/unnamed-chunk-18-12.png)<!-- -->
 
 ## Fig. DALYs, DALYs averted
 
 ```r
 # age groups
-h1 + aes(y = dalys) + labs(y = "DALYs", title = "70% vaccination: DALYs")
+h1 + aes(y = dalys) + labs(y = "DALYs", title = "70% Vaccination: DALYs")
 ```
 
-![](tabs-and-figs_files/figure-html/unnamed-chunk-15-1.png)<!-- -->
+![](tabs-and-figs_files/figure-html/unnamed-chunk-19-1.png)<!-- -->
 
 ```r
-h1 + aes(y = dalys.per100k) + labs(y = "DALYs per 100k", title = "70% vaccination: DALYs per 100k")
+h1 + aes(y = dalys.per100k) + labs(y = "DALYs per 100k", title = "70% Vaccination: DALYs per 100k")
 ```
 
-![](tabs-and-figs_files/figure-html/unnamed-chunk-15-2.png)<!-- -->
+![](tabs-and-figs_files/figure-html/unnamed-chunk-19-2.png)<!-- -->
 
 ```r
-h1 + aes(y = dalys.averted) + labs(y = "DALYs averted", title = "70% vaccination: DALYs averted")
+h1 + aes(y = dalys.averted) + labs(y = "DALYs averted", title = "70% Vaccination: DALYs averted")
 ```
 
-![](tabs-and-figs_files/figure-html/unnamed-chunk-15-3.png)<!-- -->
+![](tabs-and-figs_files/figure-html/unnamed-chunk-19-3.png)<!-- -->
 
 ```r
-h1 + aes(y = dalys.averted.per100k) + labs(y = "DALYs averted per 100k", title = "70% vaccination: DALYs averted per 100k")
+h1 + aes(y = dalys.averted.per100k) + labs(y = "DALYs averted per 100k", title = "70% Vaccination: DALYs averted per 100k")
 ```
 
-![](tabs-and-figs_files/figure-html/unnamed-chunk-15-4.png)<!-- -->
+![](tabs-and-figs_files/figure-html/unnamed-chunk-19-4.png)<!-- -->
 
 ```r
 # risk groups
-h2 + aes(y = dalys) + labs(y = "DALYs", title = "70% vaccination: DALYs")
+h2 + aes(y = dalys) + labs(y = "DALYs", title = "70% Vaccination: DALYs")
 ```
 
-![](tabs-and-figs_files/figure-html/unnamed-chunk-15-5.png)<!-- -->
+![](tabs-and-figs_files/figure-html/unnamed-chunk-19-5.png)<!-- -->
 
 ```r
-h2 + aes(y = dalys.per100k) + labs(y = "DALYs per 100k", title = "70% vaccination: DALYs per 100k")
+h2 + aes(y = dalys.per100k) + labs(y = "DALYs per 100k", title = "70% Vaccination: DALYs per 100k")
 ```
 
-![](tabs-and-figs_files/figure-html/unnamed-chunk-15-6.png)<!-- -->
+![](tabs-and-figs_files/figure-html/unnamed-chunk-19-6.png)<!-- -->
 
 ```r
-h2 + aes(y = dalys.averted) + labs(y = "DALYs averted", title = "70% vaccination: DALYs averted")
+h2 + aes(y = dalys.averted) + labs(y = "DALYs averted", title = "70% Vaccination: DALYs averted")
 ```
 
-![](tabs-and-figs_files/figure-html/unnamed-chunk-15-7.png)<!-- -->
+![](tabs-and-figs_files/figure-html/unnamed-chunk-19-7.png)<!-- -->
 
 ```r
-h2 + aes(y = dalys.averted.per100k) + labs(y = "DALYs averted per 100k", title = "70% vaccination: DALYs averted per 100k")
+h2 + aes(y = dalys.averted.per100k) + labs(y = "DALYs averted per 100k", title = "70% Vaccination: DALYs averted per 100k")
 ```
 
-![](tabs-and-figs_files/figure-html/unnamed-chunk-15-8.png)<!-- -->
+![](tabs-and-figs_files/figure-html/unnamed-chunk-19-8.png)<!-- -->
 
 ```r
-h3 + aes(y = dalys) + labs(y = "DALYs", title = "70% vaccination: DALYs")
+h3 + aes(y = dalys) + labs(y = "DALYs", title = "70% Vaccination: DALYs")
 ```
 
-![](tabs-and-figs_files/figure-html/unnamed-chunk-15-9.png)<!-- -->
+![](tabs-and-figs_files/figure-html/unnamed-chunk-19-9.png)<!-- -->
 
 ```r
-h3 + aes(y = dalys.per100k) + labs(y = "DALYs per 100k", title = "70% vaccination: DALYs per 100k")
+h3 + aes(y = dalys.per100k) + labs(y = "DALYs per 100k", title = "70% Vaccination: DALYs per 100k")
 ```
 
-![](tabs-and-figs_files/figure-html/unnamed-chunk-15-10.png)<!-- -->
+![](tabs-and-figs_files/figure-html/unnamed-chunk-19-10.png)<!-- -->
 
 ```r
-h3 + aes(y = dalys.averted) + labs(y = "DALYs averted", title = "70% vaccination: DALYs averted")
+h3 + aes(y = dalys.averted) + labs(y = "DALYs averted", title = "70% Vaccination: DALYs averted")
 ```
 
-![](tabs-and-figs_files/figure-html/unnamed-chunk-15-11.png)<!-- -->
+![](tabs-and-figs_files/figure-html/unnamed-chunk-19-11.png)<!-- -->
 
 ```r
-h3 + aes(y = dalys.averted.per100k) + labs(y = "DALYs averted per 100k", title = "70% vaccination: DALYs averted per 100k")
+h3 + aes(y = dalys.averted.per100k) + labs(y = "DALYs averted per 100k", title = "70% Vaccination: DALYs averted per 100k")
 ```
 
-![](tabs-and-figs_files/figure-html/unnamed-chunk-15-12.png)<!-- -->
+![](tabs-and-figs_files/figure-html/unnamed-chunk-19-12.png)<!-- -->
 

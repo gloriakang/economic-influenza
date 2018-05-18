@@ -1,14 +1,14 @@
 ---
 title: "figures"
 output: 
-  html_notebook: 
-    fig_caption: yes
-    number_sections: yes
-    theme: cosmo
-    toc: yes
   html_document: 
     fig_caption: yes
     keep_md: yes
+    number_sections: yes
+    theme: cosmo
+    toc: yes
+  html_notebook: 
+    fig_caption: yes
     number_sections: yes
     theme: cosmo
     toc: yes
@@ -28,7 +28,7 @@ knitr::opts_chunk$set(
 ```{r}
 rm(list = ls(all.names = TRUE))
 library(ggplot2); library(tidyr); library(dplyr)
-library(knitr); library(rmarkdown)
+library(knitr); library(rmarkdown); library(formatR)
 ```
 
 ```{r}
@@ -63,7 +63,7 @@ df3$scenario <- factor(df3$scenario, levels = c("vaxbase", "vax70"))
 df3$v.eff <- factor(df3$v.eff)
 ```
 
-# TABLES
+# Tables
 
 ```{r eval=FALSE, include=FALSE, echo=TRUE}
 ## Table: ICERs.
@@ -106,11 +106,10 @@ risk_df_base <- df_base[!(df_base$age == 'All'),]
 risk_df_vax70 <- df_vax70[!(df_vax70$age == 'All'),]
 ```
 
-# FIGURES. Base Vaccination Scenario
+# Base Vaccination Scenario
 
-## Fig. ICERs
+## Fig. ICER per case averted
 ```{r}
-# icer per case averted
 ggplot(age_df_base, aes(x = age, y = icer.case.averted, color = v.eff, group = v.eff)) +
   geom_point() + geom_line(linetype = "dotted") + labs(x = "Age group", color = "Vaccine \nefficacy") +
   ylab("$ saved per case averted") + ggtitle("Base Vaccination: ICER per case averted")
@@ -120,8 +119,10 @@ ggplot(df_base[(df_base$age=="All"),], aes(x = v.eff, y = icer.case.averted, gro
 ggplot(df_base, aes(x = age, y = icer.case.averted, group = risk, color = risk)) +
   geom_point() + geom_line(linetype = "dotted") + labs(x = "Age group", color = "Risk group") + 
   ylab("$ saved per case averted") + ggtitle("Base Vaccination: ICER per case averted") + facet_grid(~ v.eff)
+```
 
-# icer per death averted
+## Fig. ICER per death averted
+```{r}
 ggplot(age_df_base, aes(x = age, y = icer.death.averted, color = v.eff, group = v.eff)) +
   geom_point() + geom_line(linetype = "dotted") + labs(x = "Age group", color = "Vaccine \nefficacy") + 
   ylab("$ saved per death averted") + ggtitle("Base Vaccination: ICER per death averted")
@@ -131,8 +132,10 @@ ggplot(df_base[(df_base$age=="All"),], aes(x = v.eff, y = icer.death.averted, gr
 ggplot(df_base, aes(x = age, y = icer.death.averted, group = risk, color = risk)) +
   geom_point() + geom_line(linetype = "dotted") + labs(x = "Age group", color = "Risk group") + 
   ylab("$ saved per death averted") + ggtitle("Base Vaccination: ICER per death averted") + facet_grid(~ v.eff)
+```
 
-# icer per daly averted
+## Fig. ICER per DALY averted
+```{r}
 ggplot(age_df_base, aes(x = age, y = icer.daly.averted, color = v.eff, group = v.eff)) +
   geom_point() + geom_line(linetype = "dotted") + labs(x = "Age group", color = "Vaccine \nefficacy") + 
   ylab("$ saved per DALY averted") + ggtitle("Base Vaccination: ICER per DALY averted")
@@ -144,6 +147,7 @@ ggplot(df_base, aes(x = age, y = icer.daly.averted, group = risk, color = risk))
   ylab("$ saved per DALY averted") + ggtitle("Base Vaccination: ICER per DALY averted") + facet_grid(~ v.eff)
 ```
 
+Set up plots.
 ```{r}
 # age
 g1 <- ggplot(age_df_base, aes(x = age, group = v.eff, color = v.eff)) +
@@ -216,17 +220,16 @@ g3 + aes(y = dalys.averted) + labs(y = "DALYs averted", title = "Base Vaccinatio
 g3 + aes(y = dalys.averted.per100k) + labs(y = "DALYs averted per 100k", title = "Base Vaccination: DALYs averted per 100k")
 ```
 
-# FIGURES. 70% Vaccination Scenario
 
-## Fig. ICERs
+# 70% Vaccination Scenario
+
+## Fig. ICER per case averted
 ```{r}
-## Figure. 70% Vaccination: ICERs.
 g <- ggplot(df_vax70[(df_vax70$age=="All"),], aes(x = v.eff, color = risk, group = risk))
 t1 <- labs(y = "$ saved per case averted", title = "70% Vaccination: ICER per case averted")
 t2 <- labs(y = "$ saved per death averted", title = "70% Vaccination: ICER per death averted")
 t3 <- labs(y = "$ saved per DALY averted", title = "70% Vaccination: ICER per DALY averted")
 
-# icer per case averted
 ggplot(age_df_vax70, aes(x = age, y = icer.case.averted, color = v.eff, group = v.eff)) +
   geom_point() + geom_line(linetype = "dotted") + 
   labs(x = "Age group", color = "Vaccine \nefficacy") + t1
@@ -237,8 +240,10 @@ g + aes(y = icer.case.averted) + geom_point() + geom_line(linetype = "dotted") +
 ggplot(df_vax70, aes(x = age, y = icer.case.averted, group = risk, color = risk)) +
   geom_point() + geom_line(linetype = "dotted") + labs(color = "Risk group") + 
   ylab("$ saved per case averted") + ggtitle("70% Vaccination: ICER per case averted") + facet_grid(~ v.eff)
+```
 
-# icer per death averted
+## Fig. ICER per death averted
+```{r}
 ggplot(age_df_vax70, aes(x = age, y = icer.death.averted, color = v.eff, group = v.eff)) +
   geom_point() + geom_line(linetype = "dotted") + 
   labs(x = "Age group", color = "Vaccine \nefficacy") + t2
@@ -249,8 +254,10 @@ g + aes(y = icer.death.averted) + geom_point() + geom_line(linetype = "dotted") 
 ggplot(df_vax70, aes(x = age, y = icer.death.averted, group = risk, color = risk)) +
   geom_point() + geom_line(linetype = "dotted") + labs(color = "Risk group") + 
   ylab("$ saved per death averted") + ggtitle("70% Vaccination: ICER per death averted") + facet_grid(~ v.eff)
+```
 
-# icer per daly averted
+## Fig. ICER per DALY averted
+```{r}
 ggplot(age_df_vax70, aes(x = age, y = icer.daly.averted, color = v.eff, group = v.eff)) +
   geom_point() + geom_line(linetype = "dotted") +
   labs(x = "Age group", color = "Vaccine \nefficacy") + t3
@@ -262,6 +269,8 @@ ggplot(df_vax70, aes(x = age, y = icer.daly.averted, group = risk, color = risk)
   geom_point() + geom_line(linetype = "dotted") + labs(color = "Risk group") + 
   ylab("$ saved per DALY averted") + ggtitle("70% Vaccination: ICER per DALY averted") + facet_grid(~ v.eff)
 ```
+
+Set up plots.
 ```{r}
 # age
 h1 <- ggplot(age_df_vax70, aes(x = age, group = v.eff, color = v.eff)) +
