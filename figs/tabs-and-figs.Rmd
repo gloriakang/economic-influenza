@@ -35,6 +35,7 @@ library(knitr); library(rmarkdown); library(formatR)
 data <- read.csv("df/icer-all.csv", as.is = TRUE)
 df <- data[(data$scenario!="base"),]
 
+df$cost.diff.per100k <- as.numeric(df$cost.diff.per100k)
 df$cases.averted <- as.numeric(df$cases.averted)
 df$cases.averted.per100k <- as.numeric(df$cases.averted.per100k)
 df$icer.case.averted <- as.numeric(df$icer.case.averted)
@@ -113,9 +114,11 @@ risk_df_vax70 <- df_vax70[!(df_vax70$age == 'All'),]
 ggplot(age_df_base, aes(x = age, y = icer.case.averted, color = v.eff, group = v.eff)) +
   geom_point() + geom_line(linetype = "dotted") + labs(x = "Age group", color = "Vaccine \nefficacy") +
   ylab("$ saved per case averted") + ggtitle("Base Vaccination: ICER per case averted")
+
 ggplot(df_base[(df_base$age=="All"),], aes(x = v.eff, y = icer.case.averted, group = risk, color = risk)) +
   geom_point() + geom_line(linetype = "dotted") + labs(x = "Vaccine efficacy (%)", color = "Risk") +
   ylab("$ saved per case averted") + ggtitle("Base Vaccination: ICER per case averted")
+
 ggplot(df_base, aes(x = age, y = icer.case.averted, group = risk, color = risk)) +
   geom_point() + geom_line(linetype = "dotted") + labs(x = "Age group", color = "Risk group") + 
   ylab("$ saved per case averted") + ggtitle("Base Vaccination: ICER per case averted") + facet_grid(~ v.eff)
@@ -126,9 +129,11 @@ ggplot(df_base, aes(x = age, y = icer.case.averted, group = risk, color = risk))
 ggplot(age_df_base, aes(x = age, y = icer.death.averted, color = v.eff, group = v.eff)) +
   geom_point() + geom_line(linetype = "dotted") + labs(x = "Age group", color = "Vaccine \nefficacy") + 
   ylab("$ saved per death averted") + ggtitle("Base Vaccination: ICER per death averted")
+
 ggplot(df_base[(df_base$age=="All"),], aes(x = v.eff, y = icer.death.averted, group = risk, color = risk)) +
   geom_point() + geom_line(linetype = "dotted") + labs(x = "Vaccine efficacy (%)", color = "Risk") +
   ylab("$ saved per death averted") + ggtitle("Base Vaccination: ICER per death averted")
+
 ggplot(df_base, aes(x = age, y = icer.death.averted, group = risk, color = risk)) +
   geom_point() + geom_line(linetype = "dotted") + labs(x = "Age group", color = "Risk group") + 
   ylab("$ saved per death averted") + ggtitle("Base Vaccination: ICER per death averted") + facet_grid(~ v.eff)
@@ -139,9 +144,11 @@ ggplot(df_base, aes(x = age, y = icer.death.averted, group = risk, color = risk)
 ggplot(age_df_base, aes(x = age, y = icer.daly.averted, color = v.eff, group = v.eff)) +
   geom_point() + geom_line(linetype = "dotted") + labs(x = "Age group", color = "Vaccine \nefficacy") + 
   ylab("$ saved per DALY averted") + ggtitle("Base Vaccination: ICER per DALY averted")
+
 ggplot(df_base[(df_base$age=="All"),], aes(x = v.eff, y = icer.daly.averted, group = risk, color = risk)) +
   geom_point() + geom_line(linetype = "dotted") + labs(x = "Vaccine efficacy (%)", color = "Risk") +
   ylab("$ saved per DALY averted") + ggtitle("Base Vaccination: ICER per DALY averted")
+
 ggplot(df_base, aes(x = age, y = icer.daly.averted, group = risk, color = risk)) +
   geom_point() + geom_line(linetype = "dotted") + labs(x = "Age group", color = "Risk group") + 
   ylab("$ saved per DALY averted") + ggtitle("Base Vaccination: ICER per DALY averted") + facet_grid(~ v.eff)
@@ -220,9 +227,18 @@ g3 + aes(y = dalys.averted) + labs(y = "DALYs averted", title = "Base Vaccinatio
 g3 + aes(y = dalys.averted.per100k) + labs(y = "DALYs averted per 100k", title = "Base Vaccination: DALYs averted per 100k")
 ```
 
+## Fig. Cost saved vs. DALYs averted
+```{r}
+g4 <- ggplot(df_base, aes(x = dalys.averted.per100k, y = cost.diff.per100k)) +
+  labs(x = "DALYs averted per 100K", y = "Cost saved per 100K", title = "Base Vaccination: Cost saved vs. DALYs averted")
+
+g4 + aes(color = risk, group = risk) + geom_point() + facet_grid(v.eff ~ age)
+
+g4 + aes(color = age, group = age) + geom_point() + facet_grid(v.eff ~ risk)
+```
+
 
 # 70% Vaccination Scenario
-
 ## Fig. ICER per case averted
 ```{r}
 g <- ggplot(df_vax70[(df_vax70$age=="All"),], aes(x = v.eff, color = risk, group = risk))
@@ -343,3 +359,12 @@ h3 + aes(y = dalys.averted) + labs(y = "DALYs averted", title = "70% Vaccination
 h3 + aes(y = dalys.averted.per100k) + labs(y = "DALYs averted per 100k", title = "70% Vaccination: DALYs averted per 100k")
 ```
 
+## Fig. Cost saved vs. DALYs averted
+```{r}
+h4 <- ggplot(df_vax70, aes(x = dalys.averted.per100k, y = cost.diff.per100k)) +
+  labs(x = "DALYs averted per 100K", y = "Cost saved per 100K", title = "70% Vaccination: Cost saved vs. DALYs averted")
+
+h4 + aes(color = risk, group = risk) + geom_point() + facet_grid(v.eff ~ age)
+
+h4 + aes(color = age, group = age) + geom_point() + facet_grid(v.eff ~ risk)
+```
