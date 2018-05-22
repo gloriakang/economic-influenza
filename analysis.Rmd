@@ -21,9 +21,9 @@ rm(list = ls(all.names = TRUE))
 
 ```{r}
 library(knitr)
-
 source("code/functions.R")
 source("input/var.R")
+# reference case
 source("input/input_base.R")
 ```
 
@@ -39,7 +39,7 @@ source("input/input_base.R")
 ## 70% vaccination
 #source("input/input_70_10.R")
 #source("input/input_70_20.R")
-source("input/input_70_30.R")
+#source("input/input_70_30.R")
 #source("input/input_70_40.R")
 #source("input/input_70_50.R")
 #source("input/input_70_60.R")
@@ -59,7 +59,7 @@ rm(b_cases, cc_intv, cc_base, costs, num_cases, num_outcomes_base, num_outcomes_
 
 #save.image(file = "output/vax70_10.RData")
 #save.image(file = "output/vax70_20.RData")
-save.image(file = "output/vax70_30.RData")
+#save.image(file = "output/vax70_30.RData")
 #save.image(file = "output/vax70_40.RData")
 #save.image(file = "output/vax70_50.RData")
 #save.image(file = "output/vax70_60.RData")
