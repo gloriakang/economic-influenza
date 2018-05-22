@@ -1,13 +1,13 @@
 ---
-title: "results-temp"
+title: "vaxbase (10% VE) vs. vax70 (10% VE)"
 output:
   html_notebook: 
     code_folding: hide
+    highlight: tango
     theme: cosmo
   pdf_document: default
   html_document: 
     keep_md: yes
-    self_contained: no
     theme: cosmo
 ---
 
@@ -26,11 +26,10 @@ library(knitr)
 ## load reference case
 #source("input/input_base.R")
 source("input/input_base_vaxbase_10.R")
-source("input/input_base_vaxbase_20.R")
+#source("input/input_base_vaxbase_20.R")
 
 ## load RData
 #load("output/base.RData")
-
 #load("output/vaxbase_10.RData")
 #load("output/vaxbase_20.RData")
 #load("output/vaxbase_30.RData")
@@ -38,7 +37,7 @@ source("input/input_base_vaxbase_20.R")
 #load("output/vaxbase_50.RData")
 #load("output/vaxbase_60.RData")
 
-#load("output/vax70_10.RData")
+load("output/vax70_10.RData")
 #load("output/vax70_20.RData")
 #load("output/vax70_30.RData")
 #load("output/vax70_40.RData")

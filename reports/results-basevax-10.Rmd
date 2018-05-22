@@ -23,10 +23,25 @@ rm(list = ls(all.names = TRUE))
 ```{r}
 library(knitr)
 
-# load RData
+## load RData
 #load("output/base.RData")
 
 load("output/vaxbase_10.RData")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 #rm(b_cases, cc_intv, cc_base, costs, num_cases, num_outcomes_base, num_outcomes_intv, pop, prob, r_cost, risk_group, vax_comp_i)
 ```

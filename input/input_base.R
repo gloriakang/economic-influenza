@@ -1,7 +1,11 @@
 # inputs = base case
 
 ## base vaccine compliance = 0%
-vax_comp_b <- 0
+#vax_comp_b <- 0
+bc_04 <- 0
+bc_519 <- 0
+bc_2064 <- 0
+bc_65 <- 0
 
 ## total = 1248308.16 (36.64%)
 base_04 <- 74205.56 #33.19%
