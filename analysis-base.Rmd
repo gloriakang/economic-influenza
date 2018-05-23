@@ -49,6 +49,7 @@ pop <- pop_04
 num_cases <- base_04
 cases_after_vax <- base_04
 vax_comp_i <- vc_04
+vax_comp_b <- bc_04
 ```
 
 ## 0-4 years, HIGH

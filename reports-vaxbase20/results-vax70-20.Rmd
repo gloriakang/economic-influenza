@@ -24,27 +24,18 @@ rm(list = ls(all.names = TRUE))
 library(knitr)
 
 ## load reference case
-#source("input/input_base.R")
-#source("input/input_base_vaxbase_10.R")
 source("input/input_base_vaxbase_20.R")
 
 ## load RData
-#load("output/base.RData")
-#load("output/vaxbase_10.RData")
-#load("output/vaxbase_20.RData")
-#load("output/vaxbase_30.RData")
-#load("output/vaxbase_40.RData")
-#load("output/vaxbase_50.RData")
-#load("output/vaxbase_60.RData")
+load("output-vaxbase20/vax70_20.RData")
+```
 
-#load("output/vax70_10.RData")
-load("output/vax70_20.RData")
-#load("output/vax70_30.RData")
-#load("output/vax70_40.RData")
-#load("output/vax70_50.RData")
-#load("output/vax70_60.RData")
-
-#rm(b_cases, cc_intv, cc_base, costs, num_cases, num_outcomes_base, num_outcomes_intv, pop, prob, r_cost, risk_group, vax_comp_i)
+# Vaccination costs
+```{r}
+icer_04_high[4]; icer_04_low[4]; icer_04_high[4] + icer_04_low[4]
+icer_519_high[4]; icer_519_low[4];icer_519_high[4] + icer_519_low[4]
+icer_2064_high[4]; icer_2064_low[4]; icer_2064_high[4] + icer_2064_low[4]
+icer_65_high[4]; icer_65_low[4]; icer_65_high[4] + icer_65_low[4]
 ```
 
 # Clinical costs in age group (high, low, all)

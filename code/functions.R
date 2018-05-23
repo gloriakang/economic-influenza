@@ -92,11 +92,13 @@ calc_icer <- function(){
   net_costs_i = cc_intv[5]+total_cost_vax_i
   cost_diff = net_costs_b - net_costs_i
   icer = cost_diff / cases_averted
+  print(sprintf("base vax costs = %f", total_cost_vax_b))
+  print(sprintf("intv vax costs = %f", total_cost_vax_i))
   print(sprintf("intv net costs = %f", net_costs_i))
   print(sprintf("cost difference = %f", cost_diff))
   print(sprintf("cases averted = %f", cases_averted))
   print(sprintf("icer = %s", icer))
-  return(c(cost_diff, cases_averted, icer))
+  return(c(cost_diff, cases_averted, icer, total_cost_vax_i))
 }
 
 # DEATHS
