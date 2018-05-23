@@ -1,0 +1,102 @@
+---
+title: "vaxbase reference cases"
+output: 
+  html_document: 
+    fig_caption: yes
+    keep_md: yes
+    number_sections: yes
+    theme: cosmo
+    toc: yes
+  html_notebook: 
+    fig_caption: yes
+    number_sections: yes
+    theme: cosmo
+    toc: yes
+editor_options: 
+  chunk_output_type: inline
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+	echo = TRUE,
+	warning = TRUE,
+	cache = TRUE,
+	tidy = TRUE
+)
+```
+
+```{r}
+rm(list = ls(all.names = TRUE))
+library(ggplot2); library(tidyr); library(dplyr)
+library(knitr); library(rmarkdown); library(formatR)
+```
+
+```{r}
+data <- read.csv("df/icer-all.csv", as.is = TRUE)
+df <- data[(data$reference=="vaxbase"),]
+
+df$cost.diff.per100k <- as.numeric(df$cost.diff.per100k)
+df$cases.averted <- as.numeric(df$cases.averted)
+df$cases.averted.per100k <- as.numeric(df$cases.averted.per100k)
+df$icer.case.averted <- as.numeric(df$icer.case.averted)
+df$deaths.averted <- as.numeric(df$deaths.averted)
+df$deaths.averted.per100k <- as.numeric(df$ deaths.averted.per100k)
+df$icer.death.averted <- as.numeric(df$icer.death.averted)
+df$dalys <- as.numeric(df$dalys)
+df$dalys.per100k <- as.numeric(df$dalys.per100k)
+df$dalys.averted <- as.numeric(df$dalys.averted)
+df$dalys.averted.per100k <- as.numeric(df$dalys.averted.per100k)
+df$icer.daly.averted <- as.numeric(df$icer.daly.averted)
+```
+
+```{r}
+# factors
+df$age <- factor(df$age, levels = c("0-4 yrs", "5-19 yrs", "20-64 yrs", "65+ yrs", "All"))
+df$risk <- factor(df$risk, levels = c("High", "Non-high", "All"))
+df$scenario <- factor(df$scenario, levels = c("vaxbase", "vax70"))
+df$v.eff <- factor(df$v.eff)
+```
+
+# Tables
+
+```{r}
+## Table: ICERs.
+t1 <- df[c("scenario", "age", "risk", "v.eff", "icer.case.averted", "icer.death.averted", "icer.daly.averted")] %>%
+  gather("icer.case.averted", "icer.death.averted", "icer.daly.averted", key = "icer", value = "value") %>%
+  spread(risk, value) %>%
+  arrange(scenario, v.eff, icer)
+head(t1)
+#write.csv(t1, "df/df2-icer.csv")
+
+## Table: Cases, deaths, DALYs per 100,000 population.
+t2 <- df[c("scenario", "age", "risk", "v.eff", "cases.per100k", "deaths.per100k", "dalys.per100k")] %>%
+  gather("cases.per100k", "deaths.per100k", "dalys.per100k", key = "metric", value = "value") %>%
+  spread(risk, value) %>%
+  arrange(scenario, v.eff, metric)
+head(t2)
+#write.csv(t2, "df/df2-rates.csv")
+
+## Table: Cases, deaths, DALYs averted per 100,000
+t3 <- df[c("scenario", "age", "risk", "v.eff", "cases.averted.per100k", "deaths.averted.per100k", "dalys.averted.per100k")] %>%
+  gather("cases.averted.per100k", "deaths.averted.per100k", "dalys.averted.per100k", key = "metric", value = "value") %>%
+  spread(risk, value) %>%
+  arrange(scenario, v.eff, metric)
+head(t3)
+#write.csv(t3, "df/df2-averted-rates.csv")
+```
+
+# Subset data.
+```{r}
+# subset scenario
+df_10 <- df[(df$v.eff == '10'),]
+df_20 <- df[(df$v.eff == '20'),]
+
+# age groups
+age_df_10 <- df_10[(df_10$risk == "All"),]
+age_df_20 <- df_20[(df_20$risk == "All"),]
+
+# risk groups
+risk_df_10 <- df_10[!(df_10$age == 'All'),]
+risk_df_20 <- df_20[!(df_20$age == 'All'),]
+```
+

@@ -1,0 +1,31 @@
+"","scenario","age","v.eff","metric","High","Non-high","All"
+"1","vax70","0-4 yrs","10","cases.averted.per100k",2627.37,2627.37,2627.37
+"2","vax70","5-19 yrs","10","cases.averted.per100k",3851.28,3851.28,3851.28
+"3","vax70","20-64 yrs","10","cases.averted.per100k",3195.21,3195.21,3195.21
+"4","vax70","65+ yrs","10","cases.averted.per100k",1790.48,1790.48,1790.48
+"5","vax70","All","10","cases.averted.per100k",2815.48,3216.95,3153.9
+"6","vax70","0-4 yrs","10","dalys.averted.per100k",1325.7,30.17,113.09
+"7","vax70","5-19 yrs","10","dalys.averted.per100k",1698.41,39.08,145.28
+"8","vax70","20-64 yrs","10","dalys.averted.per100k",1608.49,40.75,266.5
+"9","vax70","65+ yrs","10","dalys.averted.per100k",675.69,90.26,390
+"10","vax70","All","10","dalys.averted.per100k",1332.39,42.22,244.86
+"11","vax70","0-4 yrs","10","deaths.averted.per100k",17.09,0.36,1.43
+"12","vax70","5-19 yrs","10","deaths.averted.per100k",25.11,0.52,2.1
+"13","vax70","20-64 yrs","10","deaths.averted.per100k",41.27,0.97,6.77
+"14","vax70","65+ yrs","10","deaths.averted.per100k",47.13,6.19,27.15
+"15","vax70","All","10","deaths.averted.per100k",41.12,1.1,7.39
+"16","vax70","0-4 yrs","20","cases.averted.per100k",5329.4,5329.4,5329.4
+"17","vax70","5-19 yrs","20","cases.averted.per100k",8601.08,8601.08,8601.08
+"18","vax70","20-64 yrs","20","cases.averted.per100k",6283.86,6283.86,6283.86
+"19","vax70","65+ yrs","20","cases.averted.per100k",3539.28,3539.28,3539.28
+"20","vax70","All","20","cases.averted.per100k",5625.28,6553.49,6407.71
+"21","vax70","0-4 yrs","20","dalys.averted.per100k",2689,61.2,229.38
+"22","vax70","5-19 yrs","20","dalys.averted.per100k",3793.05,87.28,324.45
+"23","vax70","20-64 yrs","20","dalys.averted.per100k",3163.32,80.13,524.11
+"24","vax70","65+ yrs","20","dalys.averted.per100k",1335.64,178.41,770.91
+"25","vax70","All","20","dalys.averted.per100k",2659.19,85.4,489.63
+"26","vax70","0-4 yrs","20","deaths.averted.per100k",34.67,0.72,2.9
+"27","vax70","5-19 yrs","20","deaths.averted.per100k",56.07,1.17,4.68
+"28","vax70","20-64 yrs","20","deaths.averted.per100k",81.16,1.9,13.32
+"29","vax70","65+ yrs","20","deaths.averted.per100k",93.16,12.23,53.67
+"30","vax70","All","20","deaths.averted.per100k",81.54,2.2,14.67
