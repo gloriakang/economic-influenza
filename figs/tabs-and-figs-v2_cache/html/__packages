@@ -1,0 +1,8 @@
+base
+ggplot2
+tidyr
+dplyr
+knitr
+rmarkdown
+formatR
+bindrcpp
