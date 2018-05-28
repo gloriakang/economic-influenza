@@ -1,15 +1,15 @@
 ---
 title: "Healthy vax vs. Prevalent vax (10,20%)"
 output: 
-  html_notebook: 
-    code_folding: hide
-    fig_caption: yes
-    number_sections: yes
-    theme: cosmo
-    toc: yes
   html_document: 
     fig_caption: yes
     keep_md: yes
+    number_sections: yes
+    theme: cosmo
+    toc: yes
+  html_notebook: 
+    code_folding: hide
+    fig_caption: yes
     number_sections: yes
     theme: cosmo
     toc: yes
