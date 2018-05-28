@@ -1,5 +1,5 @@
 ---
-title: "Comparator = No vax: 10,20% Prevalent vs. 10,20% Healthy People"
+title: "Prevalent vax and Healthy vax vs. No vax (10,20%)"
 output: 
   html_notebook: 
     code_folding: hide
@@ -28,8 +28,13 @@ knitr::opts_chunk$set(
 
 ```{r}
 rm(list = ls(all.names = TRUE))
-library(ggplot2); library(tidyr); library(dplyr)
-library(knitr); library(rmarkdown); library(formatR)
+
+library(ggplot2)
+library(tidyr)
+library(dplyr)
+library(knitr)
+library(rmarkdown)
+library(formatR)
 ```
 
 ```{r}

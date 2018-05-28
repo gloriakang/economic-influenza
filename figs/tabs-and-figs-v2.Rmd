@@ -1,5 +1,5 @@
 ---
-title: "Comparator = Prevalent vaccination"
+title: "Healthy vax vs. Prevalent vax (10,20%)"
 output: 
   html_notebook: 
     code_folding: hide
@@ -28,8 +28,13 @@ knitr::opts_chunk$set(
 
 ```{r}
 rm(list = ls(all.names = TRUE))
-library(ggplot2); library(tidyr); library(dplyr)
-library(knitr); library(rmarkdown); library(formatR)
+
+library(ggplot2)
+library(tidyr)
+library(dplyr)
+library(knitr)
+library(rmarkdown)
+library(formatR)
 ```
 
 ```{r}
@@ -62,7 +67,7 @@ df$v.eff <- factor(df$v.eff)
 
 # Tables
 
-```{r include=FALSE}
+```{r eval=FALSE, include=FALSE}
 ## Table: ICERs.
 t1 <- df[c("scenario", "age", "risk", "v.eff", "icer.case.averted", "icer.death.averted", "icer.daly.averted")] %>%
   gather("icer.case.averted", "icer.death.averted", "icer.daly.averted", key = "icer", value = "value") %>%
@@ -89,57 +94,40 @@ head(t3)
 ```
 
 # Subset data.
+
 ```{r}
-# subset scenario
+# subset VE
 df_10 <- df[(df$v.eff == '10'),]
 df_20 <- df[(df$v.eff == '20'),]
-
-# age groups
-age_df_10 <- df_10[(df_10$risk == "All"),]
-age_df_20 <- df_20[(df_20$risk == "All"),]
-
-# risk groups
-risk_df_10 <- df_10[!(df_10$age == 'All'),]
-risk_df_20 <- df_20[!(df_20$age == 'All'),]
 ```
 
-# Fig. Cost saved vs. DALYs averted
+# Fig. Cost-effectiveness plane (All VE)
+
 ```{r}
-a1 <- ggplot(df_10, aes(x = dalys.averted.per100k, y = cost.diff.per100k)) +
-  labs(x = "DALYs averted per 100K", y = "Cost saved per 100K", title = "Healthy People 2020 Vaccination (10% VE): Cost saved vs. DALYs averted")
+l <- labs(x = "DALYs averted per 100K", y = "Cost saved per 100K")
+
+# All VE%
+a <- ggplot(df, aes(x = dalys.averted.per100k, y = cost.diff.per100k)) + l +
+  labs(title = "Cost-effectiveness plane: Healthy People vs. Prevalent Vaccination")
+
+a + aes(color = risk, group = risk) + labs(color = "Risk") + geom_point() + facet_grid(v.eff ~ age)
+a + aes(color = age, group = age) + labs(color = "Age group") + geom_point() + facet_grid(v.eff ~ risk)
+```
+
+## Fig. Cost-effectiveness plane (10% and 20% VE)
+
+```{r}
+# 10% VE
+a1 <- ggplot(df_10, aes(x = dalys.averted.per100k, y = cost.diff.per100k)) + l +
+  labs(title = "Cost-effectiveness plane: Healthy People vs. Prevalent (10% VE)")
 a1 + aes(color = risk, group = risk) + geom_point() + facet_grid(~ age)
 a1 + aes(color = age, group = age) + geom_point() + facet_grid(~ risk)
 
-
-a2 <- ggplot(df_20, aes(x = dalys.averted.per100k, y = cost.diff.per100k)) +
-  labs(x = "DALYs averted per 100K", y = "Cost saved per 100K", title = "Healthy People 2020 Vaccination (20% VE): Cost saved vs. DALYs averted")
+# 20% VE
+a2 <- ggplot(df_20, aes(x = dalys.averted.per100k, y = cost.diff.per100k)) + l +
+  labs(title = "Cost-effectiveness plane: Healthy People vs. Prevalent (20% VE)")
 a2 + aes(color = risk, group = risk) + geom_point() + facet_grid(~ age)
 a2 + aes(color = age, group = age) + geom_point() + facet_grid(~ risk)
 ```
 
-
-```{r}
-b1 <- ggplot(df, aes(x = dalys.averted.per100k, y = cost.diff.per100k)) + labs(x = "DALYs averted per 100K", y = "Cost saved per 100K", title = "Healthy People 2020 Vaccination: Cost saved vs. DALYs averted")
-
-b1 + aes(color = v.eff, group = v.eff, shape = risk) + geom_point() + facet_grid(~ age)
-b1 + aes(color = v.eff, group = v.eff, shape = age) + geom_point() + facet_grid(risk ~ .)
-
-
-b2 <- ggplot(df, aes(x = dalys.averted.per100k, y = cost.diff.per100k)) + labs(x = "DALYs averted per 100K", y = "Cost saved per 100K", title = "Healthy People 2020 Vaccination: Cost saved vs. DALYs averted")
-b2 + aes(color = v.eff, group = v.eff, shape = risk) + geom_point() + facet_grid(v.eff ~ age)
-b2 + aes(color = v.eff, group = v.eff, shape = age) + geom_point() + facet_grid(v.eff ~ risk)
-```
-
-
-```{r}
-c1 <- ggplot(df, aes(x = dalys.averted.per100k, y = cost.diff.per100k)) + labs(x = "DALYs averted per 100K", y = "Cost saved per 100K", title = "Healthy People 2020 Vaccination: Cost saved vs. DALYs averted")
-
-c1 + aes(color = v.eff, group = v.eff, shape = risk) + geom_point() + facet_grid(~ age)
-c1 + aes(color = v.eff, group = v.eff, shape = age) + geom_point() + facet_grid(risk ~ .)
-
-
-c2 <- ggplot(df, aes(x = dalys.averted.per100k, y = cost.diff.per100k)) + labs(x = "DALYs averted per 100K", y = "Cost saved per 100K", title = "Healthy People 2020 Vaccination: Cost saved vs. DALYs averted")
-c2 + aes(color = v.eff, group = v.eff, shape = risk) + geom_point() + facet_grid(v.eff ~ age)
-c2 + aes(color = v.eff, group = v.eff, shape = age) + geom_point() + facet_grid(v.eff ~ risk)
-```
 
