@@ -76,7 +76,7 @@ editor_options:
 # Fig. Cost saved vs. DALYs averted
 ![](tabs-and-figs_files/figure-html/unnamed-chunk-19-1.png)<!-- -->![](tabs-and-figs_files/figure-html/unnamed-chunk-19-2.png)<!-- -->
 
-# 70% Vaccination Scenario
+# Healthy People Vaccination Scenario
 
 ## Fig. ICER per case averted
 ![](tabs-and-figs_files/figure-html/unnamed-chunk-20-1.png)<!-- -->![](tabs-and-figs_files/figure-html/unnamed-chunk-20-2.png)<!-- -->![](tabs-and-figs_files/figure-html/unnamed-chunk-20-3.png)<!-- -->
