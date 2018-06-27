@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title>base case</title>
+
+<script src="results-base_files/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="results-base_files/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<script src="results-base_files/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="results-base_files/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="results-base_files/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="results-base_files/navigation-1.1/tabsets.js"></script>
+<link href="results-base_files/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="results-base_files/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">base case</h1>
+
+</div>
+
+
+<div id="clinical-costs-in-age-group-high-low-all" class="section level1">
+<h1>Clinical costs in age group (high, low, all)</h1>
+<pre><code>## [1] 4839137</code></pre>
+<pre><code>## [1] 13625897</code></pre>
+<pre><code>## [1] 18465034</code></pre>
+<pre><code>## [1] 54093726</code></pre>
+<pre><code>## [1] 84614735</code></pre>
+<pre><code>## [1] 138708462</code></pre>
+<pre><code>## [1] 158462631</code></pre>
+<pre><code>## [1] 171220396</code></pre>
+<pre><code>## [1] 329683027</code></pre>
+<pre><code>## [1] 123693905</code></pre>
+<pre><code>## [1] 19652925</code></pre>
+<pre><code>## [1] 143346830</code></pre>
+</div>
+<div id="total-clinical-costs-in-scenario-high-low-all" class="section level1">
+<h1>Total clinical costs in scenario (high, low, all)</h1>
+<pre><code>## [1] 341089399</code></pre>
+<pre><code>## [1] 289113953</code></pre>
+<pre><code>## [1] 630203352</code></pre>
+</div>
+<div id="number-of-cases-in-age-group-high-low-all" class="section level1">
+<h1>Number of cases in age group (high, low, all)</h1>
+<pre><code>## [1] 3181.934</code></pre>
+<pre><code>## [1] 46535.79</code></pre>
+<pre><code>## [1] 49717.73</code></pre>
+<pre><code>## [1] 18000.51</code></pre>
+<pre><code>## [1] 263257.5</code></pre>
+<pre><code>## [1] 281258</code></pre>
+<pre><code>## [1] 66163.54</code></pre>
+<pre><code>## [1] 393305.5</code></pre>
+<pre><code>## [1] 459469.1</code></pre>
+<pre><code>## [1] 23511.89</code></pre>
+<pre><code>## [1] 22409.77</code></pre>
+<pre><code>## [1] 45921.67</code></pre>
+<div id="total-number-of-cases-in-scenario-high-low-all" class="section level2">
+<h2>Total number of cases in scenario (high, low, all)</h2>
+<pre><code>## [1] 110857.9</code></pre>
+<pre><code>## [1] 725508.6</code></pre>
+<pre><code>## [1] 836366.5</code></pre>
+</div>
+</div>
+<div id="cost-difference-in-age-group-high-low-all" class="section level1">
+<h1>Cost difference in age group (high, low, all)</h1>
+<pre><code>## [1] 0</code></pre>
+<pre><code>## [1] 0</code></pre>
+<pre><code>## [1] 0</code></pre>
+<pre><code>## [1] 0</code></pre>
+<pre><code>## [1] 0</code></pre>
+<pre><code>## [1] 0</code></pre>
+<pre><code>## [1] 0</code></pre>
+<pre><code>## [1] 0</code></pre>
+<pre><code>## [1] 0</code></pre>
+<pre><code>## [1] 0</code></pre>
+<pre><code>## [1] 0</code></pre>
+<pre><code>## [1] 0</code></pre>
+<div id="total-cost-difference-in-scenario-high-low-all" class="section level2">
+<h2>Total cost difference in scenario (high, low, all)</h2>
+<pre><code>## [1] 0</code></pre>
+<pre><code>## [1] 0</code></pre>
+<pre><code>## [1] 0</code></pre>
+</div>
+</div>
+<div id="cases-averted-in-age-group-high-low-all" class="section level1">
+<h1>Cases averted in age group (high, low, all)</h1>
+<pre><code>## [1] 0</code></pre>
+<pre><code>## [1] 0</code></pre>
+<pre><code>## [1] 0</code></pre>
+<pre><code>## [1] 0</code></pre>
+<pre><code>## [1] 0</code></pre>
+<pre><code>## [1] 0</code></pre>
+<pre><code>## [1] 0</code></pre>
+<pre><code>## [1] 0</code></pre>
+<pre><code>## [1] 0</code></pre>
+<pre><code>## [1] 0</code></pre>
+<pre><code>## [1] 0</code></pre>
+<pre><code>## [1] 0</code></pre>
+<div id="total-cases-averted-in-scenario-high-low-all" class="section level2">
+<h2>Total cases averted in scenario (high, low, all)</h2>
+<pre><code>## [1] 0</code></pre>
+<pre><code>## [1] 0</code></pre>
+<pre><code>## [1] 0</code></pre>
+</div>
+</div>
+<div id="icer-per-case-averted-in-age-group-high-low-all" class="section level1">
+<h1>ICER per case averted in age group (high, low, all)</h1>
+<pre><code>## [1] NaN</code></pre>
+<pre><code>## [1] NaN</code></pre>
+<pre><code>## [1] NaN</code></pre>
+<pre><code>## [1] NaN</code></pre>
+<pre><code>## [1] NaN</code></pre>
+<pre><code>## [1] NaN</code></pre>
+<pre><code>## [1] NaN</code></pre>
+<pre><code>## [1] NaN</code></pre>
+<pre><code>## [1] NaN</code></pre>
+<pre><code>## [1] NaN</code></pre>
+<pre><code>## [1] NaN</code></pre>
+<pre><code>## [1] NaN</code></pre>
+<div id="total-icer-per-case-averted-in-scenario-high-low-all" class="section level2">
+<h2>Total ICER per case averted in scenario (high, low, all)</h2>
+<pre><code>## [1] NaN</code></pre>
+<pre><code>## [1] NaN</code></pre>
+<pre><code>## [1] NaN</code></pre>
+</div>
+</div>
+<div id="deaths-in-age-group-high-low-all" class="section level1">
+<h1>Deaths in age group (high, low, all)</h1>
+<pre><code>## [1] 20.70261</code></pre>
+<pre><code>## [1] 6.316667</code></pre>
+<pre><code>## [1] 27.01928</code></pre>
+<pre><code>## [1] 117.3412</code></pre>
+<pre><code>## [1] 35.76218</code></pre>
+<pre><code>## [1] 153.1034</code></pre>
+<pre><code>## [1] 854.5575</code></pre>
+<pre><code>## [1] 119.0434</code></pre>
+<pre><code>## [1] 973.6009</code></pre>
+<pre><code>## [1] 618.8727</code></pre>
+<pre><code>## [1] 77.46469</code></pre>
+<pre><code>## [1] 696.3374</code></pre>
+<div id="total-deaths-in-scenario-high-low-all" class="section level2">
+<h2>Total deaths in scenario (high, low, all)</h2>
+<pre><code>## [1] 1611.474</code></pre>
+<pre><code>## [1] 238.5869</code></pre>
+<pre><code>## [1] 1850.061</code></pre>
+</div>
+</div>
+<div id="deaths-averted-high-low-all" class="section level1">
+<h1>Deaths averted (high, low, all)</h1>
+<pre><code>## [1] 0</code></pre>
+<pre><code>## [1] 0</code></pre>
+<pre><code>## [1] 0</code></pre>
+<pre><code>## [1] 0</code></pre>
+<pre><code>## [1] 0</code></pre>
+<pre><code>## [1] 0</code></pre>
+<pre><code>## [1] 0</code></pre>
+<pre><code>## [1] 0</code></pre>
+<pre><code>## [1] 0</code></pre>
+<pre><code>## [1] 0</code></pre>
+<pre><code>## [1] 0</code></pre>
+<pre><code>## [1] 0</code></pre>
+<div id="total-deaths-averted-in-scenario" class="section level2">
+<h2>Total deaths averted in scenario</h2>
+<pre><code>## [1] 0</code></pre>
+<pre><code>## [1] 0</code></pre>
+<pre><code>## [1] 0</code></pre>
+</div>
+</div>
+<div id="icer-per-death-averted-high-low-all" class="section level1">
+<h1>ICER per death averted (high, low, all)</h1>
+<pre><code>## [1] NaN</code></pre>
+<pre><code>## [1] NaN</code></pre>
+<pre><code>## [1] NaN</code></pre>
+<pre><code>## [1] NaN</code></pre>
+<pre><code>## [1] NaN</code></pre>
+<pre><code>## [1] NaN</code></pre>
+<pre><code>## [1] NaN</code></pre>
+<pre><code>## [1] NaN</code></pre>
+<pre><code>## [1] NaN</code></pre>
+<pre><code>## [1] NaN</code></pre>
+<pre><code>## [1] NaN</code></pre>
+<pre><code>## [1] NaN</code></pre>
+<div id="total-icer-per-death-averted-in-scenario" class="section level2">
+<h2>Total ICER per death averted in scenario</h2>
+<pre><code>## [1] NaN</code></pre>
+<pre><code>## [1] NaN</code></pre>
+<pre><code>## [1] NaN</code></pre>
+</div>
+</div>
+<div id="other-health-outcomes" class="section level1">
+<h1>Other health outcomes</h1>
+<pre><code>## [1]   43.59563 2840.61192  277.02426</code></pre>
+<pre><code>## [1]   174.2129 23715.8547 22639.4065</code></pre>
+<pre><code>## [1]  246.7211 9443.9938 8192.4568</code></pre>
+<pre><code>## [1]    983.0528 134158.7439 128079.9419</code></pre>
+<pre><code>## [1]   969.4269 40752.4049 23587.1558</code></pre>
+<pre><code>## [1]   2634.141 138228.697 252323.636</code></pre>
+<pre><code>## [1]  1194.570 15785.643  5912.808</code></pre>
+<pre><code>## [1]   317.3291  8565.9251 13449.0541</code></pre>
+</div>
+<div id="dalys-high-low-all" class="section level1">
+<h1>DALYs (high, low, all)</h1>
+<pre><code>## [1] 1605.494</code></pre>
+<pre><code>## [1] 534.4258</code></pre>
+<pre><code>## [1] 2139.92</code></pre>
+<pre><code>## [1] 7938.138</code></pre>
+<pre><code>## [1] 2671.434</code></pre>
+<pre><code>## [1] 10609.57</code></pre>
+<pre><code>## [1] 33307</code></pre>
+<pre><code>## [1] 5015.474</code></pre>
+<pre><code>## [1] 38322.47</code></pre>
+<pre><code>## [1] 8872.876</code></pre>
+<pre><code>## [1] 1129.664</code></pre>
+<pre><code>## [1] 10002.54</code></pre>
+</div>
+<div id="total-dalys-in-scenario-high-low-all" class="section level1">
+<h1>Total DALYs in scenario (high, low, all)</h1>
+<pre><code>## [1] 51723.51</code></pre>
+<pre><code>## [1] 9350.998</code></pre>
+<pre><code>## [1] 61074.5</code></pre>
+</div>
+<div id="dalys-averted-high-low-all" class="section level1">
+<h1>DALYs averted (high, low, all)</h1>
+<pre><code>## [1] 790.7658</code></pre>
+<pre><code>## [1] 263.2247</code></pre>
+<pre><code>## [1] 1053.99</code></pre>
+<pre><code>## [1] 3909.83</code></pre>
+<pre><code>## [1] 1315.782</code></pre>
+<pre><code>## [1] 5225.61</code></pre>
+<pre><code>## [1] 16404.94</code></pre>
+<pre><code>## [1] 2470.308</code></pre>
+<pre><code>## [1] 18875.25</code></pre>
+<pre><code>## [1] 4370.223</code></pre>
+<pre><code>## [1] 556.4014</code></pre>
+<pre><code>## [1] 4926.624</code></pre>
+<div id="total-dalys-averted-in-scenario-high-low-all" class="section level2">
+<h2>Total DALYs averted in scenario (high, low, all)</h2>
+<pre><code>## [1] 25475.76</code></pre>
+<pre><code>## [1] 4605.716</code></pre>
+<pre><code>## [1] 30081.47</code></pre>
+</div>
+</div>
+<div id="icer-per-daly-averted-high-low-all" class="section level1">
+<h1>ICER per DALY averted (high, low, all)</h1>
+<pre><code>## [1] 0</code></pre>
+<pre><code>## [1] 0</code></pre>
+<pre><code>## [1] 0</code></pre>
+<pre><code>## [1] 0</code></pre>
+<pre><code>## [1] 0</code></pre>
+<pre><code>## [1] 0</code></pre>
+<pre><code>## [1] 0</code></pre>
+<pre><code>## [1] 0</code></pre>
+<pre><code>## [1] 0</code></pre>
+<pre><code>## [1] 0</code></pre>
+<pre><code>## [1] 0</code></pre>
+<pre><code>## [1] 0</code></pre>
+</div>
+<div id="icer-per-daly-averted-in-scenario-high-low-all" class="section level1">
+<h1>ICER per DALY averted in scenario (high, low, all)</h1>
+<pre><code>## [1] 0</code></pre>
+<pre><code>## [1] 0</code></pre>
+<pre><code>## [1] 0</code></pre>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

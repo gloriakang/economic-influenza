@@ -53,7 +53,7 @@ source("input/var.R")
 rm(b_cases, cc_intv, cc_base, costs, num_cases, num_outcomes_base, num_outcomes_intv, pop, prob, r_cost, risk_group, vax_comp_i, vax_comp_b, i_cases, total_cost_vax_b, total_cost_vax_i)
 
 ## save RData
-#save.image(file = "output/vaxbase_10.RData")
+#save.image(file = "output/vaxbase_40.RData")
 
 #save.image(file = "output/vax70_10.RData")
 

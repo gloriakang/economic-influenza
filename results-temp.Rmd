@@ -25,11 +25,11 @@ library(knitr)
 
 ## load reference case
 #source("input/input_base.R")
-source("input/input_base_vaxbase_10.R")
-source("input/input_base_vaxbase_20.R")
+#source("input/input_base_vaxbase_10.R")
+#source("input/input_base_vaxbase_20.R")
 
 ## load RData
-#load("output/base.RData")
+load("output/base.RData")
 
 #load("output/vaxbase_10.RData")
 #load("output/vaxbase_20.RData")
