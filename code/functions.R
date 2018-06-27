@@ -12,7 +12,8 @@ calc_subpop_cases_intv <- function(cases_after_vax, risk_group){
 
 # total cost of vaccination program
 calc_vaccination_cost <- function(vax_comp){
-  total_cost_vax = vax_cost * pop * risk_group * vax_comp
+  #total_cost_vax = vax_cost * pop * risk_group * vax_comp
+  total_cost_vax = vax_cost * pop * vax_comp
   return(total_cost_vax)
 }
 
