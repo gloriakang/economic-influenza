@@ -59,7 +59,7 @@ rm(b_cases, cc_intv, cc_base, costs, num_cases, num_outcomes_base, num_outcomes_
 
 #save.image(file = "output-vaxbase10/vax70_10.RData")
 
-save.image(file = "output-vaxbase20/vax70_20.RData")
+#save.image(file = "output-vaxbase20/vax70_20.RData")
 ```
 
 ###### 0-4 years ######
