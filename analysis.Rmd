@@ -28,7 +28,7 @@ source("input/var.R")
 ## load reference case
 #source("input/input_base.R")
 #source("input/input_base_vaxbase_10.R")
-#source("input/input_base_vaxbase_20.R")
+source("input/input_base_vaxbase_20.R")
 ```
 
 ```{r}
@@ -41,7 +41,7 @@ source("input/var.R")
 #source("input/input_vaxbase_60.R")
 
 #source("input/input_70_10.R")
-#source("input/input_70_20.R")
+source("input/input_70_20.R")
 #source("input/input_70_30.R")
 #source("input/input_70_40.R")
 #source("input/input_70_50.R")
@@ -59,7 +59,7 @@ rm(b_cases, cc_intv, cc_base, costs, num_cases, num_outcomes_base, num_outcomes_
 
 #save.image(file = "output-vaxbase10/vax70_10.RData")
 
-#save.image(file = "output-vaxbase20/vax70_20.RData")
+save.image(file = "output-vaxbase20/vax70_20.RData")
 ```
 
 ###### 0-4 years ######
