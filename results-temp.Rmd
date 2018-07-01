@@ -25,28 +25,19 @@ library(knitr)
 
 ## load reference case
 #source("input/input_base.R")
-
-#source("input/input_base_vaxbase_10.R")
-
-source("input/input_base_vaxbase_20.R")
+source("input/input_base_vaxbase_10.R")
+#source("input/input_base_vaxbase_20.R")
 
 ## load RData
 #load("output/base.RData")
+
 #load("output/vaxbase_10.RData")
-#load("output/vaxbase_20.RData")
-#load("output/vaxbase_30.RData")
-#load("output/vaxbase_40.RData")
-#load("output/vaxbase_50.RData")
-#load("output/vaxbase_60.RData")
-#load("output/vax70_10.RData")
-#load("output/vax70_20.RData")
-#load("output/vax70_30.RData")
-#load("output/vax70_40.RData")
-#load("output/vax70_50.RData")
-#load("output/vax70_60.RData")
-###
+
+load("output/vax70_60.RData")
+
 #load("output-vaxbase10/vax70_10.RData")
-load("output-vaxbase20/vax70_20.RData")
+
+#load("output-vaxbase20/vax70_20.RData")
 
 #rm(b_cases, cc_intv, cc_base, costs, num_cases, num_outcomes_base, num_outcomes_intv, pop, prob, r_cost, risk_group, vax_comp_i)
 ```
@@ -226,7 +217,7 @@ daly_65[1]; daly_65[2]; daly_65[3]
 ```
 
 # DALYs averted (high, low, all)
-```{r}
+```{r eval=FALSE, include=FALSE}
 daly_avert_04 <- (daly_b_04 - daly_04)
 daly_avert_04[1]; daly_avert_04[2]; daly_avert_04[3]
 daly_avert_519 <- (daly_b_519 - daly_519)
@@ -238,14 +229,14 @@ daly_avert_65[1]; daly_avert_65[2]; daly_avert_65[3]
 ```
 
 ## Total DALYs averted in scenario
-```{r}
+```{r eval=FALSE, include=FALSE}
 (hr_dalyavert <- daly_avert_04[1] + daly_avert_519[1] + daly_avert_2064[1] + daly_avert_65[1])
 (lr_dalyavert <- daly_avert_04[2] + daly_avert_519[2] + daly_avert_2064[2] + daly_avert_65[2])
 (total_dalys_averted <- daly_avert_04[3] + daly_avert_519[3] + daly_avert_2064[3] + daly_avert_65[3])
 ```
 
 # ICER per DALY averted (high, low, all)
-```{r}
+```{r eval=FALSE, include=FALSE}
 icer_04_high[1] / daly_avert_04[1]; icer_04_low[1] / daly_avert_04[2]; cost_diff_04 / daly_avert_04[3]
 icer_519_high[1] / daly_avert_519[1]; icer_519_low[1] / daly_avert_519[2]; cost_diff_519 / daly_avert_519[3]
 icer_2064_high[1] / daly_avert_2064[1]; icer_2064_low[1] / daly_avert_2064[2]; cost_diff_2064 / daly_avert_2064[3]
@@ -253,7 +244,7 @@ icer_65_high[1] / daly_avert_65[1]; icer_65_low[1] / daly_avert_65[2]; cost_diff
 ```
 
 # ICER per DALY averted in scenario (high, low, all)
-```{r}
+```{r eval=FALSE, include=FALSE}
 (hr_icerdaly <- hr_costdiff / hr_dalyavert)
 (lr_icerdaly <- lr_costdiff / lr_dalyavert)
 (total_icer_daly <- total_cost_difference / total_dalys_averted)

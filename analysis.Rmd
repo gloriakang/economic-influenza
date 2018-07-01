@@ -25,14 +25,14 @@ library(knitr)
 source("code/functions.R")
 source("input/var.R")
 
-## load reference case
+## load comparator case
 #source("input/input_base.R")
-#source("input/input_base_vaxbase_10.R")
-source("input/input_base_vaxbase_20.R")
+source("input/input_base_vaxbase_10.R")
+#source("input/input_base_vaxbase_20.R")
 ```
 
 ```{r}
-## load comparator
+## load new intervention case
 #source("input/input_vaxbase_10.R")
 #source("input/input_vaxbase_20.R")
 #source("input/input_vaxbase_30.R")
@@ -41,11 +41,11 @@ source("input/input_base_vaxbase_20.R")
 #source("input/input_vaxbase_60.R")
 
 #source("input/input_70_10.R")
-source("input/input_70_20.R")
+#source("input/input_70_20.R")
 #source("input/input_70_30.R")
 #source("input/input_70_40.R")
 #source("input/input_70_50.R")
-#source("input/input_70_60.R")
+source("input/input_70_60.R")
 ```
 
 # SAVE RDATA!!!
@@ -55,7 +55,7 @@ rm(b_cases, cc_intv, cc_base, costs, num_cases, num_outcomes_base, num_outcomes_
 ## save RData
 #save.image(file = "output/vaxbase_40.RData")
 
-#save.image(file = "output/vax70_10.RData")
+save.image(file = "output/vax70_60.RData")
 
 #save.image(file = "output-vaxbase10/vax70_10.RData")
 
