@@ -1,4 +1,4 @@
-# inputs = reference case: vaxbase 10% VE
+# inputs = reference case: prevalent 10% VE
 
 ## base vaccine compliance = 
 #vax_comp_b <- c(0.51, 0.51, 0.33, 0.63)
@@ -6,6 +6,7 @@ bc_04 <- 0.51
 bc_519 <- 0.51
 bc_2064 <- 0.33
 bc_65 <- 0.63
+
 
 ## total = 1089539.4 (31.98%)
 base_04 <- 62948.88 * 0.67 #28.15%

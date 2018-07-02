@@ -1,4 +1,4 @@
-# inputs = vaccination 70% (60% VE)
+# inputs = healthy vaccination 70% (60% VE)
 
 ## vax_70 = 70%
 vc_04 <- 0.7

@@ -1,4 +1,4 @@
-# inputs = base vaccination (30% VE)
+# inputs = prevalent vaccination (30% VE)
 
 ## vax_base = 51%, 51%, 33%, 63%
 vc_04 <- 0.51
