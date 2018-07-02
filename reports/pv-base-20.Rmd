@@ -24,13 +24,13 @@ rm(list = ls(all.names = TRUE))
 library(knitr)
 
 ## load comparator case:
-#source("input/input_base.R")
+source("input/input_base.R")
 #source("input/input_base_vaxbase_10.R")
 #source("input/input_base_vaxbase_20.R")
 
 ## prevalent vs. no vaccination:
 #load("output/vaxbase_10.RData")
-#load("output/vaxbase_20.RData")
+load("output/vaxbase_20.RData")
 #load("output/vaxbase_30.RData")
 #load("output/vaxbase_40.RData")
 

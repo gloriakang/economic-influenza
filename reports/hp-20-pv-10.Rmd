@@ -25,7 +25,7 @@ library(knitr)
 
 ## load comparator case:
 #source("input/input_base.R")
-#source("input/input_base_vaxbase_10.R")
+source("input/input_base_vaxbase_10.R")
 #source("input/input_base_vaxbase_20.R")
 
 ## prevalent vs. no vaccination:
@@ -36,7 +36,14 @@ library(knitr)
 
 ## healthy vs. prevalent:
 #load("output-vaxbase10/vax70_10.RData")
+load("output-vaxbase10/vax70_20.RData")
+#load("output-vaxbase10/vax70_50.RData")
+#load("output-vaxbase10/vax70_60.RData")
+
+#load("output-vaxbase20/vax70_10.RData")
 #load("output-vaxbase20/vax70_20.RData")
+#load("output-vaxbase20/vax70_50.RData")
+#load("output-vaxbase20/vax70_60.RData")
 
 ## healthy vs. no vaccination
 #load("output/vax70_10.RData")
