@@ -13,7 +13,7 @@ output:
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
-#knitr::opts_knit$set(root.dir = "../")
+knitr::opts_knit$set(root.dir = "../")
 ```
 
 ```{r}
@@ -24,7 +24,7 @@ rm(list = ls(all.names = TRUE))
 library(knitr)
 
 ## load comparator case:
-#source("input/input_base.R")
+source("input/input_base.R")
 #source("input/input_base_vaxbase_10.R")
 #source("input/input_base_vaxbase_20.R")
 
@@ -32,7 +32,7 @@ library(knitr)
 #load("output/vaxbase_10.RData")
 #load("output/vaxbase_20.RData")
 #load("output/vaxbase_30.RData")
-#load("output/vaxbase_40.RData")
+load("output/vaxbase_40.RData")
 
 ## healthy vs. prevalent:
 #load("output-vaxbase10/vax70_10.RData")
