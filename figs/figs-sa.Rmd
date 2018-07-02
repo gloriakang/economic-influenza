@@ -1,32 +1,45 @@
 ---
-title: "figures"
+title: "figs-sa"
 output: 
-  html_document: 
-    css: ~/git/economic-influenza/css/default.css
-    fig_caption: yes
-    fig_width: 7.5
-    keep_md: yes
-    theme: cosmo
   html_notebook: 
-    css: ~/git/economic-influenza/css/default.css
+    code_folding: hide
+    fig_caption: yes
+    number_sections: yes
     theme: cosmo
+    toc: yes
+  html_document: 
+    fig_caption: yes
+    keep_md: yes
+    number_sections: yes
+    theme: cosmo
+    toc: yes
 editor_options: 
   chunk_output_type: inline
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, cache = TRUE, warning = FALSE, message = FALSE, tidy = TRUE)
+knitr::opts_chunk$set(
+	echo = FALSE,
+	warning = TRUE,
+	cache = TRUE,
+	tidy = TRUE
+)
 ```
 
 ```{r}
 rm(list = ls(all.names = TRUE))
+
 library(ggplot2)
 library(tidyr)
-library(knitr); library(rmarkdown)
+library(dplyr)
+library(knitr)
+library(rmarkdown)
+library(formatR)
 ```
 
 ```{r}
 data <- read.csv("df/icer-all.csv", as.is = TRUE)
+
 df <- data[(data$scenario!="base"),]
 
 df$cases.averted <- as.numeric(df$cases.averted)
