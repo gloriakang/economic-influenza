@@ -1,13 +1,13 @@
 ---
 title: "results-temp"
 output:
-  html_notebook: 
-    code_folding: hide
+  html_document: 
+    css: ~/git/economic-influenza/css/default.css
+    keep_md: yes
     theme: cosmo
   pdf_document: default
-  html_document: 
-    keep_md: yes
-    self_contained: no
+  html_notebook: 
+    code_folding: hide
     theme: cosmo
 ---
 
