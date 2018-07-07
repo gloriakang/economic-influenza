@@ -300,7 +300,7 @@ g3 + aes(y = dalys.averted.per100k) + labs(y = "DALYs averted per 100k", title =
 ## Fig. Cost-effectiveness plane (All VE)
 
 ```{r}
-l <- labs(x = "DALYs averted per 100K", y = "Cost saved per 100K")
+l <- labs(x = "DALYs averted per 100K", y = "Cost per 100K")
 
 # All VE%
 a <- ggplot(df_base, aes(x = dalys.averted.per100k, y = cost.diff.per100k)) + l +

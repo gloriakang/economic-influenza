@@ -1,4 +1,4 @@
-reference,scenario,age,v.eff,risk,pop.size,cost.diff,cost.diff.per100k,vax.costs,c.costs,cases,cases.per100k,cases.averted,cases.averted.per100k,icer.case.averted,deaths,deaths.per100k,deaths.averted,deaths.averted.per100k,icer.death.averted,dalys,dalys.per100k,dalys.averted,dalys.averted.per100k,icer.daly.averted
+﻿reference,scenario,age,v.eff,risk,pop.size,cost.diff,cost.diff.per100k,vax.costs,c.costs,cases,cases.per100k,cases.averted,cases.averted.per100k,icer.case.averted,deaths,deaths.per100k,deaths.averted,deaths.averted.per100k,icer.death.averted,dalys,dalys.per100k,dalys.averted,dalys.averted.per100k,icer.daly.averted
 none,base,0-4 yrs,0,High,14311,0.00,0.00,0.00,4839136.64,3181.93,22234.33,0.00,0.00,0.00,20.70,144.66,0.00,0.00,0.00,1605.49,11218.67,0.00,0.00,0.00
 none,base,0-4 yrs,0,Non-high,209297,0.00,0.00,0.00,13625896.53,46535.79,22234.32,0.00,0.00,0.00,6.32,3.02,0.00,0.00,0.00,534.43,255.34,0.00,0.00,0.00
 none,base,0-4 yrs,0,All,223608,0.00,0.00,0.00,18465033.17,49717.72,22234.32,0.00,0.00,0.00,27.02,12.08,0.00,0.00,0.00,2139.92,957.00,0.00,0.00,0.00
