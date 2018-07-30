@@ -107,26 +107,26 @@ df_40 <- df_pv[(df_pv$v.eff == '40'),]
 ```
 
 
-## 20% VE: ICER per case averted
+## 20% VE: $ per case averted
 ```{r}
 ggplot(df_20, aes(x = age, y = icer.case.averted, group = risk, color = risk)) +
   geom_point() + geom_line(linetype = "dotted") + labs(x = "Age group", color = "Risk group") + 
-  ylab("$ saved per case averted") + ggtitle("Healthy People Vaccination (20% VE): ICER per case averted")
+  ylab("$ saved per case averted") #+ ggtitle("Healthy People Vaccination (20% VE): ICER per case averted")
 ```
 
 
-## 20% VE: ICER per death averted
+## 20% VE: $ per death averted
 ```{r}
 ggplot(df_20, aes(x = age, y = icer.death.averted, group = risk, color = risk)) +
   geom_point() + geom_line(linetype = "dotted") + labs(x = "Age group", color = "Risk group") + 
-  ylab("$ saved per case averted") + ggtitle("Healthy People Vaccination (20% VE): ICER per death averted")
+  ylab("$ saved per case averted") #+ ggtitle("Healthy People Vaccination (20% VE): ICER per death averted")
 ```
 
-## 20% VE: ICER per DALY averted
+## 20% VE: $ per DALY averted
 ```{r}
 ggplot(df_20, aes(x = age, y = icer.daly.averted, group = risk, color = risk)) +
   geom_point() + geom_line(linetype = "dotted") + labs(x = "Age group", color = "Risk group") + 
-  ylab("$ saved per case averted") + ggtitle("Healthy People Vaccination (20% VE): ICER per DALY averted")
+  ylab("$ saved per case averted") #+ ggtitle("Healthy People Vaccination (20% VE): ICER per DALY averted")
 ```
 
 ## 20% VE: Cases, cases averted
@@ -134,36 +134,35 @@ ggplot(df_20, aes(x = age, y = icer.daly.averted, group = risk, color = risk)) +
 g4 <- ggplot(df_20, aes(x = age, group = risk, color = risk)) +
   geom_point() + geom_line(linetype = "dotted") + labs(x = "Age group", color = "Risk group")
 
-g4 + aes(y = cases) + labs(y = "Cases", title = "Healthy People Vaccination (20% VE): Cases")
-g4 + aes(y = cases.per100k) + labs(y = "Cases per 100k", title = "Healthy People Vaccination (20% VE): Cases per 100k")
-g4 + aes(y = cases.averted) + labs(y = "Cases averted", title = "Healthy People Vaccination (20% VE): Cases averted")
-g4 + aes(y = cases.averted.per100k) + labs(y = "Cases averted per 100k", title = "Healthy People Vaccination (20% VE): Cases averted per 100k")
+g4 + aes(y = cases) + labs(y = "Cases")
+g4 + aes(y = cases.per100k) + labs(y = "Cases per 100k")
+g4 + aes(y = cases.averted) + labs(y = "Cases averted")
+g4 + aes(y = cases.averted.per100k) + labs(y = "Cases averted per 100k")
 ```
 
 ## 20% VE: Deaths, deaths averted
 ```{r}
-g4 + aes(y = deaths) + labs(y = "Deaths", title = "Healthy People Vaccination (20% VE): Deaths")
-g4 + aes(y = deaths.per100k) + labs(y = "Deaths per 100k", title = "Healthy People Vaccination (20% VE): Deaths per 100k")
-g4 + aes(y = deaths.averted) + labs(y = "Deaths averted", title = "Healthy People Vaccination (20% VE): Deaths averted")
-g4 + aes(y = deaths.averted.per100k) + labs(y = "Deaths averted per 100k", title = "Healthy People Vaccination (20% VE): Deaths averted per 100k")
+g4 + aes(y = deaths) + labs(y = "Deaths")
+g4 + aes(y = deaths.per100k) + labs(y = "Deaths (per 100k)")
+g4 + aes(y = deaths.averted) + labs(y = "Deaths averted")
+g4 + aes(y = deaths.averted.per100k) + labs(y = "Deaths averted (per 100k)")
 ```
 
 ## 20% VE: DALYs, DALYs averted
 ```{r}
-g4 + aes(y = dalys) + labs(y = "DALYs", title = "Healthy People Vaccination (20% VE): DALYs")
-g4 + aes(y = dalys.per100k) + labs(y = "DALYs per 100k", title = "Healthy People Vaccination (20% VE): DALYs per 100k")
-g4 + aes(y = dalys.averted) + labs(y = "DALYs averted", title = "Healthy People Vaccination (20% VE): DALYs averted")
-g4 + aes(y = dalys.averted.per100k) + labs(y = "DALYs averted per 100k", title = "Healthy People Vaccination (20% VE): DALYs averted per 100k")
+g4 + aes(y = dalys) + labs(y = "DALYs")
+g4 + aes(y = dalys.per100k) + labs(y = "DALYs (per 100k)")
+g4 + aes(y = dalys.averted) + labs(y = "DALYs averted")
+g4 + aes(y = dalys.averted.per100k) + labs(y = "DALYs averted (per 100k)")
 ```
 
-## Fig. Cost-effectiveness plane (All VE)
+## Cost-effectiveness plane: HP vs. PV
 
 ```{r}
-l <- labs(x = "DALYs averted per 100K", y = "Cost saved per 100K")
+l <- labs(x = "DALYs averted (per 100k)", y = "Cost (per 100k)")
 
 # All VE%
-a <- ggplot(df_hp, aes(x = dalys.averted.per100k, y = cost.diff.per100k)) + l +
-  labs(title = "Cost-effectiveness plane: Healthy People vs. Prevalent Vaccination")
+a <- ggplot(df_hp, aes(x = dalys.averted.per100k, y = cost.diff.per100k)) + l
 
 a + aes(color = risk, group = risk) + labs(color = "Risk") + geom_point() + facet_grid(v.eff ~ age)
 a + aes(color = age, group = age) + labs(color = "Age group") + geom_point() + facet_grid(v.eff ~ risk)
@@ -188,7 +187,7 @@ a2 + aes(color = age, group = age) + geom_point() + facet_grid(~ risk)
 
 # Combine HP 20% + PV 40%
 
-```{r}
+```{r eval=FALSE, include=FALSE}
 # bind HP table + PV table
 df_all <- bind_rows(df_20, df_40)
 
@@ -197,7 +196,7 @@ df_all$scenario <- factor(df_all$scenario, labels = c("Prevalent Scenario (compa
 ```
 
 ## HP 20% and PV 40%: ICERs
-```{r}
+```{r eval=FALSE, include=FALSE}
 ggplot(df_all, aes(x = age, y = icer.case.averted, group = risk, color = risk)) +
   geom_point() + geom_line(linetype = "dotted") + labs(x = "Age group", color = "Risk group") + 
   ylab("$ saved per case averted") + ggtitle("ICER per case averted") +
@@ -215,7 +214,7 @@ ggplot(df_all, aes(x = age, y = icer.daly.averted, group = risk, color = risk)) 
 ```
 
 ## HP 20% and PV 40%: Cases
-```{r}
+```{r eval=FALSE, include=FALSE}
 g <- ggplot(df_all, aes(x = age, group = risk, color = risk)) +
   geom_point() + geom_line(linetype = "dotted") + labs(x = "Age group", color = "Risk group") +
   facet_grid(~ scenario)
@@ -227,7 +226,7 @@ g + aes(y = cases.averted.per100k) + labs(y = "Cases averted per 100k", title = 
 ```
 
 ## HP 20% and PV 40%: Deaths
-```{r}
+```{r eval=FALSE, include=FALSE}
 g + aes(y = deaths) + labs(y = "Deaths", title = "Deaths")
 g + aes(y = deaths.per100k) + labs(y = "Deaths per 100k", title = "Deaths per 100k")
 g + aes(y = deaths.averted) + labs(y = "Deaths averted", title = "Deaths averted")
@@ -235,7 +234,7 @@ g + aes(y = deaths.averted.per100k) + labs(y = "Deaths averted per 100k", title 
 ```
 
 ## HP 20% and PV 40%: DALYs
-```{r}
+```{r eval=FALSE, include=FALSE}
 g + aes(y = dalys) + labs(y = "DALYs", title = "DALYs")
 g + aes(y = dalys.per100k) + labs(y = "DALYs per 100k", title = "DALYs per 100k")
 g + aes(y = dalys.averted) + labs(y = "DALYs averted", title = "DALYs averted")
