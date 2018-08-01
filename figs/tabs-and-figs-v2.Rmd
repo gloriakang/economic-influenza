@@ -1,15 +1,15 @@
 ---
 title: "Healthy vax vs. Prevalent vax (10,20%)"
 output: 
-  html_notebook: 
-    code_folding: hide
-    fig_caption: yes
-    number_sections: yes
-    theme: cosmo
-    toc: yes
   html_document: 
     fig_caption: yes
     keep_md: yes
+    number_sections: yes
+    theme: cosmo
+    toc: yes
+  html_notebook: 
+    code_folding: hide
+    fig_caption: yes
     number_sections: yes
     theme: cosmo
     toc: yes
@@ -159,7 +159,7 @@ g4 + aes(y = dalys.averted.per100k) + labs(y = "DALYs averted (per 100k)")
 ## Cost-effectiveness plane: HP vs. PV
 
 ```{r}
-l <- labs(x = "DALYs averted (per 100k)", y = "Cost (per 100k)", title = "Healthy People Vaccination Scenario")
+l <- labs(x = "DALYs averted (per 100k)", y = "Cost (per 100k)", title = "Cost-effectiveness plane: Healthy People Vaccination")
 
 # All VE%
 a <- ggplot(df_hp, aes(x = dalys.averted.per100k, y = cost.diff.per100k)) + l
