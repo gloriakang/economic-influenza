@@ -2,16 +2,16 @@
 
 ## new ggplot codes  
 rm(list = ls())
-datfull <- read.csv("df/icer-all.csv")
+data <- read.csv("df/icer-all.csv")
 
 ## to order facet columns same as original
-datfull$risk_f <- factor(datfull$risk, levels = c('High', 'Non-high', 'All'))
+data$risk_f <- factor(data$risk, levels = c('High', 'Non-high', 'All'))
 
 ## to order legend
-datfull$age <- factor(datfull$age, levels = c("0-4 yrs", "5-19 yrs", "20-64 yrs", "65+ yrs", "All"))
+data$age <- factor(data$age, levels = c("0-4 yrs", "5-19 yrs", "20-64 yrs", "65+ yrs", "All"))
 
 f4 <- ggplot(subset(datfull, scenario %in% "vaxbase"),
-             aes(y = cost.diff.per100k, x = dalys.averted.per100k, group = age, colour = age)) +
+             aes(y = cost.diff.per100k, x = dalys.averted.per100k, group = age, color = age)) +
   geom_point() +
   expand_limits(y = 0) +
   labs(y = "Cost saved per 100,000 population\n",
@@ -28,8 +28,8 @@ f4 <- ggplot(subset(datfull, scenario %in% "vaxbase"),
 ggsave('figure4.png', height = 5, width = 7, dpi = 1200)
 
 
-f5 <- ggplot(subset(datfull, scenario %in% "vax70" & reference %in% "vaxbase"),
-             aes(y = cost.diff.per100k, x = dalys.averted.per100k, group = age, colour = age)) +
+f5 <- ggplot(subset(data, scenario %in% "vax70" & reference %in% "vaxbase"),
+             aes(y = cost.diff.per100k, x = dalys.averted.per100k, group = age, color = age)) +
   geom_point() +
   expand_limits(y = 0) +
   labs(y = "Cost saved per 100,000 population\n",
