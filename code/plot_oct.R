@@ -10,7 +10,10 @@ data$risk_f <- factor(data$risk, levels = c('High', 'Non-high', 'All'))
 ## to order legend
 data$age <- factor(data$age, levels = c("0-4 yrs", "5-19 yrs", "20-64 yrs", "65+ yrs", "All"))
 
-f4 <- ggplot(subset(datfull, scenario %in% "vaxbase"),
+
+# Figure 1. Current vaccination (VE = 10, 20, 30, 40%) vs. No vaccination
+
+f4 <- ggplot(subset(data, scenario %in% "vaxbase"),
              aes(y = cost.diff.per100k, x = dalys.averted.per100k, group = age, color = age)) +
   geom_point() +
   expand_limits(y = 0) +
@@ -27,6 +30,7 @@ f4 <- ggplot(subset(datfull, scenario %in% "vaxbase"),
 
 ggsave('figure4.png', height = 5, width = 7, dpi = 1200)
 
+#. Figure 2. Healthy People Vaccination (VE = 10, 20, 50, 60%) vs. Current vaccination (20% VE)
 
 f5 <- ggplot(subset(data, scenario %in% "vax70" & reference %in% "vaxbase"),
              aes(y = cost.diff.per100k, x = dalys.averted.per100k, group = age, color = age)) +
