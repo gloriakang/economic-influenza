@@ -35,7 +35,7 @@ f1 <- ggplot(subset(data, scenario %in% "vaxbase"),
 
 f1
 
-ggsave('fig1.png', height = 6, width = 8, dpi = 1200)
+ggsave('fig1.png', height = 6, width = 8, dpi = 600)
 
 
 f2 <- ggplot(subset(data, scenario %in% "vax70" & reference %in% "vaxbase"),
@@ -56,5 +56,5 @@ f2 <- ggplot(subset(data, scenario %in% "vax70" & reference %in% "vaxbase"),
 
 f2
 
-ggsave('fig2.png', height = 6, width = 8, dpi = 1200)
+ggsave('fig2.png', height = 6, width = 8, dpi = 600)
 
