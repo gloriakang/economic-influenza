@@ -1,20 +1,25 @@
 
 rm(list = ls())
 
-datfull <- read.csv("df/icer-all.csv")
+library(ggplot2)
 
-datfull$risk_f = factor(datfull$risk, levels = c('High', 'Non-high', 'All'))
+data <- read.csv("df/fig_df.csv")
+head(data)
+summary(data)
 
-# order the legend 
-datfull$age <- factor(datfull$age, levels = c("0-4 yrs",
+
+# removed "All" column
+data$risk_f = factor(data$risk, levels = c('High', 'Non-high'))
+
+# legend order
+data$age <- factor(data$age, levels = c("0-4 yrs",
                                               "5-19 yrs",
                                               "20-64 yrs",
-                                              "65+ yrs",
-                                              "All"))
+                                              "65+ yrs"))
 
-f4 <- ggplot(subset(datfull, scenario %in% "vaxbase"),
-             aes(y = cost.diff.per100k,
-                 x = dalys.averted.per100k,
+f1 <- ggplot(subset(data, scenario %in% "vaxbase"),
+             aes(y = plot.cost,
+                 x = plot.dalys,
                  group = age, color = age)) +
   geom_point() + expand_limits(y = 0) +
   labs(y = "Cost saved per 100,000 population\n",
@@ -26,14 +31,17 @@ f4 <- ggplot(subset(datfull, scenario %in% "vaxbase"),
   #       #panel.grid.major = element_blank(),
   #       panel.grid.major = element_line(colour = "grey86",size=0.5),### these remove the minor lines
   #       panel.grid.minor = element_line(colour = "grey86",size=0.5))+
-  facet_grid(v.eff~risk_f, scales = "free")
+  facet_grid(v.eff~risk_f)
 
-#ggsave('figurex.png', height = 5, width = 7, dpi = 1200)
+f1
 
-f5 <- ggplot(subset(datfull, scenario %in% "vax70" & reference %in% "vaxbase"),
-             aes(y = cost.diff.per100k,
-                 x = dalys.averted.per100k,
-                 group = age, colour = age)) + geom_point()+
+ggsave('fig1.png', height = 6, width = 8, dpi = 1200)
+
+
+f2 <- ggplot(subset(data, scenario %in% "vax70" & reference %in% "vaxbase"),
+             aes(y = plot.cost,
+                 x = plot.dalys,
+                 group = age, color = age)) + geom_point() +
   expand_limits(y = 0) +
   labs(y = "Cost saved per 100,000 population\n",
        x = "\nDALYs averted per 100,000 population", color = "Age group") + 
@@ -44,7 +52,9 @@ f5 <- ggplot(subset(datfull, scenario %in% "vax70" & reference %in% "vaxbase"),
   #       panel.grid.major = element_blank(),
   #       #panel.grid.major = element_line(colour = "grey86",size=0.5), ### these remove the minor lines
   #       panel.grid.minor = element_blank())+
-  facet_grid(v.eff~risk_f, scales = "free")
+  facet_grid(v.eff~risk_f)
 
-#ggsave('figure5.png', height = 6, width = 8, dpi=1200)
+f2
+
+ggsave('fig2.png', height = 6, width = 8, dpi = 1200)
 
